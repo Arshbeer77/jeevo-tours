@@ -129,27 +129,7 @@ if (heroSection) {
     heroObserver.observe(heroSection);
 }
 
-// ========== SCROLL ANIMATIONS ==========
-const animateOnScroll = document.querySelectorAll('.package-card, .dest-card, .testimonial-card, .gallery-item');
-
-const scrollObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-});
-
-animateOnScroll.forEach(element => {
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(30px)';
-    element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    scrollObserver.observe(element);
-});
+// scroll reveals: handled in assets/jeevo-scroll.js
 
 // ========== BACK TO TOP BUTTON ==========
 const backToTop = document.getElementById('backToTop');
@@ -174,12 +154,13 @@ if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const submitBtn = contactForm.querySelector('button[type="submit"]');
-        const originalBtnHtml = submitBtn.innerHTML;
+        const submitBtn = contactForm.querySelector('button[type="submit"]') || document.getElementById('contactSubmit');
+        const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Send Enquiry';
 
-        // UI Loading state
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+        }
 
         // Collect form data
         const nameVal = document.getElementById('name')?.value || '';
@@ -195,7 +176,7 @@ if (contactForm) {
             name: nameVal,
             email: emailVal,
             phone: phoneVal,
-            destination: destinationVal !== 'Select a destination' ? destinationVal : '',
+            destination: (destinationVal && destinationVal !== 'Select a destination') ? destinationVal : '',
             notes: messageVal
         };
 
@@ -219,24 +200,17 @@ if (contactForm) {
             console.error('CRM Submission Error:', error);
             alert('Thank you for reaching out! If the automatic submission fails, please feel free to call or WhatsApp us directly.');
         } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnHtml;
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+            }
         }
     });
 }
 
 // ========== NEWSLETTER FORM ==========
-const newsletterForm = document.querySelector('.newsletter-form');
+/* newsletter form: handled in assets/jeevo-forms.js */
 
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = newsletterForm.querySelector('input[type="email"]').value;
-
-        alert(`Thank you for subscribing with ${email}!`);
-        newsletterForm.reset();
-    });
-}
 
 // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -282,3 +256,5 @@ window.addEventListener('load', () => {
 });
 
 console.log('🕉 Jeevo Tours & Travels - Website Loaded Successfully!');
+
+
