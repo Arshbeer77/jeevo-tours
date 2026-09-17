@@ -118,20 +118,30 @@ window.JEEVO_CONFIG = {
           '&body='    + encodeURIComponent(lines);
       }
 
-      if (!CFG.web3formsKey) { fallbackMailto(); return; }
+      // Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
+      var CRM_API_URL = (win.location.hostname === 'localhost' || win.location.hostname === '127.0.0.1')
+          ? 'http://127.0.0.1:8000/api/enquiries'
+          : 'https://jeevo-tours-crm.onrender.com/api/enquiries';
 
-      fetch('https://api.web3forms.com/submit', {
-        method : 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body   : JSON.stringify(Object.assign({
-          access_key: CFG.web3formsKey,
-          subject   : subject,
-          from_name : 'Jeevo website',
-          replyto   : d.email || ''
-        }, d))
-      })
-      .then(function (r) { r.ok ? done() : fallbackMailto(); })
-      .catch(fallbackMailto);
+      if (kind === 'booking' || kind === 'contact') {
+        var payload = {
+          name: d.name || 'Website Visitor',
+          email: d.email || 'no-email@jeevotours.com',
+          phone: d.phone || 'N/A',
+          destination: d.tour || d.destination || '',
+          travel_dates: d.travel_dates || '',
+          notes: (d.travelers ? 'Travelers: ' + d.travelers + '\n' : '') + (d.notes || d.message || '')
+        };
+
+        fetch(CRM_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (r) { if (r.ok) { done(); } else { fallbackMailto(); } })
+        .catch(fallbackMailto);
+        return;
+      }
     });
   }
 
