@@ -129,18 +129,18 @@ if (heroSection) {
     heroObserver.observe(heroSection);
 }
 
-// scroll reveals: handled in assets/jeevo-scroll.js
-
 // ========== BACK TO TOP BUTTON ==========
 const backToTop = document.getElementById('backToTop');
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTop.classList.add('show');
-    } else {
-        backToTop.classList.remove('show');
-    }
-});
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+}
 
 // ========== CONTACT FORM HANDLING (INTEGRATED WITH CUSTOM CRM) ==========
 const contactForm = document.getElementById('contactForm');
@@ -209,8 +209,17 @@ if (contactForm) {
 }
 
 // ========== NEWSLETTER FORM ==========
-/* newsletter form: handled in assets/jeevo-forms.js */
+const newsletterForm = document.querySelector('.newsletter-form');
 
+if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = newsletterForm.querySelector('input[type="email"]')?.value || '';
+
+        alert(`Thank you for subscribing with ${email}!`);
+        newsletterForm.reset();
+    });
+}
 
 // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -256,5 +265,3 @@ window.addEventListener('load', () => {
 });
 
 console.log('🕉 Jeevo Tours & Travels - Website Loaded Successfully!');
-
-
