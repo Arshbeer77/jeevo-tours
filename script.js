@@ -162,29 +162,66 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ========== CONTACT FORM HANDLING ==========
+// ========== CONTACT FORM HANDLING (INTEGRATED WITH CUSTOM CRM) ==========
 const contactForm = document.getElementById('contactForm');
 
+// Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
+const CRM_API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://127.0.0.1:8000/api/enquiries'
+    : 'https://jeevo-tours-crm.onrender.com/api/enquiries'; // Update with your Render service URL once live
+
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        // Get form data
-        const formData = new FormData(contactForm);
-        const data = Object.fromEntries(formData);
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnHtml = submitBtn.innerHTML;
 
-        // Show success message (you can replace this with actual form submission)
-        alert('Thank you for your enquiry! We will get back to you within 24 hours.');
+        // UI Loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
 
-        // Reset form
-        contactForm.reset();
+        // Collect form data
+        const nameVal = document.getElementById('name')?.value || '';
+        const emailVal = document.getElementById('email')?.value || '';
+        const phoneVal = document.getElementById('phone')?.value || 'N/A';
+        const destSelect = document.getElementById('destination');
+        const destinationVal = destSelect && destSelect.options[destSelect.selectedIndex]
+            ? destSelect.options[destSelect.selectedIndex].text
+            : '';
+        const messageVal = document.getElementById('message')?.value || '';
 
-        // In production, you would send this data to a server:
-        // fetch('/api/contact', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(data)
-        // });
+        const payload = {
+            name: nameVal,
+            email: emailVal,
+            phone: phoneVal,
+            destination: destinationVal !== 'Select a destination' ? destinationVal : '',
+            notes: messageVal
+        };
+
+        try {
+            const response = await fetch(CRM_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert('Thank you! Your trip enquiry has been submitted. Our team will get back to you within 24 hours.');
+                contactForm.reset();
+            } else {
+                const errData = await response.json();
+                alert('Form submission error: ' + (errData.detail || 'Failed to submit enquiry.'));
+            }
+        } catch (error) {
+            console.error('CRM Submission Error:', error);
+            alert('Thank you for reaching out! If the automatic submission fails, please feel free to call or WhatsApp us directly.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+        }
     });
 }
 
