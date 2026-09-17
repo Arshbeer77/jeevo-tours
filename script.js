@@ -142,6 +142,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
+<<<<<<< HEAD
+// ========== CONTACT FORM HANDLING (INTEGRATED WITH CUSTOM CRM) ==========
+=======
 // ========== CONTACT FORM HANDLING ==========
 /* ============================================================
    CONTACT FORM  —  Web3Forms with a mailto fallback
@@ -158,12 +161,68 @@ const WEB3FORMS_KEY   = _JV.web3formsKey || "";
 const CONTACT_EMAIL   = _JV.contactEmail || "hello@jeevotours.com";
 const WHATSAPP_NUMBER = (_JV.whatsapp || "").replace(/[^0-9]/g, "");
 
+>>>>>>> aa6bf4f8f86bff154c69ea3848c5ca235bf70c07
 const contactForm = document.getElementById('contactForm');
+
+// Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
+const CRM_API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://127.0.0.1:8000/api/enquiries'
+    : 'https://jeevo-tours-crm.onrender.com/api/enquiries'; // Update with your Render service URL once live
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+<<<<<<< HEAD
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalBtnHtml = submitBtn.innerHTML;
+
+        // UI Loading state
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+
+        // Collect form data
+        const nameVal = document.getElementById('name')?.value || '';
+        const emailVal = document.getElementById('email')?.value || '';
+        const phoneVal = document.getElementById('phone')?.value || 'N/A';
+        const destSelect = document.getElementById('destination');
+        const destinationVal = destSelect && destSelect.options[destSelect.selectedIndex]
+            ? destSelect.options[destSelect.selectedIndex].text
+            : '';
+        const messageVal = document.getElementById('message')?.value || '';
+
+        const payload = {
+            name: nameVal,
+            email: emailVal,
+            phone: phoneVal,
+            destination: destinationVal !== 'Select a destination' ? destinationVal : '',
+            notes: messageVal
+        };
+
+        try {
+            const response = await fetch(CRM_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                alert('Thank you! Your trip enquiry has been submitted. Our team will get back to you within 24 hours.');
+                contactForm.reset();
+            } else {
+                const errData = await response.json();
+                alert('Form submission error: ' + (errData.detail || 'Failed to submit enquiry.'));
+            }
+        } catch (error) {
+            console.error('CRM Submission Error:', error);
+            alert('Thank you for reaching out! If the automatic submission fails, please feel free to call or WhatsApp us directly.');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+        }
+=======
         if (!contactForm.checkValidity()) { contactForm.reportValidity(); return; }
 
         const btn = document.getElementById('contactSubmit');
@@ -219,6 +278,7 @@ if (contactForm) {
 
         if (btn) { btn.disabled = false; btn.innerHTML = original; }
         succeeded(d.name);
+>>>>>>> aa6bf4f8f86bff154c69ea3848c5ca235bf70c07
     });
 }
 
