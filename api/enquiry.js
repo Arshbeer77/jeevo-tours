@@ -34,7 +34,6 @@ module.exports = async (req, res) => {
 
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST')    return res.status(405).json({ error: 'POST only' });
-  if (!TOKEN) return res.status(500).json({ error: 'AIRTABLE_TOKEN not set in Vercel' });
 
   let body = req.body;
   if (typeof body === 'string') { try { body = JSON.parse(body); } catch { body = {}; } }
@@ -49,6 +48,10 @@ module.exports = async (req, res) => {
   if (!name && !email && !phone) {
     return res.status(400).json({ error: 'Need at least a name, email or phone' });
   }
+
+  /* checked after validation so bad input is rejected the same way
+     whether or not the token happens to be configured */
+  if (!TOKEN) return res.status(500).json({ error: 'AIRTABLE_TOKEN not set in Vercel' });
 
   const fields = {};
   const put = (key, value) => { if (FIELD[key] && value) fields[FIELD[key]] = value; };
