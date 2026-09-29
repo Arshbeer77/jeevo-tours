@@ -119,9 +119,7 @@ window.JEEVO_CONFIG = {
       }
 
       // Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
-      var CRM_API_URL = (win.location.hostname === 'localhost' || win.location.hostname === '127.0.0.1')
-          ? 'http://127.0.0.1:8000/api/enquiries'
-          : 'https://jeevo-tours-crm.onrender.com/api/enquiries';
+      var CRM_API_URL = '/api/enquiry';
 
       if (kind === 'booking' || kind === 'contact') {
         var payload = {

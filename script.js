@@ -146,9 +146,7 @@ if (backToTop) {
 const contactForm = document.getElementById('contactForm');
 
 // Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
-const CRM_API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? 'http://127.0.0.1:8000/api/enquiries'
-    : 'https://jeevo-tours-crm.onrender.com/api/enquiries'; // Update with your Render service URL once live
+const CRM_API_URL = '/api/enquiry'; // Vercel function -> Airtable
 
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
