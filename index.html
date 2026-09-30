@@ -667,6 +667,61 @@
                         <label for="email"><i class="fas fa-envelope"></i> Email</label>
                         <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
                     </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="travel_month"><i class="fas fa-calendar"></i> When roughly? <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                            <select id="travel_month" name="travel_month">
+                                <option value="">Not sure yet</option>
+                                <option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nights"><i class="fas fa-moon"></i> How many nights? <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                            <input type="number" id="nights" name="nights" min="1" max="60" placeholder="e.g. 12">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="adults"><i class="fas fa-user-group"></i> Adults <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                            <input type="number" id="adults" name="adults" min="1" max="60" placeholder="e.g. 2">
+                        </div>
+                        <div class="form-group">
+                            <label for="children"><i class="fas fa-child"></i> Children <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                            <input type="number" id="children" name="children" min="0" max="30" placeholder="e.g. 1">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="hotel_standard"><i class="fas fa-bed"></i> Hotel standard <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                            <select id="hotel_standard" name="hotel_standard">
+                                <option value="">Not sure yet</option>
+                                <option>3-star &ndash; comfortable</option>
+                                <option>4-star &ndash; premium</option>
+                                <option>5-star &ndash; luxury</option>
+                                <option>Heritage / palace stays</option>
+                                <option>Mix of standards</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget"><i class="fas fa-wallet"></i> Budget per person <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                            <select id="budget" name="budget">
+                                <option value="">Rather not say</option>
+                                <option>Under $2,000</option>
+                                <option>$2,000 &ndash; $3,500</option>
+                                <option>$3,500 &ndash; $5,000</option>
+                                <option>$5,000 &ndash; $8,000</option>
+                                <option>$8,000+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="flights"><i class="fas fa-plane"></i> Flights <span style="opacity:.6;font-weight:400">(optional)</span></label>
+                        <select id="flights" name="flights">
+                            <option value="">Not sure yet</option>
+                            <option>Land only &ndash; we&rsquo;ll book our own flights</option>
+                            <option>Please include flights</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="reason"><i class="fas fa-map-pin"></i> Reason for contact</label>
                         <select id="reason" name="reason">
