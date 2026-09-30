@@ -178,25 +178,47 @@ if (contactForm) {
             notes: messageVal
         };
 
-        try {
-            const response = await fetch(CRM_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            });
+        /* Airtable first, then email, so an enquiry is never lost. */
+        const sendByEmail = async () => {
+            const key = (window.JEEVO_CONFIG || {}).web3formsKey;
+            if (!key) return false;
+            try {
+                const r = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify(Object.assign({
+                        access_key: key,
+                        subject: 'Jeevo enquiry - ' + (payload.name || ''),
+                        from_name: 'Jeevo website',
+                        replyto: payload.email || ''
+                    }, payload))
+                });
+                return r.ok;
+            } catch (e) { return false; }
+        };
 
-            if (response.ok) {
+        try {
+            let ok = false;
+            try {
+                const response = await fetch(CRM_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                ok = response.ok;
+            } catch (e) { ok = false; }
+
+            if (!ok) ok = await sendByEmail();
+
+            if (ok) {
                 alert('Thank you! Your trip enquiry has been submitted. Our team will get back to you within 24 hours.');
                 contactForm.reset();
             } else {
-                const errData = await response.json();
-                alert('Form submission error: ' + (errData.detail || 'Failed to submit enquiry.'));
+                alert('Sorry \u2014 that did not go through. Please call or WhatsApp us and we will sort it out.');
             }
         } catch (error) {
-            console.error('CRM Submission Error:', error);
-            alert('Thank you for reaching out! If the automatic submission fails, please feel free to call or WhatsApp us directly.');
+            console.error('Submission error:', error);
+            alert('Sorry \u2014 that did not go through. Please call or WhatsApp us and we will sort it out.');
         } finally {
             if (submitBtn) {
                 submitBtn.disabled = false;

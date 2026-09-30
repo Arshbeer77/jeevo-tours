@@ -118,26 +118,53 @@ window.JEEVO_CONFIG = {
           '&body='    + encodeURIComponent(lines);
       }
 
-      // Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
-      var CRM_API_URL = '/api/enquiry';
-
+      /* Three ways out, tried in order, so an enquiry is never lost:
+           1. /api/enquiry  -> Airtable  (once AIRTABLE_TOKEN is set in Vercel)
+           2. Web3Forms     -> email     (works today, needs no setup)
+           3. mailto        -> their own mail client (last resort)          */
       if (kind === 'booking' || kind === 'contact') {
+
         var payload = {
-          name: d.name || 'Website Visitor',
-          email: d.email || 'no-email@jeevotours.com',
-          phone: d.phone || 'N/A',
-          destination: d.tour || d.destination || '',
-          travel_dates: d.travel_dates || '',
-          notes: (d.travelers ? 'Travelers: ' + d.travelers + '\n' : '') + (d.notes || d.message || '')
+          name        : d.name || 'Website Visitor',
+          email       : d.email || '',
+          phone       : d.phone || '',
+          destination : d.tour || d.destination || '',
+          travel_dates: d.travel_dates || d.date || '',
+          travellers  : d.travellers || d.travelers || '',
+          message     : d.notes || d.message || '',
+          source      : 'Website'
         };
 
-        fetch(CRM_API_URL, {
-          method: 'POST',
+        var viaEmail = function () {
+          if (!CFG.web3formsKey) { fallbackMailto(); return; }
+          fetch('https://api.web3forms.com/submit', {
+            method : 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body   : JSON.stringify({
+              access_key: CFG.web3formsKey,
+              subject   : subject,
+              from_name : 'Jeevo website',
+              replyto   : d.email || '',
+              name      : payload.name,
+              email     : payload.email,
+              phone     : payload.phone,
+              tour      : payload.destination,
+              dates     : payload.travel_dates,
+              travellers: payload.travellers,
+              message   : payload.message
+            })
+          })
+          .then(function (r) { r.ok ? done() : fallbackMailto(); })
+          .catch(fallbackMailto);
+        };
+
+        fetch('/api/enquiry', {
+          method : 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body   : JSON.stringify(payload)
         })
-        .then(function (r) { if (r.ok) { done(); } else { fallbackMailto(); } })
-        .catch(fallbackMailto);
+        .then(function (r) { r.ok ? done() : viaEmail(); })
+        .catch(viaEmail);
         return;
       }
     });
