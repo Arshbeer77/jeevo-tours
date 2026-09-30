@@ -26,6 +26,32 @@ const FIELD = {
   // source   : 'Source',
 };
 
+
+/* Airtable rejects the whole record if any field name is wrong. Rather than
+   lose the lead, drop the offending field and try again — so a mis-named
+   column costs that one value, never the enquiry. */
+async function writeRecord(BASE, TABLE, TOKEN, fields) {
+  for (let attempt = 0; attempt < 6; attempt++) {
+    const r = await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(TABLE)}`, {
+      method : 'POST',
+      headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
+      body   : JSON.stringify({ records: [{ fields }], typecast: true })
+    });
+    const data = await r.json().catch(() => ({}));
+    if (r.ok) return { ok: true, data, dropped: [] };
+
+    const msg = data?.error?.message || '';
+    const bad = /Unknown field name:\s*"?([^"]+)"?/i.exec(msg);
+    if (bad && fields[bad[1]] !== undefined) {
+      delete fields[bad[1]];
+      if (Object.keys(fields).length === 0) return { ok: false, data };
+      continue;                       // try again without it
+    }
+    return { ok: false, data };
+  }
+  return { ok: false, data: { error: { message: 'too many unknown fields' } } };
+}
+
 module.exports = async (req, res) => {
   const origin = req.headers.origin || '';
   if (ALLOWED.includes(origin)) res.setHeader('Access-Control-Allow-Origin', origin);
@@ -65,19 +91,12 @@ module.exports = async (req, res) => {
   put('source',  body.source || 'Website');
 
   try {
-    const r = await fetch(`https://api.airtable.com/v0/${BASE}/${encodeURIComponent(TABLE)}`, {
-      method : 'POST',
-      headers: { Authorization: `Bearer ${TOKEN}`, 'Content-Type': 'application/json' },
-      body   : JSON.stringify({ records: [{ fields }], typecast: true })
-    });
-    const data = await r.json();
-
-    if (!r.ok) {
-      /* surfaces "Unknown field name: X" so a wrong column is obvious */
-      console.error('[airtable]', r.status, JSON.stringify(data));
-      return res.status(502).json({ error: 'Airtable rejected the record', detail: data?.error });
+    const out = await writeRecord(BASE, TABLE, TOKEN, fields);
+    if (!out.ok) {
+      console.error('[airtable]', JSON.stringify(out.data));
+      return res.status(502).json({ error: 'Airtable rejected the record', detail: out.data?.error });
     }
-    return res.status(200).json({ ok: true, id: data.records?.[0]?.id });
+    return res.status(200).json({ ok: true, id: out.data.records?.[0]?.id });
   } catch (e) {
     console.error('[airtable] request failed', e);
     return res.status(502).json({ error: 'Could not reach Airtable' });
