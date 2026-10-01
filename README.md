@@ -27,15 +27,20 @@ jeevo-tours/
 ## 🎨 Design Features
 
 ### Color Palette
-- **Primary**: Saffron/Orange (`#FF9933`, `#FF6B35`)
+- **Primary**: Saffron/Orange (`#F5A623`, `#D8830B`)
 - **Accent**: Green (`#138808`, `#4CAF50`)
-- **Neutral**: Dark navy, gray shades, white
+- **Neutral**: Dark brown (`#5A2D0C`), cream, white
 - **Gradients**: Linear gradients with warm Indian tones
 
 ### Typography
 - **Headings**: Playfair Display (serif, elegant)
-- **Body**: Poppins (sans-serif, modern)
+- **Body**: Mukta (sans-serif, modern, optimized for Indian content)
 - **Icons**: Font Awesome 6.5.1
+
+### Interactive Elements
+- **Origin Button Effect**: Premium ripple-from-origin animation on all buttons
+- **Interactive Tour Selector**: Expandable tour cards with smooth transitions
+- **Mobile-optimized vertical stacking** for tour selector on smaller screens
 
 ### Visual Elements
 - Smooth hero slideshow with Ken Burns effect
@@ -44,6 +49,7 @@ jeevo-tours/
 - Responsive grid systems
 - Shadow depths for visual hierarchy
 - Scroll-triggered animations
+- Premium button interactions with ripple effects
 
 ---
 
@@ -60,14 +66,27 @@ jeevo-tours/
 - **Animated Stats Counter**: 1200+ travelers, 50+ destinations, 8+ years
 - **Ken Burns Effect**: Subtle zoom animation on active slides
 - **Scroll Indicator**: Animated scroll prompt
+- **Origin Button Effect**: Premium ripple-from-origin animations
+
+### Interactive Elements
+- **Origin Button Component**: All buttons feature ripple-from-origin effect that responds to click/touch position
+  - Smooth animations using cubic-bezier easing
+  - Keyboard accessible (Tab + Space/Enter navigation)
+  - Touch-optimized for mobile devices
+  - Multiple variants: Primary (orange), Outline, WhatsApp
+  - Size options: Small, Default, Large
+- **Interactive Tour Explorer**: Expandable tour cards with hover effects
+  - Vertical stacking on mobile devices for better UX
+  - Smooth transitions between active/inactive states
+  - Touch-friendly on tablets and phones
 
 ### Main Sections
 1. **About Us** - Company story with image gallery and feature grid
 2. **Destinations** - 6 popular destinations with hover overlays
-3. **Packages** - 6 tour packages with detailed information
+3. **Interactive Tours** - Expandable tour selector (replaces static packages)
 4. **Gallery** - Masonry grid with 8 images
 5. **Testimonials** - 3 customer reviews with ratings
-6. **CTA Section** - Call-to-action with WhatsApp integration
+6. **CTA Section** - Call-to-action with Origin Button effects
 7. **Contact** - Contact form with office details and social links
 8. **Footer** - Newsletter signup, quick links, social media
 
@@ -82,6 +101,8 @@ jeevo-tours/
 - ✅ Form handling (contact & newsletter)
 - ✅ Smooth anchor scrolling
 - ✅ Lazy image loading
+- ✅ **Origin Button ripple effects** (`assets/jeevo-origin-button.js`)
+- ✅ **Interactive tour selector** (`assets/jeevo-selector.js`)
 
 ### Tour Pages (`tours/*.html`)
 Each tour page includes:
@@ -351,7 +372,10 @@ This is a commercial website template for Jeevo Tours & Travels. All rights rese
 
 ## 🎉 Version History
 
-**Current Version**: 1.0 (September 2026)
+**Current Version**: 2.0 (October 2026)
+- ✅ **Origin Button Effect** - Premium ripple-from-origin animations on all buttons
+- ✅ **Interactive Tour Explorer** - Replaced static packages with expandable tour selector
+- ✅ Mobile-optimized vertical tour selector layout
 - ✅ Complete responsive website
 - ✅ 6 tour packages with detailed pages
 - ✅ Interactive JavaScript features
@@ -360,8 +384,13 @@ This is a commercial website template for Jeevo Tours & Travels. All rights rese
 - ✅ Mobile-optimized navigation
 - ✅ Smooth animations and transitions
 
+**Version 1.0** (September 2026)
+- Initial release with static design
+- 6 tour packages with detailed pages
+- Basic button styles
+
 ---
 
-**Last Updated**: September 14, 2026  
+**Last Updated**: October 1, 2026  
 **Status**: Production Ready 🚀  
 **Maintained by**: Jeevo Tours & Travels Web Team

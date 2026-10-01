@@ -245,18 +245,149 @@
 }
 
 /* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .jv-selector-wrapper {
-    height: 380px;
-    padding: 4px;
+@media (max-width: 1024px) {
+  .jv-selector-section {
+    padding: 40px 0;
   }
+
+  .jv-selector-header {
+    margin: 0 auto 28px;
+    padding: 0 20px;
+  }
+
   .jv-selector-title {
-    font-size: 1.85rem;
+    font-size: 2rem;
   }
+
+  .jv-selector-wrapper {
+    max-width: 95%;
+    height: 420px;
+  }
+}
+
+@media (max-width: 768px) {
+  .jv-selector-section {
+    padding: 30px 0;
+  }
+
+  .jv-selector-header {
+    margin: 0 auto 24px;
+    padding: 0 16px;
+  }
+
+  .jv-selector-tag {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+
+  .jv-selector-title {
+    font-size: 1.75rem;
+    margin-bottom: 10px;
+  }
+
+  .jv-selector-desc {
+    font-size: 0.95rem;
+  }
+
+  .jv-selector-wrapper {
+    flex-direction: column;
+    height: auto;
+    max-width: calc(100% - 32px);
+    padding: 6px;
+  }
+
+  .jv-selector-item {
+    flex: none;
+    height: 120px;
+    min-height: 120px;
+    margin: 4px;
+    width: calc(100% - 8px);
+  }
+
+  .jv-selector-item.active {
+    flex: none;
+    height: 280px;
+  }
+
+  .jv-selector-badge {
+    top: 12px;
+    left: 12px;
+    font-size: 0.7rem;
+    padding: 3px 10px;
+  }
+
+  .jv-selector-info {
+    bottom: 12px;
+    padding: 0 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .jv-selector-info-left {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .jv-selector-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    font-size: 1rem;
+  }
+
+  .jv-selector-text {
+    flex: 1;
+  }
+
   .jv-selector-item-title {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
+
+  .jv-selector-item-route {
+    font-size: 0.8rem;
+  }
+
   .jv-selector-btn {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    padding: 10px 18px;
+    font-size: 0.9rem;
+  }
+
+  .jv-selector-item:not(.active) .jv-selector-badge,
+  .jv-selector-item:not(.active) .jv-selector-info {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .jv-selector-title {
+    font-size: 1.5rem;
+  }
+
+  .jv-selector-desc {
+    font-size: 0.9rem;
+  }
+
+  .jv-selector-wrapper {
+    max-width: calc(100% - 24px);
+  }
+
+  .jv-selector-item {
+    height: 100px;
+  }
+
+  .jv-selector-item.active {
+    height: 260px;
+  }
+
+  .jv-selector-item-title {
+    font-size: 1rem;
+  }
+
+  .jv-selector-item-route {
+    font-size: 0.75rem;
   }
 }

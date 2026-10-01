@@ -1,0 +1,187 @@
+/**
+ * Jeevo Tours - Origin Button Effect
+ * Orange/White themed button with ripple-from-origin animation
+ */
+
+.jv-origin-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    height: 3rem;
+    padding: 0 2rem;
+    font-family: 'Mukta', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    overflow: hidden;
+    border-radius: 0.75rem;
+    border: 0.5px solid rgba(90, 45, 12, 0.15);
+    background-color: #ffffff;
+    color: #5A2D0C;
+    transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    outline: none;
+    will-change: transform;
+}
+
+/* Primary Button Variant */
+.jv-origin-btn.btn-primary {
+    background-color: #F5A623;
+    border-color: #F5A623;
+    color: #ffffff;
+}
+
+/* Outline Button Variant */
+.jv-origin-btn.btn-outline {
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+}
+
+/* WhatsApp Button Variant */
+.jv-origin-btn.btn-whatsapp {
+    background-color: #25D366;
+    border-color: #25D366;
+    color: #ffffff;
+}
+
+/* Large Button Size */
+.jv-origin-btn.btn-lg {
+    height: 3.5rem;
+    padding: 0 2.5rem;
+    font-size: 1rem;
+}
+
+/* Small Button Size */
+.jv-origin-btn.btn-sm {
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    font-size: 0.875rem;
+}
+
+/* Full Width Button */
+.jv-origin-btn.btn-full {
+    width: 100%;
+}
+
+/* Focus Visible */
+.jv-origin-btn:focus-visible {
+    outline: 2px solid #F5A623;
+    outline-offset: 2px;
+}
+
+/* Disabled State */
+.jv-origin-btn:disabled,
+.jv-origin-btn[aria-busy="true"] {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Ripple Fill Element */
+.jv-origin-btn__fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #5A2D0C;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+    will-change: transform, width, height;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Primary button fill */
+.jv-origin-btn.btn-primary .jv-origin-btn__fill {
+    background-color: #D8830B;
+}
+
+/* Outline button fill */
+.jv-origin-btn.btn-outline .jv-origin-btn__fill {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* WhatsApp button fill */
+.jv-origin-btn.btn-whatsapp .jv-origin-btn__fill {
+    background-color: #1DA851;
+}
+
+/* Active Fill State */
+.jv-origin-btn[data-fill-active="true"] .jv-origin-btn__fill {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Text Color Change on Fill */
+.jv-origin-btn[data-fill-active="true"]:not(.btn-outline):not(.btn-whatsapp) {
+    color: #ffffff;
+}
+
+.jv-origin-btn.btn-primary[data-fill-active="true"] {
+    color: #ffffff;
+}
+
+/* Content Wrapper */
+.jv-origin-btn__content {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+/* Hover Effect (for non-touch devices) */
+@media (hover: hover) and (pointer: fine) {
+    .jv-origin-btn:hover:not(:disabled):not([aria-busy="true"]) {
+        transform: translateY(-1px);
+    }
+
+    .jv-origin-btn.btn-primary:hover:not(:disabled):not([aria-busy="true"]) {
+        box-shadow: 0 8px 20px rgba(245, 166, 35, 0.3);
+    }
+
+    .jv-origin-btn.btn-outline:hover:not(:disabled):not([aria-busy="true"]) {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* Active/Pressed State */
+.jv-origin-btn:active:not(:disabled):not([aria-busy="true"]) {
+    transform: scale(0.985);
+}
+
+/* Icon Spacing */
+.jv-origin-btn i,
+.jv-origin-btn svg {
+    flex-shrink: 0;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+    .jv-origin-btn {
+        height: 2.75rem;
+        padding: 0 1.5rem;
+        font-size: 0.875rem;
+    }
+
+    .jv-origin-btn.btn-lg {
+        height: 3.25rem;
+        padding: 0 2rem;
+        font-size: 0.9375rem;
+    }
+
+    .jv-origin-btn.btn-sm {
+        height: 2.25rem;
+        padding: 0 1.25rem;
+        font-size: 0.8125rem;
+    }
+}
