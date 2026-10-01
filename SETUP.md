@@ -42,11 +42,29 @@ Three routes, tried in order, so an enquiry is never silently lost:
 
 So the site is safe to go live before step 1 is done.
 
+## If the site moves to Cloudflare Pages
+
+The same function exists in both formats, because the two hosts are not
+compatible:
+
+| Host | File it runs | Where the variables go |
+|---|---|---|
+| Vercel | `api/enquiry.js` | Vercel → Settings → Environment Variables |
+| Cloudflare Pages | `functions/api/enquiry.js` | Cloudflare → Pages project → Settings → Environment variables |
+
+Each host ignores the other's file, so both can live here safely. On
+Cloudflare add the same three variables (`AIRTABLE_TOKEN`,
+`AIRTABLE_BASE`, `AIRTABLE_TABLE`) and redeploy.
+
+Add the live domain to the `ALLOWED` list in whichever file is in use,
+or the browser will block the request.
+
 ## Files
 
 | File | What it is |
 |---|---|
 | `api/enquiry.js` | Vercel function. Receives the form post, writes to Airtable. Reads the token from the environment — never from the code. |
+| `functions/api/enquiry.js` | The same thing for Cloudflare Pages. |
 | `assets/jeevo-forms.js` | Booking + newsletter forms. Holds contact details in one config block at the top. |
 | `script.js` | Contact form on the homepage. |
 | `dev-server.js` | Runs the site and the function together on :3000 for local testing. |
