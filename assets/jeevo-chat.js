@@ -224,7 +224,9 @@
   }
 
   function showPlan(){
-    var trip = buildItinerary();
+    var chatting = history.length > 0;
+    var seen = chatting ? readConversation() : null;
+    var trip = chatting ? null : buildItinerary();
     if (!trip || trip.stops.length < 2){
       bubble("Let me get a consultant to put this one together properly for you.", 'bot');
       return askContact();
@@ -235,8 +237,9 @@
     askContact();
   }
 
-  function askContact(){
-    el.row.hidden = true;
+  function askContact(soft){
+    if(!soft) el.row.hidden = true;
+    if(soft) bubble("If you'd like, pop your details in below and a consultant will pick this up \u2014 or keep asking me things.", 'bot');
     el.opts.innerHTML=
       '<form class="jv-chat-lead">'+
         '<input name="name"  type="text"  placeholder="Your name" required>'+
@@ -251,19 +254,26 @@
     e.preventDefault();
     var f=e.target, btn=f.querySelector('button');
     btn.disabled=true; btn.textContent='Sending…';
-    var trip = buildItinerary();
+    var chatting = history.length > 0;
+    var seen = chatting ? readConversation() : null;
+    var trip = chatting ? null : buildItinerary();
     fetch(ENQUIRY,{ method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         name:f.name.value, email:f.email.value, phone:f.phone.value,
-        destination: (trip && trip.region) || answers.region || 'Not sure',
-        travellers: answers.party||'', hotel_standard: answers.hotel||'',
-        budget: answers.budget||'', nights: answers.nights||'',
-        source:'Trip planner',
-        message:'Trip planner draft: '+
-                (trip ? trip.stops.map(function(s){ return s.city+' '+s.nights+'n'; }).join(' > ')+
-                        ' ('+trip.nights+' nights)' : 'no route built')+
-                ' | party: '+(answers.party||'-')+' | hotels: '+(answers.hotel||'-')+
-                ' | budget: '+(answers.budget||'-')
+        destination: (trip && trip.region) || (seen && seen.destination) || answers.region || 'Not sure',
+        travellers: answers.party||'',
+        hotel_standard: answers.hotel || (seen && seen.hotel) || '',
+        budget: answers.budget || (seen && seen.budget) || '',
+        nights: answers.nights || (seen && seen.nights) || '',
+        travel_month: (seen && seen.month) || '',
+        source: chatting ? 'AI chat' : 'Trip planner',
+        message: chatting
+          ? 'Conversation with the website assistant:\n\n' + transcript()
+          : 'Trip planner draft: '+
+            (trip ? trip.stops.map(function(x){ return x.city+' '+x.nights+'n'; }).join(' > ')+
+                    ' ('+trip.nights+' nights)' : 'no route built')+
+            ' | party: '+(answers.party||'-')+' | hotels: '+(answers.hotel||'-')+
+            ' | budget: '+(answers.budget||'-')
       })})
       .then(function(r){ return r.ok; })
       .catch(function(){ return false; })
@@ -317,6 +327,7 @@
           bubble(res.j.reply,'bot');
           history.push({role:'assistant',content:res.j.reply});
           save();
+          maybeOfferContact();
           if(res.j.done){ el.row.hidden=true; askContact(); }
           return;
         }
@@ -330,6 +341,53 @@
         bubble("Sorry \u2014 I couldn't reach our planner just then. Let me ask you a few quick things instead.", 'bot');
         fallToGuided(false);
       });
+  }
+
+  /* A chat that goes nowhere is a lost lead. Once the conversation has
+     real substance, offer the hand-off below the chat - without taking
+     the typing box away, so they can keep talking if they want to. */
+  var offered = false;
+  function maybeOfferContact(){
+    if(offered || botOff) return;
+    var turns = history.filter(function(m){ return m.role==='user'; }).length;
+    if(turns < 3) return;
+    offered = true;
+    askContact(true);
+  }
+
+  /* Pull whatever the conversation revealed, so the agent is not reading
+     a transcript cold. Place names come from the planner data. */
+  function readConversation(){
+    var text = history.map(function(m){ return m.content; }).join(' ');
+    var low  = text.toLowerCase();
+    var out  = { destination:'', nights:'', month:'', budget:'', hotel:'' };
+
+    if(P && P.cities){
+      var hits = Object.keys(P.cities).filter(function(c){
+        return c.length > 3 && low.indexOf(c.toLowerCase()) !== -1;
+      });
+      if(hits.length) out.destination = hits.slice(0,6).join(', ');
+    }
+    var REG = ['Rajasthan','South India','Kerala','North India','East India','Nepal','Vietnam','Golden Triangle'];
+    for(var i=0;i<REG.length;i++){
+      if(low.indexOf(REG[i].toLowerCase())!==-1){
+        out.destination = out.destination ? REG[i]+' — '+out.destination : REG[i];
+        break;
+      }
+    }
+    var n = low.match(/(\d{1,2})\s*(?:nights?|days?)/);        if(n) out.nights = n[1];
+    var m = low.match(/\b(january|february|march|april|may|june|july|august|september|october|november|december)\b/);
+    if(m) out.month = m[1].charAt(0).toUpperCase()+m[1].slice(1);
+    var b = low.match(/\$\s?([\d,]{3,7})/);                     if(b) out.budget = '$'+b[1];
+    var h = low.match(/(heritage|palace|5[- ]star|4[- ]star|3[- ]star|luxur\w+|boutique)/);
+    if(h) out.hotel = h[1];
+    return out;
+  }
+
+  function transcript(){
+    return history.map(function(m){
+      return (m.role==='user' ? 'Visitor: ' : 'Assistant: ') + m.content;
+    }).join('\n').slice(-1800);
   }
 
   function ask(){
