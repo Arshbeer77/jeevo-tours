@@ -7,6 +7,7 @@
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
 let lastScroll = 0;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
@@ -78,7 +79,7 @@ function nextSlide() {
 }
 
 // Change slide every 5 seconds with smooth transition
-if (heroSlides.length > 1) {
+if (heroSlides.length > 1 && !prefersReducedMotion) {
     setInterval(nextSlide, 5000);
 }
 
@@ -90,7 +91,17 @@ function animateCounters() {
     if (counterAnimated) return;
 
     counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-count'));
+        const target = parseInt(counter.getAttribute('data-count'), 10);
+
+        /* Stats written as text (e.g. "24/7") have no data-count and
+           must be left exactly as they are. */
+        if (!Number.isFinite(target)) return;
+
+        if (prefersReducedMotion) {
+            counter.textContent = target;
+            return;
+        }
+
         const duration = 2000; // 2 seconds
         const increment = target / (duration / 16); // 60fps
         let current = 0;
@@ -148,9 +159,29 @@ const contactForm = document.getElementById('contactForm');
 // Base URL for the Jeevo Tours CRM API (auto-detects local dev vs production)
 const CRM_API_URL = '/api/enquiry'; // Vercel function -> Airtable
 
+/* Inline status message inside the form. Replaces window.alert(),
+   which blocks the page and gives screen readers nothing. */
+function showFormStatus(form, type, html) {
+    let status = form.querySelector('.form-status');
+    if (!status) {
+        status = document.createElement('p');
+        status.className = 'form-status';
+        form.appendChild(status);
+    }
+    status.className = 'form-status is-' + type;
+    status.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    status.innerHTML = html;
+}
+
 if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        /* Browser-side validation before anything is sent */
+        if (!contactForm.checkValidity()) {
+            contactForm.reportValidity();
+            return;
+        }
 
         const submitBtn = contactForm.querySelector('button[type="submit"]') || document.getElementById('contactSubmit');
         const originalBtnHtml = submitBtn ? submitBtn.innerHTML : 'Send Enquiry';
@@ -160,27 +191,23 @@ if (contactForm) {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
         }
 
-        // Collect form data
-        const nameVal = document.getElementById('name')?.value || '';
-        const emailVal = document.getElementById('email')?.value || '';
-        const phoneVal = document.getElementById('phone')?.value || 'N/A';
-        const destSelect = document.getElementById('destination');
-        const destinationVal = destSelect && destSelect.options[destSelect.selectedIndex]
-            ? destSelect.options[destSelect.selectedIndex].text
-            : '';
-        const messageVal = document.getElementById('message')?.value || '';
+        /* Send every field the form collects (month, nights, party size,
+           hotel standard, budget, flights, reason). The old code only sent
+           name/email/phone, so all the trip details never reached the CRM. */
+        const formData = new FormData(contactForm);
+        const payload = { source: 'Website' };
+        formData.forEach((value, key) => {
+            const v = String(value).trim();
+            if (v) payload[key] = v;
+        });
 
-        const payload = {
-            name: nameVal,
-            email: emailVal,
-            phone: phoneVal,
-            destination: (destinationVal && destinationVal !== 'Select a destination') ? destinationVal : '',
-            notes: messageVal
-        };
+        const firstName = (payload.name || '').split(' ')[0];
+        const cfg = window.JEEVO_CONFIG || {};
+        const waLink = 'https://wa.me/' + String(cfg.whatsapp || '919876543210');
 
         /* Airtable first, then email, so an enquiry is never lost. */
         const sendByEmail = async () => {
-            const key = (window.JEEVO_CONFIG || {}).web3formsKey;
+            const key = cfg.web3formsKey;
             if (!key) return false;
             try {
                 const r = await fetch('https://api.web3forms.com/submit', {
@@ -211,14 +238,17 @@ if (contactForm) {
             if (!ok) ok = await sendByEmail();
 
             if (ok) {
-                alert('Thank you! Your trip enquiry has been submitted. Our team will get back to you within 24 hours.');
+                showFormStatus(contactForm, 'success',
+                    'Thank you' + (firstName ? ', ' + firstName : '') + '. Your enquiry is in. We reply within one business day.');
                 contactForm.reset();
             } else {
-                alert('Sorry \u2014 that did not go through. Please call or WhatsApp us and we will sort it out.');
+                showFormStatus(contactForm, 'error',
+                    'That did not go through. Please call us or <a href="' + waLink + '" target="_blank" rel="noopener">message us on WhatsApp</a> and we will sort it out.');
             }
         } catch (error) {
             console.error('Submission error:', error);
-            alert('Sorry \u2014 that did not go through. Please call or WhatsApp us and we will sort it out.');
+            showFormStatus(contactForm, 'error',
+                'That did not go through. Please call us or <a href="' + waLink + '" target="_blank" rel="noopener">message us on WhatsApp</a> and we will sort it out.');
         } finally {
             if (submitBtn) {
                 submitBtn.disabled = false;
@@ -228,18 +258,7 @@ if (contactForm) {
     });
 }
 
-// ========== NEWSLETTER FORM ==========
-const newsletterForm = document.querySelector('.newsletter-form');
-
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const email = newsletterForm.querySelector('input[type="email"]')?.value || '';
-
-        alert(`Thank you for subscribing with ${email}!`);
-        newsletterForm.reset();
-    });
-}
+/* Newsletter signups are handled in assets/jeevo-forms.js */
 
 // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

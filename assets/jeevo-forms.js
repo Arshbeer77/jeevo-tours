@@ -61,8 +61,7 @@ window.JEEVO_CONFIG = {
     return '<div class="form-success">' +
              '<i class="fas fa-circle-check"></i>' +
              '<h3>Thanks' + (firstName ? ', ' + firstName : '') + '</h3>' +
-             '<p>Your enquiry is in. We reply within one business day — ' +
-               'usually a lot sooner.</p>' +
+             '<p>Your enquiry is in. We reply within one business day, usually a lot sooner.</p>' +
              '<p style="margin-top:18px">' +
                '<a class="btn btn-whatsapp" target="_blank" rel="noopener" href="' + wa + '">' +
                  '<i class="fab fa-whatsapp"></i> Or message us now on WhatsApp</a>' +
@@ -88,10 +87,10 @@ window.JEEVO_CONFIG = {
       new FormData(form).forEach(function (v, k) { d[k] = v; });
 
       var subject = kind === 'booking'
-        ? 'Jeevo booking enquiry — ' + (d.tour || 'Tour') + ' — ' + (d.name || '')
+        ? 'Jeevo booking enquiry - ' + (d.tour || 'Tour') + ' - ' + (d.name || '')
         : kind === 'newsletter'
-          ? 'Jeevo newsletter signup — ' + (d.email || '')
-          : 'Jeevo enquiry — ' + (d.name || '');
+          ? 'Jeevo newsletter signup - ' + (d.email || '')
+          : 'Jeevo enquiry - ' + (d.name || '');
 
       function done() {
         if (win.JeevoLoader) JeevoLoader.detach(form);
@@ -99,7 +98,7 @@ window.JEEVO_CONFIG = {
           var p = doc.createElement('p');
           p.className = 'form-note';
           p.setAttribute('role', 'status');
-          p.textContent = 'Thanks — you are on the list.';
+          p.textContent = 'Thanks. You are on the list.';
           form.parentNode.replaceChild(p, form);
         } else {
           form.outerHTML = successPanel(
@@ -116,6 +115,28 @@ window.JEEVO_CONFIG = {
         win.location.href = 'mailto:' + CFG.contactEmail +
           '?subject=' + encodeURIComponent(subject) +
           '&body='    + encodeURIComponent(lines);
+      }
+
+      /* Newsletter signups have no list backend, so they go by email:
+         the address lands in the owner's inbox to be added by hand.
+         Without a key we fall back to the visitor's own mail client. */
+      if (kind === 'newsletter') {
+        if (!CFG.web3formsKey) { fallbackMailto(); return; }
+        fetch('https://api.web3forms.com/submit', {
+          method : 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body   : JSON.stringify({
+            access_key: CFG.web3formsKey,
+            subject   : subject,
+            from_name : 'Jeevo website',
+            replyto   : d.email || '',
+            email     : d.email || '',
+            message   : 'Newsletter signup: ' + (d.email || '')
+          })
+        })
+        .then(function (r) { r.ok ? done() : fallbackMailto(); })
+        .catch(fallbackMailto);
+        return;
       }
 
       /* Three ways out, tried in order, so an enquiry is never lost:

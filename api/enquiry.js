@@ -11,6 +11,7 @@ const TOKEN = process.env.AIRTABLE_TOKEN;
 /* Only these origins may post here. */
 const ALLOWED = [
   'https://jeevo-tours.vercel.app',
+  'http://localhost:3000',
   'http://localhost:8765'
 ];
 
