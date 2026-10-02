@@ -1,0 +1,72 @@
+/* Jeevo planning assistant widget */
+:root{
+  --jv-chat-ink:#2B1B0E; --jv-chat-saffron:#E07B1E; --jv-chat-deep:#C2410C;
+  --jv-chat-cream:#FFFDF7; --jv-chat-line:rgba(43,27,14,.12);
+}
+.jv-chat-fab{
+  position:fixed; right:22px; bottom:22px; z-index:9400;
+  width:60px; height:60px; border:0; border-radius:50%; cursor:pointer;
+  background:linear-gradient(145deg,var(--jv-chat-saffron),var(--jv-chat-deep));
+  color:#fff; font-size:23px; line-height:1;
+  box-shadow:0 10px 30px rgba(194,65,12,.38);
+  transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+  display:grid; place-items:center;
+}
+.jv-chat-fab:hover{ transform:translateY(-3px) scale(1.05); box-shadow:0 16px 38px rgba(194,65,12,.46); }
+.jv-chat-fab:focus-visible{ outline:3px solid var(--jv-chat-saffron); outline-offset:3px; }
+.jv-chat-fab[hidden]{ display:none; }
+
+.jv-chat-panel{
+  position:fixed; right:22px; bottom:22px; z-index:9401;
+  width:min(392px, calc(100vw - 32px)); height:min(610px, calc(100vh - 44px));
+  background:var(--jv-chat-cream); border-radius:20px; overflow:hidden;
+  display:none; flex-direction:column;
+  box-shadow:0 26px 70px rgba(43,27,14,.30); border:1px solid var(--jv-chat-line);
+  animation:jvChatIn .3s cubic-bezier(.34,1.3,.64,1);
+}
+.jv-chat-panel.is-open{ display:flex; }
+@keyframes jvChatIn{ from{ opacity:0; transform:translateY(18px) scale(.97);} to{ opacity:1; transform:none; } }
+
+.jv-chat-head{
+  background:linear-gradient(135deg,var(--jv-chat-saffron),var(--jv-chat-deep));
+  color:#fff; padding:15px 17px; display:flex; align-items:center; gap:11px; flex:0 0 auto;
+}
+.jv-chat-head h3{ margin:0; font-size:15px; font-weight:600; letter-spacing:.01em; }
+.jv-chat-head p{ margin:2px 0 0; font-size:12px; opacity:.86; font-weight:400; }
+.jv-chat-close{ margin-left:auto; background:rgba(255,255,255,.17); border:0; color:#fff;
+  width:30px; height:30px; border-radius:50%; cursor:pointer; font-size:17px; line-height:1; }
+.jv-chat-close:hover{ background:rgba(255,255,255,.3); }
+
+.jv-chat-log{ flex:1 1 auto; overflow-y:auto; padding:17px; display:flex; flex-direction:column; gap:11px; }
+.jv-chat-msg{ max-width:86%; padding:10px 13px; border-radius:15px; font-size:14.5px; line-height:1.55;
+  white-space:pre-wrap; word-wrap:break-word; }
+.jv-chat-msg.bot{ align-self:flex-start; background:#fff; color:var(--jv-chat-ink);
+  border:1px solid var(--jv-chat-line); border-bottom-left-radius:5px; }
+.jv-chat-msg.me{ align-self:flex-end; background:var(--jv-chat-ink); color:#fff; border-bottom-right-radius:5px; }
+.jv-chat-msg.err{ align-self:center; background:#FEF2F2; color:#991B1B; border:1px solid #FECACA; font-size:13px; }
+
+.jv-chat-dots{ align-self:flex-start; display:flex; gap:4px; padding:12px 14px; background:#fff;
+  border:1px solid var(--jv-chat-line); border-radius:15px; border-bottom-left-radius:5px; }
+.jv-chat-dots i{ width:6px; height:6px; border-radius:50%; background:var(--jv-chat-saffron);
+  animation:jvDot 1.3s infinite ease-in-out; }
+.jv-chat-dots i:nth-child(2){ animation-delay:.18s } .jv-chat-dots i:nth-child(3){ animation-delay:.36s }
+@keyframes jvDot{ 0%,60%,100%{ transform:translateY(0); opacity:.4 } 30%{ transform:translateY(-5px); opacity:1 } }
+
+.jv-chat-foot{ flex:0 0 auto; border-top:1px solid var(--jv-chat-line); background:#fff; padding:11px; }
+.jv-chat-row{ display:flex; gap:8px; align-items:flex-end; }
+.jv-chat-input{ flex:1; border:1px solid var(--jv-chat-line); border-radius:12px; padding:10px 12px;
+  font:inherit; font-size:14.5px; resize:none; max-height:110px; min-height:42px; color:var(--jv-chat-ink); }
+.jv-chat-input:focus{ outline:none; border-color:var(--jv-chat-saffron); box-shadow:0 0 0 3px rgba(224,123,30,.15); }
+.jv-chat-send{ background:linear-gradient(145deg,var(--jv-chat-saffron),var(--jv-chat-deep)); color:#fff;
+  border:0; border-radius:12px; width:42px; height:42px; cursor:pointer; font-size:16px; flex:0 0 auto; }
+.jv-chat-send:disabled{ opacity:.45; cursor:default; }
+.jv-chat-note{ margin:8px 2px 0; font-size:11px; color:rgba(43,27,14,.55); text-align:center; line-height:1.4; }
+
+@media (max-width:480px){
+  .jv-chat-panel{ right:0; bottom:0; width:100vw; height:100dvh; border-radius:0; }
+  .jv-chat-fab{ right:16px; bottom:16px; }
+}
+@media (prefers-reduced-motion:reduce){
+  .jv-chat-panel,.jv-chat-fab{ animation:none; transition:none }
+  .jv-chat-dots i{ animation:none; opacity:.6 }
+}
