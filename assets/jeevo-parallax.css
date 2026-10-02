@@ -1,0 +1,235 @@
+/* Jeevo Tours Parallax Section */
+.jv-parallax-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(180deg, #FFFAF5 0%, #FFF8F0 100%);
+}
+
+.jv-parallax-header {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.jv-parallax-visuals {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.jv-parallax-layers {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jv-parallax-layer-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(90, 45, 12, 0.2);
+}
+
+.jv-parallax-layer-img:nth-child(1) {
+    z-index: 1;
+    opacity: 0.3;
+    filter: blur(8px);
+}
+
+.jv-parallax-layer-img:nth-child(2) {
+    z-index: 2;
+    opacity: 0.5;
+    filter: blur(4px);
+    width: 75%;
+}
+
+.jv-parallax-layer-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    text-align: center;
+    pointer-events: none;
+}
+
+.jv-parallax-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 12vw, 8rem);
+    font-weight: 700;
+    color: #5A2D0C;
+    margin: 0;
+    text-shadow:
+        0 2px 10px rgba(255, 255, 255, 0.9),
+        0 4px 20px rgba(245, 166, 35, 0.5);
+    letter-spacing: -0.02em;
+}
+
+.jv-parallax-subtitle {
+    font-family: 'Mukta', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    color: #F5A623;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    text-shadow: 0 2px 8px rgba(255, 255, 255, 0.8);
+}
+
+.jv-parallax-layer-img:nth-child(4) {
+    z-index: 4;
+    width: 70%;
+    opacity: 1;
+    filter: none;
+}
+
+.jv-parallax-fade {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent, #FFFAF5);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.jv-parallax-content {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #FFFAF5 0%, #FFF 100%);
+}
+
+.jv-parallax-content-inner {
+    max-width: 1000px;
+    text-align: center;
+}
+
+.jv-parallax-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #5A2D0C;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.jv-parallax-content p {
+    font-family: 'Martel', serif;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: #5A2D0C;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+}
+
+.jv-parallax-icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3rem;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.jv-parallax-icon {
+    width: 80px;
+    height: 80px;
+    color: #F5A623;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jv-parallax-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    color: #D8830B;
+}
+
+.jv-parallax-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    color: #F5A623;
+}
+
+.jv-parallax-ornament span {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #F5A623, transparent);
+}
+
+.jv-parallax-ornament i {
+    font-size: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .jv-parallax-layer-img {
+        width: 90%;
+    }
+
+    .jv-parallax-layer-img:nth-child(2) {
+        width: 85%;
+    }
+
+    .jv-parallax-layer-img:nth-child(4) {
+        width: 80%;
+    }
+
+    .jv-parallax-title {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .jv-parallax-content {
+        min-height: 40vh;
+        padding: 2rem 1rem;
+    }
+
+    .jv-parallax-icon {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Smooth scroll override for section */
+html.lenis {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
