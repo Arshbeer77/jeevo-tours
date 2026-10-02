@@ -12,9 +12,36 @@
 const fs   = require('fs');
 const path = require('path');
 
-const KEY   = process.env.GEMINI_API_KEY;
-const MODEL = process.env.CHAT_MODEL || 'gemini-2.5-flash';
-const URL   = m => `https://generativelanguage.googleapis.com/v1beta/models/${m}:generateContent`;
+const KEY  = process.env.GEMINI_API_KEY;
+const BASE = 'https://generativelanguage.googleapis.com/v1beta';
+
+/* Google renames these models regularly and a stale name fails the whole
+   call, so ask the API which ones this key can actually use and pick a
+   flash-class one. Cached for the life of the instance; one extra request
+   on a cold start, none afterwards. CHAT_MODEL overrides it entirely. */
+let MODEL_CACHE = process.env.CHAT_MODEL || null;
+
+async function pickModel() {
+  if (MODEL_CACHE) return MODEL_CACHE;
+  const r = await fetch(`${BASE}/models?key=${encodeURIComponent(KEY)}`);
+  if (!r.ok) throw Object.assign(new Error('list_models'), { status: r.status });
+  const j = await r.json();
+  const usable = (j.models || [])
+    .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
+    .map(m => m.name.replace(/^models\//, ''));
+
+  const prefer = [
+    n => /flash/.test(n) && /2\.5|3/.test(n) && !/lite|preview|thinking|image|tts/.test(n),
+    n => /flash/.test(n) && !/lite|preview|image|tts/.test(n),
+    n => /flash/.test(n),
+    () => true,
+  ];
+  for (const test of prefer) {
+    const hit = usable.find(test);
+    if (hit) { MODEL_CACHE = hit; return hit; }
+  }
+  throw Object.assign(new Error('no_model'), { status: 404 });
+}
 
 const MAX_TURNS = 20;
 const MAX_CHARS = 1200;
@@ -129,7 +156,8 @@ module.exports = async (req, res) => {
     '\n\n## Contact details\nNever ask for a name, email or phone number. The website collects those separately. If someone offers them, thank them and say the form below will pass them on.';
 
   try {
-    const r = await fetch(URL(MODEL) + '?key=' + encodeURIComponent(KEY), {
+    const model = await pickModel();
+    const r = await fetch(`${BASE}/models/${model}:generateContent?key=` + encodeURIComponent(KEY), {
       method : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body   : JSON.stringify({
@@ -142,8 +170,13 @@ module.exports = async (req, res) => {
 
     if (!r.ok) {
       /* 429 is the free-tier daily cap; the widget falls back silently */
-      console.error('[chat]', r.status, JSON.stringify(data).slice(0, 400));
-      return res.status(503).json({ error: 'assistant_unavailable', reason: r.status === 429 ? 'rate_limited' : 'upstream' });
+      console.error('[chat]', model, r.status, JSON.stringify(data).slice(0, 400));
+      if (r.status === 404 || r.status === 400) MODEL_CACHE = process.env.CHAT_MODEL || null; // re-pick next time
+      return res.status(503).json({
+        error: 'assistant_unavailable',
+        reason: r.status === 429 ? 'rate_limited' : 'upstream',
+        upstream: r.status, model,
+      });
     }
 
     const reply = (data?.candidates?.[0]?.content?.parts || [])
@@ -152,7 +185,11 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({ reply });
   } catch (e) {
-    console.error('[chat] request failed', e);
-    return res.status(503).json({ error: 'assistant_unavailable', reason: 'network' });
+    console.error('[chat] request failed', e && e.message, e && e.status);
+    return res.status(503).json({
+      error: 'assistant_unavailable',
+      reason: e && e.message === 'list_models' ? 'key_rejected' : 'network',
+      upstream: (e && e.status) || null,
+    });
   }
 };
