@@ -70,3 +70,33 @@
   .jv-chat-panel,.jv-chat-fab{ animation:none; transition:none }
   .jv-chat-dots i{ animation:none; opacity:.6 }
 }
+
+/* ---- guided planner: options, plan card, lead form ---- */
+.jv-chat-opts{ display:flex; flex-direction:column; gap:7px; }
+.jv-chat-opt{
+  width:100%; text-align:left; padding:10px 13px; font:inherit; font-size:14px;
+  background:#fff; color:var(--jv-chat-ink); border:1px solid var(--jv-chat-line);
+  border-radius:11px; cursor:pointer; transition:border-color .15s, background .15s, transform .12s;
+}
+.jv-chat-opt:hover{ border-color:var(--jv-chat-saffron); background:#FFF8EF; transform:translateX(2px); }
+.jv-chat-opt:focus-visible{ outline:2px solid var(--jv-chat-saffron); outline-offset:2px; }
+.jv-chat-opt.is-go{
+  text-align:center; font-weight:600; color:#fff; border:0;
+  background:linear-gradient(145deg,var(--jv-chat-saffron),var(--jv-chat-deep));
+}
+.jv-chat-opt.is-go:disabled{ opacity:.6; cursor:default; }
+
+.jv-chat-msg.plan{
+  align-self:stretch; max-width:100%; background:#fff;
+  border:1px solid var(--jv-chat-saffron); border-left-width:4px; border-radius:13px;
+  font-size:14px; line-height:1.6;
+}
+.jv-plan-route{ display:inline-block; margin-top:5px; color:var(--jv-chat-deep); font-weight:600; font-size:13.5px; }
+.jv-plan-legs{ display:inline-block; margin-top:9px; font-size:12.5px; color:rgba(43,27,14,.68); line-height:1.65; }
+
+.jv-chat-lead{ display:flex; flex-direction:column; gap:7px; }
+.jv-chat-lead input{
+  border:1px solid var(--jv-chat-line); border-radius:11px; padding:10px 12px;
+  font:inherit; font-size:14px; color:var(--jv-chat-ink);
+}
+.jv-chat-lead input:focus{ outline:none; border-color:var(--jv-chat-saffron); box-shadow:0 0 0 3px rgba(224,123,30,.15); }

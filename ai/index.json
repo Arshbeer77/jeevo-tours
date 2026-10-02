@@ -7,7 +7,9 @@
    "days": 4,
    "region": "North & Central India",
    "route": [
-    "06 June | Delhi To Ayodhya"
+    "Delhi",
+    "Ayodhya",
+    "Varanasi"
    ],
    "source_file": "AYODHYA AND VARANASI.docx"
   },
@@ -34,15 +36,14 @@
    "days": 15,
    "region": "India & Nepal",
    "route": [
-    "España",
     "Delhi",
     "Agra",
-    "Jaipur Fatehpur Sikri",
     "Jaipur",
+    "Fatehpur Sikri",
     "Pushkar",
     "Jodhpur",
-    "Udaipur Ranakpur",
     "Udaipur",
+    "Ranakpur",
     "Kathmandu"
    ],
    "source_file": "DELH AND KATHMANDU.docx"
@@ -64,7 +65,6 @@
     "Fatehpur Sikri",
     "Agra",
     "Jhansi",
-    "Orcha (18 Kms /",
     "Orchha",
     "Khajuraho",
     "Varanasi"
@@ -91,7 +91,9 @@
     "Munnar",
     "Periyar",
     "Alleppey",
-    "Kumarakom"
+    "Kumarakom",
+    "Kovalam",
+    "Trivandrum"
    ],
    "source_file": "FROM SOUTHERN SERENITY TO NORTHERN GRANDEUR.docx"
   },
@@ -126,10 +128,12 @@
     "Ranthambore",
     "Chowki Dhani",
     "Jaipur",
-    "Chittorgarh",
     "Udaipur",
     "Ranakpur",
-    "Jodhpur"
+    "Jodhpur",
+    "Pokharan",
+    "Jaisalmer",
+    "Bikaner"
    ],
    "source_file": "KINGDOM OF ETERNAL SPLENDORS.docx"
   },
@@ -155,11 +159,8 @@
    "days": 3,
    "region": "Rajasthan",
    "route": [
-    "06 Feb 2026 | Delhi",
-    "Jaipur",
-    "07 Feb 2026 | Jaipur",
-    "08 Feb 2026 | Jaipur",
-    "Delhi"
+    "Delhi",
+    "Jaipur"
    ],
    "source_file": "OFFSITE TOUR OF JAIPUR.docx"
   },
@@ -176,14 +177,15 @@
     "Jodhpur",
     "Ranakpur",
     "Udaipur",
-    "Chittorgarh",
     "Bundi",
     "Jaipur",
     "Ranthambore",
-    "Bharatpur",
     "Fatehpur Sikri",
     "Agra",
-    "Jhansi"
+    "Jhansi",
+    "Orchha",
+    "Khajuraho",
+    "Varanasi"
    ],
    "source_file": "ROYALTY, ART & SPIRITUALITY-JOURNEY THROUGH HEART OF INDIA.docx"
   },
@@ -202,11 +204,9 @@
     "Rameshwaram",
     "Kanyakumari",
     "Madurai",
-    "Coimbatore",
     "Ooty",
     "Mysore",
-    "Bangalore",
-    "Departure"
+    "Bangalore"
    ],
    "source_file": "SOUTH INDIA TRAVEL IN JUNE'26.docx"
   },
@@ -221,10 +221,8 @@
     "Kanchipuram",
     "Mahabalipuram",
     "Pondicherry",
-    "Gangaikonda Cholapuram",
     "Darasuram",
     "Tanjore",
-    "Trichy",
     "Madurai",
     "Periyar",
     "Alleppey",
@@ -245,12 +243,9 @@
     "Varanasi",
     "Bodhgaya",
     "Patna",
-    "Amritsar (6E 5009",
-    "08:30 Hrs / 10:15 Hrs &",
     "Amritsar",
     "Dharamshala",
     "Shimla",
-    "Chandigarh",
     "Haridwar",
     "Rishikesh"
    ],
@@ -263,16 +258,9 @@
    "days": 7,
    "region": "East India",
    "route": [
-    "07 Mar’27",
     "Delhi",
-    "08 Mar’27 |Delhi",
-    "09 Mar’27 |Delhi",
     "Agra",
-    "10 Mar’27 | Agra",
-    "11 Mar’27 | Agra",
-    "Kolkata",
-    "12 Mar’27 | Kolkata",
-    "13 Mar’27 | Kolkata"
+    "Kolkata"
    ],
    "source_file": "TAJ MAHAL WITH KOLKATA BY FLIGHT.docx"
   },
@@ -283,15 +271,9 @@
    "days": 7,
    "region": "East India",
    "route": [
-    "07 Mar’27",
     "Delhi",
-    "08 Mar’27 |Delhi",
-    "09 Mar’27 |Delhi",
     "Agra",
-    "10 Mar’27 | Agra",
-    "11 Mar’27 | Agra",
-    "12 Mar’27 | Kolkata",
-    "13 Mar’27 | Kolkata"
+    "Kolkata"
    ],
    "source_file": "TAJ MAHAL WITH KOLKATA BY TRAIN.docx"
   },
@@ -302,10 +284,12 @@
    "days": 8,
    "region": "Vietnam",
    "route": [
-    "Hanoi & Leisure",
-    "Bana Hills With Lunch",
-    "Departure & To Hcm",
-    "Departure"
+    "Hanoi",
+    "Halong",
+    "Danang",
+    "Bana Hills",
+    "Hoi An",
+    "Saigon"
    ],
    "source_file": "VIETNAM PACKAGE.docx"
   }
