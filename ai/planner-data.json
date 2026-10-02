@@ -1,0 +1,595 @@
+{
+ "cities": {
+  "Danang": {
+   "region": "Vietnam",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Madurai": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 2
+  },
+  "Dharamshala": {
+   "region": "North & Central India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Udaipur": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 3
+  },
+  "Fatehpur Sikri": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Jodhpur": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Kanchipuram": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Darasuram": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Khajuraho": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Halong": {
+   "region": "Vietnam",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Saigon": {
+   "region": "Vietnam",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Bhubaneshwar": {
+   "region": "East India",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Puri": {
+   "region": "East India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Ooty": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 1
+  },
+  "Haridwar": {
+   "region": "North & Central India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Rishikesh": {
+   "region": "North & Central India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Bana Hills": {
+   "region": "Vietnam",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Bikaner": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Bundi": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Orchha": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 4
+  },
+  "Rameshwaram": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Kolkata": {
+   "region": "East India",
+   "nights": 2,
+   "popularity": 3
+  },
+  "Kathmandu": {
+   "region": "India & Nepal",
+   "nights": 3,
+   "popularity": 1
+  },
+  "Mahabalipuram": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Abhaneri": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Chennai": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 2
+  },
+  "Kovalam": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 2
+  },
+  "Pondicherry": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 2
+  },
+  "Tanjore": {
+   "region": "South India",
+   "nights": 3,
+   "popularity": 2
+  },
+  "Agra": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 5
+  },
+  "Mysore": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Munnar": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 2
+  },
+  "Ranthambore": {
+   "region": "Rajasthan",
+   "nights": 2,
+   "popularity": 3
+  },
+  "Pokharan": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Hoi An": {
+   "region": "Vietnam",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Cochin": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 2
+  },
+  "Bangalore": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 1
+  },
+  "Chowki Dhani": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Alleppey": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Trivandrum": {
+   "region": "South India",
+   "nights": 1,
+   "popularity": 2
+  },
+  "Jaipur": {
+   "region": "Rajasthan",
+   "nights": 2,
+   "popularity": 7
+  },
+  "Jaisalmer": {
+   "region": "Rajasthan",
+   "nights": 2,
+   "popularity": 2
+  },
+  "Neemrana": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Patna": {
+   "region": "North & Central India",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Shahpura": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Hanoi": {
+   "region": "Vietnam",
+   "nights": 2,
+   "popularity": 1
+  },
+  "Periyar": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 3
+  },
+  "Konark": {
+   "region": "East India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Kanyakumari": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 1
+  },
+  "Ayodhya": {
+   "region": "North & Central India",
+   "nights": 1,
+   "popularity": 0
+  },
+  "Amritsar": {
+   "region": "North & Central India",
+   "nights": 3,
+   "popularity": 1
+  },
+  "Ranakpur": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 3
+  },
+  "Kumarakom": {
+   "region": "South India",
+   "nights": 2,
+   "popularity": 2
+  },
+  "Shimla": {
+   "region": "North & Central India",
+   "nights": 3,
+   "popularity": 1
+  },
+  "Delhi": {
+   "region": "Rajasthan",
+   "nights": 3,
+   "popularity": 12
+  },
+  "Bodhgaya": {
+   "region": "North & Central India",
+   "nights": 1,
+   "popularity": 1
+  },
+  "Pushkar": {
+   "region": "India & Nepal",
+   "nights": 2,
+   "popularity": 1
+  },
+  "Varanasi": {
+   "region": "Rajasthan",
+   "nights": 3,
+   "popularity": 6
+  },
+  "Jhansi": {
+   "region": "Rajasthan",
+   "nights": 1,
+   "popularity": 4
+  }
+ },
+ "edges": [
+  {
+   "from": "Delhi",
+   "to": "Jaipur",
+   "km": 269,
+   "hours": 5
+  },
+  {
+   "from": "Agra",
+   "to": "Jaipur",
+   "km": 252,
+   "hours": 5
+  },
+  {
+   "from": "Agra",
+   "to": "Delhi",
+   "km": 239,
+   "hours": 4
+  },
+  {
+   "from": "Agra",
+   "to": "Jaipur Fatehpur Sikri",
+   "km": 239,
+   "hours": 4
+  },
+  {
+   "from": "Jaipur",
+   "to": "Pushkar",
+   "km": 142,
+   "hours": 2
+  },
+  {
+   "from": "Pushkar",
+   "to": "Jodhpur",
+   "km": 189,
+   "hours": 3
+  },
+  {
+   "from": "Jodhpur",
+   "to": "Udaipur Ranakpur",
+   "km": 249,
+   "hours": 4
+  },
+  {
+   "from": "Delhi",
+   "to": "Shahpura",
+   "km": 223,
+   "hours": 4
+  },
+  {
+   "from": "Shahpura",
+   "to": "Jaipur",
+   "km": 73,
+   "hours": 1
+  },
+  {
+   "from": "Jaipur",
+   "to": "Ranthambore",
+   "km": 176,
+   "hours": 3
+  },
+  {
+   "from": "Agra",
+   "to": "Ranthambore",
+   "km": 308,
+   "hours": 5
+  },
+  {
+   "from": "Agra",
+   "to": "Orcha (18 Kms /",
+   "km": 18,
+   "hours": 45
+  },
+  {
+   "from": "Orchha",
+   "to": "Khajuraho",
+   "km": 172,
+   "hours": 2
+  },
+  {
+   "from": "Orchha",
+   "to": "Jhansi",
+   "km": 17,
+   "hours": 0
+  },
+  {
+   "from": "Cochin",
+   "to": "Munnar",
+   "km": 125,
+   "hours": 4
+  },
+  {
+   "from": "Munnar",
+   "to": "Periyar",
+   "km": 96,
+   "hours": 3
+  },
+  {
+   "from": "Periyar",
+   "to": "Alleppey",
+   "km": 132,
+   "hours": 3
+  },
+  {
+   "from": "Alleppey",
+   "to": "Kumarakom",
+   "km": 37,
+   "hours": 1
+  },
+  {
+   "from": "Kumarakom",
+   "to": "Kovalam",
+   "km": 179,
+   "hours": 5
+  },
+  {
+   "from": "Alleppey",
+   "to": "Cochin",
+   "km": 53,
+   "hours": 1
+  },
+  {
+   "from": "Jaipur",
+   "to": "Udaipur",
+   "km": 424,
+   "hours": 7
+  },
+  {
+   "from": "Udaipur",
+   "to": "Jodhpur",
+   "km": 262,
+   "hours": 5
+  },
+  {
+   "from": "Jaisalmer",
+   "to": "Jodhpur",
+   "km": 272,
+   "hours": 4
+  },
+  {
+   "from": "Jaisalmer",
+   "to": "Bikaner",
+   "km": 330,
+   "hours": 5
+  },
+  {
+   "from": "Delhi",
+   "to": "Puri",
+   "km": 70,
+   "hours": 20
+  },
+  {
+   "from": "Puri",
+   "to": "Bhubaneshwar",
+   "km": 67,
+   "hours": 1
+  },
+  {
+   "from": "Udaipur",
+   "to": "Bundi",
+   "km": 265,
+   "hours": 5
+  },
+  {
+   "from": "Bundi",
+   "to": "Jaipur",
+   "km": 214,
+   "hours": 3
+  },
+  {
+   "from": "Agra",
+   "to": "Orchha",
+   "km": 17,
+   "hours": 43
+  },
+  {
+   "from": "Chennai",
+   "to": "Mahabalipuram",
+   "km": 150,
+   "hours": 4
+  },
+  {
+   "from": "Mahabalipuram",
+   "to": "Pondicherry",
+   "km": 95,
+   "hours": 2
+  },
+  {
+   "from": "Pondicherry",
+   "to": "Tanjore",
+   "km": 173,
+   "hours": 2
+  },
+  {
+   "from": "Tanjore",
+   "to": "Rameshwaram",
+   "km": 248,
+   "hours": 4
+  },
+  {
+   "from": "Rameshwaram",
+   "to": "Kanyakumari",
+   "km": 308,
+   "hours": 6
+  },
+  {
+   "from": "Kanyakumari",
+   "to": "Madurai",
+   "km": 245,
+   "hours": 4
+  },
+  {
+   "from": "Madurai",
+   "to": "Coimbatore",
+   "km": 217,
+   "hours": 4
+  },
+  {
+   "from": "Coimbatore",
+   "to": "Ooty",
+   "km": 87,
+   "hours": 3
+  },
+  {
+   "from": "Ooty",
+   "to": "Mysore",
+   "km": 269,
+   "hours": 7
+  },
+  {
+   "from": "Mysore",
+   "to": "Bangalore",
+   "km": 142,
+   "hours": 2
+  },
+  {
+   "from": "Tanjore",
+   "to": "Madurai",
+   "km": 191,
+   "hours": 3
+  },
+  {
+   "from": "Madurai",
+   "to": "Periyar",
+   "km": 150,
+   "hours": 3
+  },
+  {
+   "from": "Varanasi",
+   "to": "Bodhgaya",
+   "km": 255,
+   "hours": 5
+  },
+  {
+   "from": "Bodhgaya",
+   "to": "Patna",
+   "km": 116,
+   "hours": 2
+  },
+  {
+   "from": "Amritsar",
+   "to": "Dharamshala",
+   "km": 201,
+   "hours": 4
+  },
+  {
+   "from": "Dharamshala",
+   "to": "Shimla",
+   "km": 232,
+   "hours": 6
+  },
+  {
+   "from": "Shimla",
+   "to": "Chandigarh",
+   "km": 109,
+   "hours": 2
+  },
+  {
+   "from": "Chandigarh",
+   "to": "Haridwar",
+   "km": 226,
+   "hours": 4
+  },
+  {
+   "from": "09 Mar’27 |Delhi",
+   "to": "Agra",
+   "km": 232,
+   "hours": 4
+  },
+  {
+   "from": "11 Mar’27 | Agra",
+   "to": "Kolkata",
+   "km": 232,
+   "hours": 4
+  }
+ ]
+}
