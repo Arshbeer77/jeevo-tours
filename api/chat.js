@@ -121,16 +121,32 @@ module.exports = async (req, res) => {
   const said = messages.filter(m => m.role === 'user').map(m => m.content).join(' ');
   const matches = pickItineraries(said, k);
 
+  /* The rules, the tour index and the road-leg table are byte-identical on
+     every message of every conversation - roughly 4,800 tokens re-sent each
+     time. Marking that block cacheable means it is read back cheaply instead
+     of charged in full on each turn. The matched itineraries sit outside the
+     cached block because they change as the conversation narrows. */
   const system = [
-    k.rules,
-    '\n## Jeevo itineraries (summary)\n',
-    JSON.stringify(k.index.itineraries),
-    '\n## Road legs Jeevo has operated (real distances and drive times)\n',
-    JSON.stringify(k.index.routes),
-    matches.length
-      ? '\n## Closest matching itineraries, in full\n' + JSON.stringify(matches)
-      : '',
-  ].join('');
+    {
+      type: 'text',
+      text: k.rules +
+        '\n\n## Jeevo itineraries (summary)\n' + JSON.stringify(k.index.itineraries) +
+        '\n\n## Road legs Jeevo has operated (real distances and drive times)\n' +
+        JSON.stringify(k.index.routes),
+      cache_control: { type: 'ephemeral' },
+    },
+  ];
+  if (matches.length) {
+    /* Once the conversation has settled on a region these matches stop
+       changing, so this block is worth caching too - it is the larger of
+       the two by far. If the visitor switches region the cache simply
+       misses for that turn, which costs no more than not caching at all. */
+    system.push({
+      type: 'text',
+      text: '\n## Closest matching itineraries, in full\n' + JSON.stringify(matches),
+      cache_control: { type: 'ephemeral' },
+    });
+  }
 
   try {
     const r = await fetch('https://api.anthropic.com/v1/messages', {
