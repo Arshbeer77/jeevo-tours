@@ -1,0 +1,879 @@
+{
+ "itineraries": [
+  {
+   "id": "ayodhya-and-varanasi",
+   "tour": "Ayodhya And Varanasi",
+   "nights": 3,
+   "days": 4,
+   "region": "North & Central India",
+   "route": [
+    "06 June | Delhi To Ayodhya"
+   ],
+   "source_file": "AYODHYA AND VARANASI.docx"
+  },
+  {
+   "id": "back-to-mughal-era",
+   "tour": "Back To Mughal Era",
+   "nights": 6,
+   "days": 7,
+   "region": "Rajasthan",
+   "route": [
+    "Delhi",
+    "Neemrana",
+    "Jaipur",
+    "Abhaneri",
+    "Fatehpur Sikri",
+    "Agra"
+   ],
+   "source_file": "BACK TO MUGHAL ERA.docx"
+  },
+  {
+   "id": "delh-and-kathmandu",
+   "tour": "Delh And Kathmandu",
+   "nights": 14,
+   "days": 15,
+   "region": "India & Nepal",
+   "route": [
+    "España",
+    "Delhi",
+    "Agra",
+    "Jaipur Fatehpur Sikri",
+    "Jaipur",
+    "Pushkar",
+    "Jodhpur",
+    "Udaipur Ranakpur",
+    "Udaipur",
+    "Kathmandu"
+   ],
+   "source_file": "DELH AND KATHMANDU.docx"
+  },
+  {
+   "id": "flavors-faces-and-indian-culture",
+   "tour": "Flavors Faces And Indian Culture",
+   "nights": 14,
+   "days": 15,
+   "region": "Rajasthan",
+   "route": [
+    "Delhi",
+    "Neemrana",
+    "Shahpura",
+    "Jaipur",
+    "Chowki Dhani",
+    "Ranthambore",
+    "Abhaneri",
+    "Fatehpur Sikri",
+    "Agra",
+    "Jhansi",
+    "Orcha (18 Kms /",
+    "Orchha",
+    "Khajuraho",
+    "Varanasi"
+   ],
+   "source_file": "FLAVORS FACES AND INDIAN CULTURE.pdf"
+  },
+  {
+   "id": "from-southern-serenity-to-northern-grandeur",
+   "tour": "From Southern Serenity To Northern Grandeur",
+   "nights": 18,
+   "days": 19,
+   "region": "South India",
+   "route": [
+    "Delhi",
+    "Varanasi",
+    "Khajuraho",
+    "Orchha",
+    "Jhansi",
+    "Agra",
+    "Fatehpur Sikri",
+    "Abhaneri",
+    "Jaipur",
+    "Cochin",
+    "Munnar",
+    "Periyar",
+    "Alleppey",
+    "Kumarakom"
+   ],
+   "source_file": "FROM SOUTHERN SERENITY TO NORTHERN GRANDEUR.docx"
+  },
+  {
+   "id": "kerela-five-days",
+   "tour": "Kerela Five Days",
+   "nights": 5,
+   "days": 6,
+   "region": "South India",
+   "route": [
+    "Cochin",
+    "Munnar",
+    "Periyar",
+    "Alleppey"
+   ],
+   "source_file": "KERELA FIVE DAYS.docx"
+  },
+  {
+   "id": "kingdom-of-eternal-splendors",
+   "tour": "Kingdom Of Eternal Splendors",
+   "nights": 17,
+   "days": 18,
+   "region": "Rajasthan",
+   "route": [
+    "Delhi",
+    "Varanasi",
+    "Khajuraho",
+    "Orchha",
+    "Jhansi",
+    "Agra",
+    "Fatehpur Sikri",
+    "Ranthambore",
+    "Chowki Dhani",
+    "Jaipur",
+    "Chittorgarh",
+    "Udaipur",
+    "Ranakpur",
+    "Jodhpur"
+   ],
+   "source_file": "KINGDOM OF ETERNAL SPLENDORS.docx"
+  },
+  {
+   "id": "kolkata-an-bhubaneshwar",
+   "tour": "Kolkata An Bhubaneshwar",
+   "nights": 5,
+   "days": 6,
+   "region": "East India",
+   "route": [
+    "Delhi",
+    "Bhubaneshwar",
+    "Puri",
+    "Konark",
+    "Kolkata"
+   ],
+   "source_file": "KOLKATA AN BHUBANESHWAR.docx"
+  },
+  {
+   "id": "offsite-tour-of-jaipur",
+   "tour": "Offsite Tour Of Jaipur",
+   "nights": 2,
+   "days": 3,
+   "region": "Rajasthan",
+   "route": [
+    "06 Feb 2026 | Delhi",
+    "Jaipur",
+    "07 Feb 2026 | Jaipur",
+    "08 Feb 2026 | Jaipur",
+    "Delhi"
+   ],
+   "source_file": "OFFSITE TOUR OF JAIPUR.docx"
+  },
+  {
+   "id": "royalty-art-spirituality-journey-through-heart-of-india",
+   "tour": "Royalty, Art & Spirituality-Journey Through Heart Of India",
+   "nights": 17,
+   "days": 18,
+   "region": "Rajasthan",
+   "route": [
+    "Delhi",
+    "Jaisalmer",
+    "Pokharan",
+    "Jodhpur",
+    "Ranakpur",
+    "Udaipur",
+    "Chittorgarh",
+    "Bundi",
+    "Jaipur",
+    "Ranthambore",
+    "Bharatpur",
+    "Fatehpur Sikri",
+    "Agra",
+    "Jhansi"
+   ],
+   "source_file": "ROYALTY, ART & SPIRITUALITY-JOURNEY THROUGH HEART OF INDIA.docx"
+  },
+  {
+   "id": "south-india-travel-in-june-26",
+   "tour": "South India Travel In June'26",
+   "nights": 14,
+   "days": 15,
+   "region": "South India",
+   "route": [
+    "Chennai",
+    "Kanchipuram",
+    "Mahabalipuram",
+    "Pondicherry",
+    "Tanjore",
+    "Rameshwaram",
+    "Kanyakumari",
+    "Madurai",
+    "Coimbatore",
+    "Ooty",
+    "Mysore",
+    "Bangalore",
+    "Departure"
+   ],
+   "source_file": "SOUTH INDIA TRAVEL IN JUNE'26.docx"
+  },
+  {
+   "id": "splendors-of-south-india",
+   "tour": "Splendors Of South India",
+   "nights": 14,
+   "days": 15,
+   "region": "South India",
+   "route": [
+    "Chennai",
+    "Kanchipuram",
+    "Mahabalipuram",
+    "Pondicherry",
+    "Gangaikonda Cholapuram",
+    "Darasuram",
+    "Tanjore",
+    "Trichy",
+    "Madurai",
+    "Periyar",
+    "Alleppey",
+    "Kumarakom",
+    "Kovalam",
+    "Trivandrum"
+   ],
+   "source_file": "SPLENDORS OF SOUTH INDIA.docx"
+  },
+  {
+   "id": "spritual-wellness-tour",
+   "tour": "Spritual Wellness Tour",
+   "nights": 17,
+   "days": 18,
+   "region": "North & Central India",
+   "route": [
+    "Delhi",
+    "Varanasi",
+    "Bodhgaya",
+    "Patna",
+    "Amritsar (6E 5009",
+    "08:30 Hrs / 10:15 Hrs &",
+    "Amritsar",
+    "Dharamshala",
+    "Shimla",
+    "Chandigarh",
+    "Haridwar",
+    "Rishikesh"
+   ],
+   "source_file": "SPRITUAL WELLNESS TOUR.docx"
+  },
+  {
+   "id": "taj-mahal-with-kolkata-by-flight",
+   "tour": "Taj Mahal With Kolkata By Flight",
+   "nights": 6,
+   "days": 7,
+   "region": "East India",
+   "route": [
+    "07 Mar’27",
+    "Delhi",
+    "08 Mar’27 |Delhi",
+    "09 Mar’27 |Delhi",
+    "Agra",
+    "10 Mar’27 | Agra",
+    "11 Mar’27 | Agra",
+    "Kolkata",
+    "12 Mar’27 | Kolkata",
+    "13 Mar’27 | Kolkata"
+   ],
+   "source_file": "TAJ MAHAL WITH KOLKATA BY FLIGHT.docx"
+  },
+  {
+   "id": "taj-mahal-with-kolkata-by-train",
+   "tour": "Taj Mahal With Kolkata By Train",
+   "nights": 6,
+   "days": 7,
+   "region": "East India",
+   "route": [
+    "07 Mar’27",
+    "Delhi",
+    "08 Mar’27 |Delhi",
+    "09 Mar’27 |Delhi",
+    "Agra",
+    "10 Mar’27 | Agra",
+    "11 Mar’27 | Agra",
+    "12 Mar’27 | Kolkata",
+    "13 Mar’27 | Kolkata"
+   ],
+   "source_file": "TAJ MAHAL WITH KOLKATA BY TRAIN.docx"
+  },
+  {
+   "id": "vietnam-package",
+   "tour": "Vietnam Package",
+   "nights": 7,
+   "days": 8,
+   "region": "Vietnam",
+   "route": [
+    "Hanoi & Leisure",
+    "Bana Hills With Lunch",
+    "Departure & To Hcm",
+    "Departure"
+   ],
+   "source_file": "VIETNAM PACKAGE.docx"
+  }
+ ],
+ "routes": [
+  {
+   "from": "Delhi",
+   "to": "Jaipur",
+   "km": 269,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Back To Mughal Era"
+   ]
+  },
+  {
+   "from": "Jaipur",
+   "to": "Agra",
+   "km": 257,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Back To Mughal Era"
+   ]
+  },
+  {
+   "from": "Agra",
+   "to": "Delhi",
+   "km": 239,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Back To Mughal Era"
+   ]
+  },
+  {
+   "from": "Agra",
+   "to": "Jaipur Fatehpur Sikri",
+   "km": 239,
+   "hours": null,
+   "seen": 1,
+   "source": [
+    "Delh And Kathmandu"
+   ]
+  },
+  {
+   "from": "Jaipur",
+   "to": "Pushkar",
+   "km": 142,
+   "hours": null,
+   "seen": 1,
+   "source": [
+    "Delh And Kathmandu"
+   ]
+  },
+  {
+   "from": "Pushkar",
+   "to": "Jodhpur",
+   "km": 189,
+   "hours": null,
+   "seen": 1,
+   "source": [
+    "Delh And Kathmandu"
+   ]
+  },
+  {
+   "from": "Jodhpur",
+   "to": "Udaipur Ranakpur",
+   "km": 249,
+   "hours": null,
+   "seen": 1,
+   "source": [
+    "Delh And Kathmandu"
+   ]
+  },
+  {
+   "from": "Delhi",
+   "to": "Shahpura",
+   "km": 223,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Flavors Faces And Indian Culture"
+   ]
+  },
+  {
+   "from": "Shahpura",
+   "to": "Jaipur",
+   "km": 73,
+   "hours": 1,
+   "seen": 1,
+   "source": [
+    "Flavors Faces And Indian Culture"
+   ]
+  },
+  {
+   "from": "Jaipur",
+   "to": "Ranthambore",
+   "km": 176,
+   "hours": 3,
+   "seen": 2,
+   "source": [
+    "Flavors Faces And Indian Culture",
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Ranthambore",
+   "to": "Agra",
+   "km": 321,
+   "hours": 5,
+   "seen": 2,
+   "source": [
+    "Flavors Faces And Indian Culture",
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Agra",
+   "to": "Orcha (18 Kms /",
+   "km": 18,
+   "hours": 45,
+   "seen": 1,
+   "source": [
+    "Flavors Faces And Indian Culture"
+   ]
+  },
+  {
+   "from": "Orchha",
+   "to": "Khajuraho",
+   "km": 172,
+   "hours": 2,
+   "seen": 2,
+   "source": [
+    "Flavors Faces And Indian Culture",
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Khajuraho",
+   "to": "Orchha",
+   "km": 173,
+   "hours": 2,
+   "seen": 2,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Orchha",
+   "to": "Jhansi",
+   "km": 17,
+   "hours": null,
+   "seen": 2,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Agra",
+   "to": "Jaipur",
+   "km": 252,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "From Southern Serenity To Northern Grandeur"
+   ]
+  },
+  {
+   "from": "Cochin",
+   "to": "Munnar",
+   "km": 125,
+   "hours": 4,
+   "seen": 2,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Kerela Five Days"
+   ]
+  },
+  {
+   "from": "Munnar",
+   "to": "Periyar",
+   "km": 96,
+   "hours": 3,
+   "seen": 2,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Kerela Five Days"
+   ]
+  },
+  {
+   "from": "Periyar",
+   "to": "Alleppey",
+   "km": 132,
+   "hours": 3,
+   "seen": 3,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Kerela Five Days",
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Alleppey",
+   "to": "Kumarakom",
+   "km": 37,
+   "hours": 1,
+   "seen": 2,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Kumarakom",
+   "to": "Kovalam",
+   "km": 179,
+   "hours": 5,
+   "seen": 2,
+   "source": [
+    "From Southern Serenity To Northern Grandeur",
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Alleppey",
+   "to": "Cochin",
+   "km": 53,
+   "hours": 1,
+   "seen": 1,
+   "source": [
+    "Kerela Five Days"
+   ]
+  },
+  {
+   "from": "Agra",
+   "to": "Ranthambore",
+   "km": 308,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Ranthambore",
+   "to": "Jaipur",
+   "km": 177,
+   "hours": 3,
+   "seen": 1,
+   "source": [
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Jaipur",
+   "to": "Udaipur",
+   "km": 424,
+   "hours": 7,
+   "seen": 1,
+   "source": [
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Udaipur",
+   "to": "Jodhpur",
+   "km": 262,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Jodhpur",
+   "to": "Jaisalmer",
+   "km": 288,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Jaisalmer",
+   "to": "Bikaner",
+   "km": 330,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Kingdom Of Eternal Splendors"
+   ]
+  },
+  {
+   "from": "Delhi",
+   "to": "Puri",
+   "km": 70,
+   "hours": 20,
+   "seen": 1,
+   "source": [
+    "Kolkata An Bhubaneshwar"
+   ]
+  },
+  {
+   "from": "Puri",
+   "to": "Bhubaneshwar",
+   "km": 67,
+   "hours": 1,
+   "seen": 1,
+   "source": [
+    "Kolkata An Bhubaneshwar"
+   ]
+  },
+  {
+   "from": "Jaisalmer",
+   "to": "Jodhpur",
+   "km": 272,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Jodhpur",
+   "to": "Udaipur",
+   "km": 262,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Udaipur",
+   "to": "Bundi",
+   "km": 265,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Bundi",
+   "to": "Jaipur",
+   "km": 214,
+   "hours": 3,
+   "seen": 1,
+   "source": [
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Agra",
+   "to": "Orchha",
+   "km": 17,
+   "hours": 43,
+   "seen": 1,
+   "source": [
+    "Royalty, Art & Spirituality-Journey Through Heart Of India"
+   ]
+  },
+  {
+   "from": "Chennai",
+   "to": "Mahabalipuram",
+   "km": 150,
+   "hours": 4,
+   "seen": 2,
+   "source": [
+    "South India Travel In June'26",
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Mahabalipuram",
+   "to": "Pondicherry",
+   "km": 95,
+   "hours": 2,
+   "seen": 2,
+   "source": [
+    "South India Travel In June'26",
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Pondicherry",
+   "to": "Tanjore",
+   "km": 173,
+   "hours": 2,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Tanjore",
+   "to": "Rameshwaram",
+   "km": 248,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Rameshwaram",
+   "to": "Kanyakumari",
+   "km": 308,
+   "hours": 6,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Kanyakumari",
+   "to": "Madurai",
+   "km": 245,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Madurai",
+   "to": "Coimbatore",
+   "km": 217,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Coimbatore",
+   "to": "Ooty",
+   "km": 87,
+   "hours": 3,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Ooty",
+   "to": "Mysore",
+   "km": 269,
+   "hours": 7,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Mysore",
+   "to": "Bangalore",
+   "km": 142,
+   "hours": 2,
+   "seen": 1,
+   "source": [
+    "South India Travel In June'26"
+   ]
+  },
+  {
+   "from": "Tanjore",
+   "to": "Madurai",
+   "km": 191,
+   "hours": 3,
+   "seen": 1,
+   "source": [
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Madurai",
+   "to": "Periyar",
+   "km": 150,
+   "hours": 3,
+   "seen": 1,
+   "source": [
+    "Splendors Of South India"
+   ]
+  },
+  {
+   "from": "Varanasi",
+   "to": "Bodhgaya",
+   "km": 255,
+   "hours": 5,
+   "seen": 1,
+   "source": [
+    "Spritual Wellness Tour"
+   ]
+  },
+  {
+   "from": "Bodhgaya",
+   "to": "Patna",
+   "km": 116,
+   "hours": 2,
+   "seen": 1,
+   "source": [
+    "Spritual Wellness Tour"
+   ]
+  },
+  {
+   "from": "Amritsar",
+   "to": "Dharamshala",
+   "km": 201,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Spritual Wellness Tour"
+   ]
+  },
+  {
+   "from": "Dharamshala",
+   "to": "Shimla",
+   "km": 232,
+   "hours": 6,
+   "seen": 1,
+   "source": [
+    "Spritual Wellness Tour"
+   ]
+  },
+  {
+   "from": "Shimla",
+   "to": "Chandigarh",
+   "km": 109,
+   "hours": 2,
+   "seen": 1,
+   "source": [
+    "Spritual Wellness Tour"
+   ]
+  },
+  {
+   "from": "Chandigarh",
+   "to": "Haridwar",
+   "km": 226,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Spritual Wellness Tour"
+   ]
+  },
+  {
+   "from": "09 Mar’27 |Delhi",
+   "to": "Agra",
+   "km": 232,
+   "hours": 4,
+   "seen": 2,
+   "source": [
+    "Taj Mahal With Kolkata By Flight",
+    "Taj Mahal With Kolkata By Train"
+   ]
+  },
+  {
+   "from": "11 Mar’27 | Agra",
+   "to": "Kolkata",
+   "km": 232,
+   "hours": 4,
+   "seen": 1,
+   "source": [
+    "Taj Mahal With Kolkata By Flight"
+   ]
+  }
+ ]
+}
