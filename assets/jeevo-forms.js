@@ -132,7 +132,7 @@ window.JEEVO_CONFIG = {
           travel_dates: d.travel_dates || d.date || '',
           travellers  : d.travellers || d.travelers || '',
           message     : d.notes || d.message || '',
-          source      : 'Website'
+          source      : 'Website form'
         };
 
         var viaEmail = function () {

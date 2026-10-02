@@ -56,7 +56,7 @@
   function build(){
     var fab = document.createElement('button');
     fab.className='jv-chat-fab'; fab.type='button';
-    fab.setAttribute('aria-label','Plan a trip with us');
+    fab.setAttribute('aria-label','Plan a trip with Arjun');
     fab.innerHTML='<i class="fas fa-route" aria-hidden="true"></i><span>Plan my trip</span>';
 
     var panel=document.createElement('div');
@@ -64,7 +64,7 @@
     panel.setAttribute('aria-label','Plan your trip');
     panel.innerHTML=
       '<div class="jv-chat-head">'+
-        '<div><h3>Plan your trip</h3><p>A few questions &mdash; takes a minute</p></div>'+
+        '<div><h3>Plan with Arjun</h3><p>Your trip planner at Jeevo</p></div>'+
         '<button class="jv-chat-close" type="button" aria-label="Close">&times;</button>'+
       '</div>'+
       '<div class="jv-chat-log" role="log" aria-live="polite"></div>'+
@@ -266,9 +266,9 @@
         budget: answers.budget || (seen && seen.budget) || '',
         nights: answers.nights || (seen && seen.nights) || '',
         travel_month: (seen && seen.month) || '',
-        source: chatting ? 'AI chat' : 'Trip planner',
+        source: chatting ? 'Arjun (chat)' : 'Arjun (trip planner)',
         message: chatting
-          ? 'Conversation with the website assistant:\n\n' + transcript()
+          ? 'Conversation with Arjun (website assistant):\n\n' + transcript()
           : 'Trip planner draft: '+
             (trip ? trip.stops.map(function(x){ return x.city+' '+x.nights+'n'; }).join(' > ')+
                     ' ('+trip.nights+' nights)' : 'no route built')+
@@ -386,7 +386,7 @@
 
   function transcript(){
     return history.map(function(m){
-      return (m.role==='user' ? 'Visitor: ' : 'Assistant: ') + m.content;
+      return (m.role==='user' ? 'Visitor: ' : 'Arjun: ') + m.content;
     }).join('\n').slice(-1800);
   }
 
@@ -428,11 +428,11 @@
         if(st && st.ready){
           botOff = false;
           el.row.hidden = false;
-          bubble("Hi! I'm here to help you plan a trip \u2014 ask me anything, or just tell me what you're thinking.", 'bot');
+          bubble("Hi, I'm Arjun \u2014 I help plan trips here at Jeevo. Ask me anything, or just tell me what you're thinking.", 'bot');
           setTimeout(function(){ el.input.focus(); }, 80);
         } else {
           botOff = true;
-          bubble("Hi! Answer a few quick questions and I'll build you an itinerary.", 'bot');
+          bubble("Hi, I'm Arjun. Answer a few quick questions and I'll build you an itinerary.", 'bot');
           setTimeout(ask, 320);
         }
       });

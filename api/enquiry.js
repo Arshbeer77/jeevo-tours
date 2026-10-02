@@ -113,7 +113,7 @@ module.exports = async (req, res) => {
   put('budget',  String(body.budget || '').slice(0, 60));
   put('flights', String(body.flights || '').slice(0, 40));
   put('message', String(body.message || body.notes || '').slice(0, 2000));
-  put('source',  body.source || 'Website');
+  put('source',  body.source || 'Website form');
 
   try {
     const out = await writeRecord(BASE, TABLE, TOKEN, fields);
