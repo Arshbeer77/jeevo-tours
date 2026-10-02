@@ -109,3 +109,8 @@
   padding:3px 0 3px 13px; margin:2px 0; font-size:12px; color:rgba(43,27,14,.6);
   border-left:2px dashed var(--jv-chat-line);
 }
+
+/* `hidden` is display:none in the UA sheet, but the class rule above sets
+   display:flex and wins, so the typing row stayed visible after it was
+   hidden. This puts it back. */
+.jv-chat-row[hidden]{ display:none !important; }

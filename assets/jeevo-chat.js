@@ -55,6 +55,10 @@
       '</div>'+
       '<div class="jv-chat-log" role="log" aria-live="polite"></div>'+
       '<div class="jv-chat-foot"><div class="jv-chat-opts"></div>'+
+        '<div class="jv-chat-row" hidden>'+
+          '<textarea class="jv-chat-input" rows="1" placeholder="Or just tell me what you\'re after\u2026" maxlength="1200" aria-label="Your message"></textarea>'+
+          '<button class="jv-chat-send" type="button" aria-label="Send"><i class="fas fa-paper-plane" aria-hidden="true"></i></button>'+
+        '</div>'+
         '<p class="jv-chat-note">Suggestions come from trips we actually run. A consultant confirms details and pricing.</p>'+
       '</div>';
 
@@ -63,6 +67,9 @@
     el.log=panel.querySelector('.jv-chat-log');
     el.opts=panel.querySelector('.jv-chat-opts');
     el.close=panel.querySelector('.jv-chat-close');
+    el.row=panel.querySelector('.jv-chat-row');
+    el.input=panel.querySelector('.jv-chat-input');
+    el.send=panel.querySelector('.jv-chat-send');
   }
 
   function bubble(html, kind){
@@ -215,6 +222,7 @@
   }
 
   function askContact(){
+    el.row.hidden = true;
     el.opts.innerHTML=
       '<form class="jv-chat-lead">'+
         '<input name="name"  type="text"  placeholder="Your name" required>'+
@@ -253,11 +261,61 @@
       });
   }
 
+  /* ---- conversational mode ------------------------------------------
+     Tries the assistant first. If it is not configured, rate limited or
+     down it returns 503 and we drop into the guided questions instead,
+     which need no key and always work. The visitor is told once, plainly,
+     and never sees a dead end. */
+  var botOff = false, history = [], sending = false;
+
+  function dots(on){
+    var d = el.log.querySelector('.jv-chat-dots');
+    if(!on){ if(d) d.remove(); return; }
+    if(d) return;
+    d=document.createElement('div'); d.className='jv-chat-dots';
+    d.innerHTML='<i></i><i></i><i></i>';
+    el.log.appendChild(d); el.log.scrollTop=el.log.scrollHeight;
+  }
+
+  function fallToGuided(explain){
+    botOff = true;
+    el.row.hidden = true;
+    if(explain) bubble("Let me ask you a few quick questions instead — it only takes a minute.", 'bot');
+    /* the opening question is already on screen from start(); re-asking
+       it here printed it twice */
+    if(step === 0 && el.opts.children.length) return;
+    setTimeout(ask, 320);
+  }
+
+  function sendText(){
+    var text=(el.input.value||'').trim();
+    if(!text || sending || botOff) return;
+    el.input.value=''; el.input.style.height='auto';
+    bubble(text,'me'); history.push({role:'user',content:text});
+    sending=true; el.send.disabled=true; dots(true);
+
+    fetch('/api/chat',{ method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ messages: history }) })
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+      .then(function(res){
+        sending=false; el.send.disabled=false; dots(false);
+        if(res.ok && res.j.reply){
+          bubble(res.j.reply,'bot');
+          history.push({role:'assistant',content:res.j.reply});
+          if(res.j.done){ el.row.hidden=true; askContact(); }
+          return;
+        }
+        fallToGuided(true);
+      })
+      .catch(function(){ sending=false; el.send.disabled=false; dots(false); fallToGuided(true); });
+  }
+
   function ask(){
     if(step>=STEPS.length) return showPlan();
     var s=STEPS[step];
     bubble(s.q,'bot');
     options(s.opts, function(o){
+      el.row.hidden = true;
       bubble(o[0],'me');
       answers[s.key]=o[1];
       step++; save();
@@ -266,8 +324,9 @@
   }
 
   function start(){
-    el.log.innerHTML=''; el.opts.innerHTML=''; answers={}; step=0;
-    bubble("Hi! Answer a few quick questions and I'll show you the closest trip we actually run.", 'bot');
+    el.log.innerHTML=''; el.opts.innerHTML=''; answers={}; step=0; history=[]; botOff=false;
+    bubble("Hi! Tell me what sort of trip you're after \u2014 or answer a few quick questions and I'll build you one.", 'bot');
+    el.row.hidden = false;
     setTimeout(ask, 320);
   }
 
@@ -281,6 +340,14 @@
     load(); build();
     el.fab.addEventListener('click', open);
     el.close.addEventListener('click', close);
+    el.send.addEventListener('click', sendText);
+    el.input.addEventListener('keydown', function(e){
+      if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendText(); }
+    });
+    el.input.addEventListener('input', function(){
+      el.input.style.height='auto';
+      el.input.style.height=Math.min(el.input.scrollHeight,110)+'px';
+    });
     document.addEventListener('keydown', function(e){
       if(e.key==='Escape' && el.panel.classList.contains('is-open')) close();
     });
