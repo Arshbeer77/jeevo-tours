@@ -9,7 +9,7 @@
   var ENQUIRY  = '/api/enquiry';
   var STORE    = 'jeevo_plan_v1';
 
-  var answers = {}, step = 0, el = {};
+  var answers = {}, step = 0, el = {}, resumedMode = null;
 
   var STEPS = [
     { key:'region', q:"Where are you drawn to?",
@@ -36,8 +36,22 @@
              ['$8,000+','$8,000+'], ['Rather not say',''] ] },
   ];
 
-  function save(){ try{ sessionStorage.setItem(STORE, JSON.stringify({answers:answers, step:step})); }catch(e){} }
-  function load(){ try{ var r=sessionStorage.getItem(STORE); if(r){ var s=JSON.parse(r); answers=s.answers||{}; step=s.step||0; } }catch(e){} }
+  /* The widget is on every page, so a visitor who chats on the homepage
+     and then opens a tour page would otherwise lose the conversation.
+     Keep the last 20 turns for the browser session. */
+  function save(){
+    try{ sessionStorage.setItem(STORE, JSON.stringify({
+      answers:answers, step:step, history:history.slice(-20), mode: botOff ? 'guided' : 'chat'
+    })); }catch(e){}
+  }
+  function load(){
+    try{
+      var r=sessionStorage.getItem(STORE); if(!r) return;
+      var st=JSON.parse(r)||{};
+      answers=st.answers||{}; step=st.step||0; history=st.history||[];
+      resumedMode = st.mode || null;
+    }catch(e){}
+  }
 
   function build(){
     var fab = document.createElement('button');
@@ -291,7 +305,7 @@
     var text=(el.input.value||'').trim();
     if(!text || sending || botOff) return;
     el.input.value=''; el.input.style.height='auto';
-    bubble(text,'me'); history.push({role:'user',content:text});
+    bubble(text,'me'); history.push({role:'user',content:text}); save();
     sending=true; el.send.disabled=true; dots(true);
 
     fetch('/api/chat',{ method:'POST', headers:{'Content-Type':'application/json'},
@@ -302,6 +316,7 @@
         if(res.ok && res.j.reply){
           bubble(res.j.reply,'bot');
           history.push({role:'assistant',content:res.j.reply});
+          save();
           if(res.j.done){ el.row.hidden=true; askContact(); }
           return;
         }
@@ -334,7 +349,19 @@
      this is a plain chat and no buttons appear at all; without it, the
      guided questions. Typing "hi" and being handed a form is worse than
      either. */
+  function resume(){
+    if(!history.length) return false;
+    el.log.innerHTML='';
+    bubble("Picking up where we left off\u2026", 'bot');
+    history.forEach(function(m){ bubble(m.content, m.role==='user' ? 'me' : 'bot'); });
+    botOff = (resumedMode === 'guided');
+    el.row.hidden = botOff;
+    if(botOff){ setTimeout(ask, 320); } else { setTimeout(function(){ el.input.focus(); }, 80); }
+    return true;
+  }
+
   function start(){
+    if(resume()) return;
     el.log.innerHTML=''; el.opts.innerHTML=''; answers={}; step=0; history=[]; botOff=false;
     el.row.hidden = true;
 
