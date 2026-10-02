@@ -15,32 +15,38 @@ const path = require('path');
 const KEY  = process.env.GEMINI_API_KEY;
 const BASE = 'https://generativelanguage.googleapis.com/v1beta';
 
-/* Google renames these models regularly and a stale name fails the whole
-   call, so ask the API which ones this key can actually use and pick a
-   flash-class one. Cached for the life of the instance; one extra request
-   on a cold start, none afterwards. CHAT_MODEL overrides it entirely. */
-let MODEL_CACHE = process.env.CHAT_MODEL || null;
+/* Google renames these models regularly, and a model can appear in the
+   list yet still 404 when called - the free tier does not grant every
+   model it shows you. So rather than trusting one name, rank the usable
+   models and try them in order, remembering the ones that fail. */
+let MODEL_LIST = null;
+const DEAD = new Set();
 
-async function pickModel() {
-  if (MODEL_CACHE) return MODEL_CACHE;
+async function candidates() {
+  if (MODEL_LIST) return MODEL_LIST;
+  if (process.env.CHAT_MODEL) { MODEL_LIST = [process.env.CHAT_MODEL]; return MODEL_LIST; }
+
   const r = await fetch(`${BASE}/models?key=${encodeURIComponent(KEY)}`);
   if (!r.ok) throw Object.assign(new Error('list_models'), { status: r.status });
   const j = await r.json();
+
   const usable = (j.models || [])
     .filter(m => (m.supportedGenerationMethods || []).includes('generateContent'))
-    .map(m => m.name.replace(/^models\//, ''));
+    .map(m => m.name.replace(/^models\//, ''))
+    .filter(n => !/embedding|aqa|image|tts|vision|audio/.test(n));
 
-  const prefer = [
-    n => /flash/.test(n) && /2\.5|3/.test(n) && !/lite|preview|thinking|image|tts/.test(n),
-    n => /flash/.test(n) && !/lite|preview|image|tts/.test(n),
-    n => /flash/.test(n),
-    () => true,
-  ];
-  for (const test of prefer) {
-    const hit = usable.find(test);
-    if (hit) { MODEL_CACHE = hit; return hit; }
-  }
-  throw Object.assign(new Error('no_model'), { status: 404 });
+  const rank = n => {
+    let s = 0;
+    if (/flash/.test(n)) s += 100;           // cheapest, fastest, enough for this
+    if (/lite/.test(n)) s += 10;             // even cheaper, still fine
+    if (/preview|exp/.test(n)) s -= 50;      // these come and go
+    if (/pro/.test(n)) s -= 20;              // heavier than needed
+    const v = (n.match(/(\d+(?:\.\d+)?)/) || [])[1];
+    if (v) s += Math.min(Number(v), 5);      // mildly prefer newer
+    return s;
+  };
+  MODEL_LIST = usable.sort((a, b) => rank(b) - rank(a));
+  return MODEL_LIST;
 }
 
 const MAX_TURNS = 20;
@@ -156,26 +162,33 @@ module.exports = async (req, res) => {
     '\n\n## Contact details\nNever ask for a name, email or phone number. The website collects those separately. If someone offers them, thank them and say the form below will pass them on.';
 
   try {
-    const model = await pickModel();
-    const r = await fetch(`${BASE}/models/${model}:generateContent?key=` + encodeURIComponent(KEY), {
-      method : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body   : JSON.stringify({
-        systemInstruction: { parts: [{ text: system }] },
-        contents: messages.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
-        generationConfig: { maxOutputTokens: MAX_OUT, temperature: 0.7 },
-      }),
-    });
-    const data = await r.json().catch(() => ({}));
+    const models = (await candidates()).filter(m => !DEAD.has(m));
+    if (!models.length) { MODEL_LIST = null; DEAD.clear(); throw new Error('no_model'); }
 
-    if (!r.ok) {
-      /* 429 is the free-tier daily cap; the widget falls back silently */
-      console.error('[chat]', model, r.status, JSON.stringify(data).slice(0, 400));
-      if (r.status === 404 || r.status === 400) MODEL_CACHE = process.env.CHAT_MODEL || null; // re-pick next time
+    let data = null, status = 0, used = null;
+    for (const model of models.slice(0, 4)) {
+      const r = await fetch(`${BASE}/models/${model}:generateContent?key=` + encodeURIComponent(KEY), {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify({
+          systemInstruction: { parts: [{ text: system }] },
+          contents: messages.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
+          generationConfig: { maxOutputTokens: MAX_OUT, temperature: 0.7 },
+        }),
+      });
+      data = await r.json().catch(() => ({}));
+      status = r.status; used = model;
+      if (r.ok) break;
+      console.error('[chat]', model, r.status, JSON.stringify(data).slice(0, 240));
+      if (r.status === 404 || r.status === 400 || r.status === 403) { DEAD.add(model); continue; }
+      break;                                  // 429 and 5xx are not the model's fault
+    }
+
+    if (status !== 200) {
       return res.status(503).json({
         error: 'assistant_unavailable',
-        reason: r.status === 429 ? 'rate_limited' : 'upstream',
-        upstream: r.status, model,
+        reason: status === 429 ? 'rate_limited' : 'upstream',
+        upstream: status, tried: used,
       });
     }
 
