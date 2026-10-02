@@ -11,7 +11,11 @@ const TOKEN = process.env.AIRTABLE_TOKEN;
 /* Only these origins may post here. */
 const ALLOWED = [
   'https://jeevo-tours.vercel.app',
-  'http://localhost:8765'
+  'https://www.jeevotours.com',      // kept so the forms keep working the
+  'https://jeevotours.com',          // day the real domain is pointed here
+  'http://localhost:3000',
+  'http://localhost:8765',
+  'http://localhost:8899'
 ];
 
 /* ▼ Airtable column names, exactly as spelled in the table ▼ */

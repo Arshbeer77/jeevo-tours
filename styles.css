@@ -303,6 +303,7 @@ p {
 .hero {
     position: relative;
     height: 100vh;
+    height: 100dvh;
     min-height: 700px;
     display: flex;
     align-items: center;
@@ -1016,6 +1017,22 @@ p {
     object-fit: cover;
 }
 
+.testimonial-author .author-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    font-family: var(--font-ui);
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.03em;
+    color: var(--white);
+    background: var(--gradient-primary);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.28);
+}
+
 .testimonial-author h4 {
     font-size: 1.1rem;
     margin-bottom: 5px;
@@ -1523,4 +1540,116 @@ p {
     color: var(--primary);
     text-align: center;
     display: block;
+}
+
+/* ========== ACCESSIBILITY & STATE FEEDBACK ========== */
+
+/* Keyboard focus indicator (was missing entirely) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+/* Light focus ring over dark photo backgrounds */
+.dest-card a:focus-visible,
+.hero a:focus-visible,
+.cta-section a:focus-visible,
+.jv-selector-item a:focus-visible {
+    outline-color: var(--white);
+}
+
+/* Skip link, hidden until keyboard-focused */
+.skip-link {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    z-index: 2000;
+    padding: 12px 20px;
+    background: var(--dark);
+    color: var(--white);
+    font-family: var(--font-ui);
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transform: translateY(-250%);
+    transition: transform 0.2s ease;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+/* Press feedback while a button is held down */
+.btn:active,
+.jv-origin-btn:active,
+.dest-link:active,
+.nav-cta:active,
+.jv-selector-btn:active {
+    transform: translateY(1px) scale(0.98);
+}
+
+/* Inline form status messages (used instead of browser alerts) */
+.form-status {
+    display: block;
+    margin-top: 14px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-family: var(--font-ui);
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+.form-status.is-success {
+    background: rgba(19, 136, 8, 0.1);
+    color: #0d5c05;
+    border: 1px solid rgba(19, 136, 8, 0.35);
+}
+
+.form-status.is-error {
+    background: rgba(232, 90, 40, 0.1);
+    color: #9c3411;
+    border: 1px solid rgba(232, 90, 40, 0.4);
+}
+
+.form-status a {
+    color: inherit;
+    font-weight: 700;
+}
+
+/* The Explore link only appears on :hover, which touch devices never fire
+   and keyboard users never see. Show it whenever hover is unavailable
+   (phones/tablets), on small screens, and whenever it has focus. */
+@media (hover: none), (max-width: 768px) {
+    .dest-link {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.dest-link:focus-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ========== REDUCED MOTION ========== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .hero-slide.active {
+        animation: none;
+    }
 }
