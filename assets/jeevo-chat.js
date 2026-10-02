@@ -43,7 +43,7 @@
     var fab = document.createElement('button');
     fab.className='jv-chat-fab'; fab.type='button';
     fab.setAttribute('aria-label','Plan a trip with us');
-    fab.innerHTML='<i class="fas fa-route" aria-hidden="true"></i>';
+    fab.innerHTML='<i class="fas fa-route" aria-hidden="true"></i><span>Plan my trip</span>';
 
     var panel=document.createElement('div');
     panel.className='jv-chat-panel'; panel.setAttribute('role','dialog');
@@ -354,13 +354,46 @@
   }
 
   function open(){
+    if(el.teaser && el.teaser.parentNode){ el.teaser.remove(); }
+    markTeased();
+    el.fab.classList.remove('is-new');
     el.panel.classList.add('is-open'); el.fab.hidden=true;
     if(!el.log.children.length) start();
   }
   function close(){ el.panel.classList.remove('is-open'); el.fab.hidden=false; el.fab.focus(); }
 
+  /* One nudge, six seconds in, dismissible, and never shown twice in a
+     session. Anything more insistent than that reads as a pop-up and
+     people close the tab rather than the bubble. */
+  var TEASED = 'jeevo_teased_v1';
+  function teased(){ try{ return sessionStorage.getItem(TEASED)==='1'; }catch(e){ return false; } }
+  function markTeased(){ try{ sessionStorage.setItem(TEASED,'1'); }catch(e){} }
+
+  function teaser(){
+    if(teased() || el.panel.classList.contains('is-open')) return;
+    var t=document.createElement('div');
+    t.className='jv-chat-teaser';
+    t.innerHTML='<button class="jv-chat-teaser-x" type="button" aria-label="No thanks">&times;</button>'+
+                "Planning a trip to India? <b>I'll build you an itinerary</b> in about a minute — free, no obligation.";
+    t.addEventListener('click', function(e){
+      if(e.target.classList.contains('jv-chat-teaser-x')){ markTeased(); t.remove(); return; }
+      markTeased(); t.remove(); open();
+    });
+    document.body.appendChild(t);
+    el.teaser = t;
+    setTimeout(function(){ if(t.parentNode && !teased()){ markTeased(); t.remove(); } }, 16000);
+  }
+
   function init(){
     load(); build();
+    /* anything on the page can open the chat: data-jv-chat on a button or link */
+    document.querySelectorAll('[data-jv-chat]').forEach(function(n){
+      n.addEventListener('click', function(e){ e.preventDefault(); open(); });
+    });
+    if(!teased()){
+      el.fab.classList.add('is-new');
+      setTimeout(teaser, 6000);
+    }
     el.fab.addEventListener('click', open);
     el.close.addEventListener('click', close);
     el.send.addEventListener('click', sendText);
