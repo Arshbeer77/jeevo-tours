@@ -91,6 +91,13 @@ module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
 
   if (req.method === 'OPTIONS') return res.status(204).end();
+
+  /* Cheap readiness probe. The widget asks this when it opens so it can
+     show a real chat when there is a brain behind it, and the guided
+     questions when there is not - rather than letting someone type "hi"
+     and get pushed into a form. Checks the env var only; costs nothing. */
+  if (req.method === 'GET') return res.status(200).json({ ready: !!KEY });
+
   if (req.method !== 'POST')    return res.status(405).json({ error: 'POST only' });
   /* 503 rather than 500: the widget treats it as "use the offline planner" */
   if (!KEY) return res.status(503).json({ error: 'assistant_unavailable', reason: 'no_key' });

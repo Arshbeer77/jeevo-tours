@@ -305,9 +305,16 @@
           if(res.j.done){ el.row.hidden=true; askContact(); }
           return;
         }
-        fallToGuided(true);
+        /* only the first failure switches modes; after that we would be
+           yanking the conversation away from someone mid-sentence */
+        bubble("Sorry \u2014 I lost my train of thought there. Let me ask you a few quick things instead.", 'bot');
+        fallToGuided(false);
       })
-      .catch(function(){ sending=false; el.send.disabled=false; dots(false); fallToGuided(true); });
+      .catch(function(){
+        sending=false; el.send.disabled=false; dots(false);
+        bubble("Sorry \u2014 I couldn't reach our planner just then. Let me ask you a few quick things instead.", 'bot');
+        fallToGuided(false);
+      });
   }
 
   function ask(){
@@ -323,11 +330,27 @@
     });
   }
 
+  /* Decide the mode before showing anything. With the assistant connected
+     this is a plain chat and no buttons appear at all; without it, the
+     guided questions. Typing "hi" and being handed a form is worse than
+     either. */
   function start(){
     el.log.innerHTML=''; el.opts.innerHTML=''; answers={}; step=0; history=[]; botOff=false;
-    bubble("Hi! Tell me what sort of trip you're after \u2014 or answer a few quick questions and I'll build you one.", 'bot');
-    el.row.hidden = false;
-    setTimeout(ask, 320);
+    el.row.hidden = true;
+
+    fetch('/api/chat').then(function(r){ return r.json(); }).catch(function(){ return {ready:false}; })
+      .then(function(st){
+        if(st && st.ready){
+          botOff = false;
+          el.row.hidden = false;
+          bubble("Hi! I'm here to help you plan a trip \u2014 ask me anything, or just tell me what you're thinking.", 'bot');
+          setTimeout(function(){ el.input.focus(); }, 80);
+        } else {
+          botOff = true;
+          bubble("Hi! Answer a few quick questions and I'll build you an itinerary.", 'bot');
+          setTimeout(ask, 320);
+        }
+      });
   }
 
   function open(){
