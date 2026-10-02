@@ -86,6 +86,22 @@ don't let it be a surprise.
 
 ---
 
+## 9. First real Arjun conversation: some fields came through empty
+Aaron ran a genuine conversation on 3 Oct. A row arrived in Airtable, but not
+every field was populated.
+
+Most likely this is correct behaviour rather than a fault: the fields are read
+back out of what the visitor actually said, so if budget or hotel standard
+never came up, those stay empty. Worth confirming against the transcript
+before changing anything.
+
+**To check tomorrow:** open the row, read Notes, and see whether anything the
+visitor clearly stated failed to land in its field. If something was said and
+not captured, the extraction in `readConversation()` in
+`assets/jeevo-chat.js` needs widening.
+
+---
+
 ## Done, don't redo
 - Airtable CRM — all 16 fields land, `dropped: []` verified
 - Arjun — live, free tier, no card
