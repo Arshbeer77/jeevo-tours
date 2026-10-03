@@ -141,7 +141,13 @@ module.exports = async (req, res) => {
       console.error('[airtable]', JSON.stringify(out.data));
       return res.status(502).json({ error: 'Airtable rejected the record', detail: out.data?.error });
     }
-    return res.status(200).json({ ok: true, id: out.data.records?.[0]?.id, dropped: out.dropped });
+    /* echo back the budget as it was actually stored. Without this the only
+       way to check the currency landed correctly is to open the base, and
+       this session cannot. It is the submitter's own value coming back. */
+    return res.status(200).json({
+      ok: true, id: out.data.records?.[0]?.id, dropped: out.dropped,
+      stored: { budget: fields[FIELD.budget] || null },
+    });
   } catch (e) {
     console.error('[airtable] request failed', e);
     return res.status(502).json({ error: 'Could not reach Airtable' });
