@@ -33,6 +33,7 @@ const FIELD = {
   people      : 'Number of Travellers',
   hotel       : 'Hotel Standard',
   budget      : 'Budget Per Person',
+  currency    : 'Currency',
   flights     : 'Flights Needed',
   message     : 'Notes',
   source      : 'Source',
@@ -115,6 +116,7 @@ module.exports = async (req, res) => {
   put('people',  String(body.travellers || body.travelers || '').slice(0, 40));
   put('hotel',   String(body.hotel_standard || body.hotel || '').slice(0, 60));
   put('budget',  String(body.budget || '').slice(0, 60));
+  put('currency',String(body.currency || '').slice(0, 10));
   put('flights', String(body.flights || '').slice(0, 40));
   put('message', String(body.message || body.notes || '').slice(0, 2000));
   put('source',  body.source || 'Website form');

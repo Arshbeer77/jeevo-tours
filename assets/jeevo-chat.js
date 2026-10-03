@@ -269,6 +269,7 @@
         children:       (seen && seen.children) || '',
         hotel_standard: answers.hotel   || (seen && seen.hotel)   || '',
         budget:         answers.budget  || (seen && seen.budget)  || '',
+        currency:       answers.currency || (seen && seen.currency) || '',
         nights:         answers.nights  || (seen && seen.nights)  || '',
         travel_month:   (seen && seen.month)   || '',
         travel_dates:   (seen && seen.dates)   || '',
@@ -387,8 +388,8 @@
                       .map(function(m){ return m.content; }).join('. ');
     var low = said.toLowerCase();
     var out = { destination:'', nights:'', month:'', dates:'', budget:'',
-                hotel:'', adults:'', children:'', travellers:'', flights:'',
-                reason:'' };
+                currency:'', hotel:'', adults:'', children:'', travellers:'',
+                flights:'', reason:'' };
 
     /* --- where --- */
     if(P && P.cities){
@@ -439,14 +440,37 @@
       out.travellers = String(num(out.adults) + (num(out.children) || 0));
     }
 
-    /* --- money. "5k each", "around 4000", "$3,500" --- */
-    var b = said.match(/\$\s?([\d,]{3,7})/)
-         || low.match(/\b([\d,]{3,7})\s*(?:dollars|aud|usd|bucks)\b/)
-         || low.match(/\b(\d{1,3})\s*k\b/);
+    /* --- money. "5k each", "around 4000", "$3,500", "2 lakh"
+       A bare "$" is ambiguous and worth 35% either way between AUD and USD,
+       so it is recorded as unknown rather than assumed. */
+    var b = said.match(/(?:A\$|AU\$|US\$|NZ\$|C\$|S\$|[$£€₹])\s?([\d,]+(?:\.\d+)?)/i)
+         || low.match(/\b([\d,]{3,9})\s*(?:dollars|aud|usd|gbp|eur|pounds|euros|rupees|inr|bucks)\b/)
+         || low.match(/\b(\d{1,3}(?:\.\d+)?)\s*(?:k|lakhs?|lacs?)\b/);
     if(b){
-      var raw = b[1].replace(/,/g,'');
-      var val = /k$/.test(b[0].trim()) || b[0].indexOf('k') > -1 ? Number(raw) * 1000 : Number(raw);
-      if(val >= 500 && val <= 100000) out.budget = '$' + val.toLocaleString('en-US');
+      var token = b[0];
+      var raw   = Number(b[1].replace(/,/g,''));
+      if(/\blakh|lac\b/i.test(token)) raw *= 100000;
+      else if(/\dk\b|\d\s?k\b/i.test(token)) raw *= 1000;
+      if(raw >= 500 && raw <= 100000000){
+        out.budget = Math.round(raw).toLocaleString('en-US');
+
+        if(/A\$|AU\$|\baud\b/i.test(token))            out.currency = 'AUD';
+        else if(/US\$|\busd\b/i.test(token))           out.currency = 'USD';
+        else if(/NZ\$/i.test(token))                   out.currency = 'NZD';
+        else if(/C\$/i.test(token))                    out.currency = 'CAD';
+        else if(/£|\bgbp\b|pounds?/i.test(token))      out.currency = 'GBP';
+        else if(/€|\beur\b|euros?/i.test(token))       out.currency = 'EUR';
+        else if(/₹|\binr\b|rupees?|lakh|lac/i.test(token)) out.currency = 'INR';
+      }
+      /* a plain "$" or a bare number: see if they said where they are */
+      if(!out.currency){
+        if(/\baud\b|australia|sydney|melbourne|brisbane|perth|adelaide/i.test(low)) out.currency = 'AUD';
+        else if(/\bnz\b|new zealand|auckland/i.test(low))        out.currency = 'NZD';
+        else if(/\buk\b|britain|england|london|scotland/i.test(low)) out.currency = 'GBP';
+        else if(/\busa?\b|america|united states/i.test(low))     out.currency = 'USD';
+        else if(/india|delhi|mumbai|bangalore/i.test(low) && /₹|rupee/i.test(low)) out.currency = 'INR';
+        else out.currency = 'Not stated';
+      }
     }
 
     /* --- hotels --- */
