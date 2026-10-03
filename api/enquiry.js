@@ -115,8 +115,22 @@ module.exports = async (req, res) => {
   put('children',String(body.children || '').slice(0, 10));
   put('people',  String(body.travellers || body.travelers || '').slice(0, 40));
   put('hotel',   String(body.hotel_standard || body.hotel || '').slice(0, 60));
-  put('budget',  String(body.budget || '').slice(0, 60));
-  put('currency',String(body.currency || '').slice(0, 10));
+  /* The currency goes INTO the budget value as well as into its own field.
+     "$3,500" is worth about 35% either way between AUD and USD, and the
+     Currency column may not exist in every base - this way the agent can
+     always see what the number means, from a column that already works. */
+  const cur = String(body.currency || '').trim();
+  const known = cur && !/^(not sure|not stated|unknown)$/i.test(cur);
+  let budget = String(body.budget || '').trim();
+  if (budget) {
+    if (known) {
+      budget = cur + ' ' + budget.replace(/[$£€₹]\s?/g, '');
+    } else if (cur) {
+      budget = budget + ' (currency not stated)';
+    }
+  }
+  put('budget',  budget.slice(0, 60));
+  put('currency',cur.slice(0, 20));
   put('flights', String(body.flights || '').slice(0, 40));
   put('message', String(body.message || body.notes || '').slice(0, 2000));
   put('source',  body.source || 'Website form');
