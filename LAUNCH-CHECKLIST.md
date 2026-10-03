@@ -86,6 +86,24 @@ don't let it be a surprise.
 
 ---
 
+## 9b. Three testimonials on the homepage — are they real?
+`Sarah M. (London)`, `James C.` and `Emma M.`, each with a detailed quote
+about a trip. Fabricated customer reviews are illegal, not merely dodgy: the
+ACCC enforces this and your mum is marketing to Australians. The family trade
+as partners, so it reaches their own money.
+
+They may well be genuine — the client files include LYDIA AKNOLA and BARKLEM,
+so the uncle has had Western clients. **Nobody should publish them until that
+is confirmed.**
+
+**Needs:** ask the uncle "did these three people actually say this?"
+- Yes → leave them, ideally with a real first name and location
+- No / unsure → remove the section. Two minutes, and the site is not weaker
+  for it: Arjun and the real itineraries are more convincing than three
+  anonymous quotes.
+
+---
+
 ## 9. First real Arjun conversation: some fields came through empty
 Aaron ran a genuine conversation on 3 Oct. A row arrived in Airtable, but not
 every field was populated.
@@ -95,10 +113,13 @@ back out of what the visitor actually said, so if budget or hotel standard
 never came up, those stay empty. Worth confirming against the transcript
 before changing anything.
 
-**To check tomorrow:** open the row, read Notes, and see whether anything the
-visitor clearly stated failed to land in its field. If something was said and
-not captured, the extraction in `readConversation()` in
-`assets/jeevo-chat.js` needs widening.
+**RESOLVED 3 Oct.** The extraction was genuinely too narrow — it only read
+destination, nights, month, budget and hotel, and only in digits. It now also
+reads travellers, adults, children, dates, flights and enquiry type, and
+understands how people actually write: "two of us", "three adults and two
+kids", "my wife and i", "two weeks", "about 3k". Verified end to end through
+the widget: 11 of 12 fields filled from a natural conversation, the twelfth
+correctly blank because no date was mentioned.
 
 ---
 

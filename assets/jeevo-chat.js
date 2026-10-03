@@ -260,12 +260,20 @@
     fetch(ENQUIRY,{ method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         name:f.name.value, email:f.email.value, phone:f.phone.value,
-        destination: (trip && trip.region) || (seen && seen.destination) || answers.region || 'Not sure',
-        travellers: answers.party||'',
-        hotel_standard: answers.hotel || (seen && seen.hotel) || '',
-        budget: answers.budget || (seen && seen.budget) || '',
-        nights: answers.nights || (seen && seen.nights) || '',
-        travel_month: (seen && seen.month) || '',
+        /* answers come from the guided questions, seen from what was said
+           in conversation; whichever exists wins, and a field nobody
+           mentioned stays empty rather than being guessed at */
+        destination:    (trip && trip.region) || (seen && seen.destination) || answers.region || 'Not sure',
+        travellers:     answers.party   || (seen && seen.travellers) || '',
+        adults:         (seen && seen.adults)   || '',
+        children:       (seen && seen.children) || '',
+        hotel_standard: answers.hotel   || (seen && seen.hotel)   || '',
+        budget:         answers.budget  || (seen && seen.budget)  || '',
+        nights:         answers.nights  || (seen && seen.nights)  || '',
+        travel_month:   (seen && seen.month)   || '',
+        travel_dates:   (seen && seen.dates)   || '',
+        flights:        (seen && seen.flights) || '',
+        reason:         (seen && seen.reason)  || '',
         source: chatting ? 'Arjun (chat)' : 'Arjun (trip planner)',
         message: chatting
           ? 'Conversation with Arjun (website assistant):\n\n' + transcript()
@@ -357,33 +365,110 @@
 
   /* Pull whatever the conversation revealed, so the agent is not reading
      a transcript cold. Place names come from the planner data. */
-  function readConversation(){
-    var text = history.map(function(m){ return m.content; }).join(' ');
-    var low  = text.toLowerCase();
-    var out  = { destination:'', nights:'', month:'', budget:'', hotel:'' };
+  /* Read the enquiry back out of what the visitor actually said, so the
+     agent opens a filled-in record instead of a transcript. People write
+     "two of us" and "a couple of grand each", not "adults: 2". Only what
+     is clearly stated is recorded - a blank field is correct when the
+     subject never came up, and far better than a guess. */
+  var WORDNUM = { a:1, an:1, one:1, two:2, three:3, four:4, five:5, six:6,
+                  seven:7, eight:8, nine:9, ten:10, eleven:11, twelve:12,
+                  couple:2, pair:2 };
+  function num(word){
+    if(!word) return null;
+    var w = String(word).toLowerCase().replace(/,/g,'');
+    if(/^\d+$/.test(w)) return parseInt(w,10);
+    return WORDNUM[w] || null;
+  }
 
+  function readConversation(){
+    /* only what the VISITOR said - Arjun's own suggestions are not facts
+       about the trip they want */
+    var said = history.filter(function(m){ return m.role === 'user'; })
+                      .map(function(m){ return m.content; }).join('. ');
+    var low = said.toLowerCase();
+    var out = { destination:'', nights:'', month:'', dates:'', budget:'',
+                hotel:'', adults:'', children:'', travellers:'', flights:'',
+                reason:'' };
+
+    /* --- where --- */
     if(P && P.cities){
       var hits = Object.keys(P.cities).filter(function(c){
         return c.length > 3 && low.indexOf(c.toLowerCase()) !== -1;
       });
       if(hits.length) out.destination = hits.slice(0,6).join(', ');
     }
-    var REG = ['Rajasthan','South India','Kerala','North India','East India','Nepal','Vietnam','Golden Triangle'];
+    var REG = ['Golden Triangle','South India','North India','East India',
+               'Rajasthan','Kerala','Nepal','Vietnam'];
     for(var i=0;i<REG.length;i++){
       if(low.indexOf(REG[i].toLowerCase())!==-1){
         out.destination = out.destination ? REG[i]+' — '+out.destination : REG[i];
         break;
       }
     }
-    var n = low.match(/(\d{1,2})\s*(?:nights?|days?)/);        if(n) out.nights = n[1];
-    var m = low.match(/\b(january|february|march|april|may|june|july|august|september|october|november|december)\b/);
-    if(m) out.month = m[1].charAt(0).toUpperCase()+m[1].slice(1);
-    var b = low.match(/\$\s?([\d,]{3,7})/);                     if(b) out.budget = '$'+b[1];
-    var h = low.match(/(heritage|palace|5[- ]star|4[- ]star|3[- ]star|luxur\w+|boutique)/);
-    if(h) out.hotel = h[1];
+
+    /* --- how long --- */
+    var n = low.match(/(\d{1,2}|[a-z]+)[\s-]*(?:nights?|days?)\b/);
+    if(n && num(n[1])) out.nights = String(num(n[1]));
+    else {
+      var w = low.match(/\b(a|one|two|three|four)\s+weeks?\b/);
+      if(w && num(w[1])) out.nights = String(num(w[1]) * 7);
+    }
+
+    /* --- when --- */
+    var MON = 'january|february|march|april|may|june|july|august|september|october|november|december';
+    var m = low.match(new RegExp('\\b(' + MON + ')\\b'));
+    if(m) out.month = m[1].charAt(0).toUpperCase() + m[1].slice(1);
+    var d = said.match(new RegExp('\\b(\\d{1,2}(?:st|nd|rd|th)?\\s+(?:' + MON + ')(?:\\s+\\d{4})?)\\b','i'))
+         || said.match(/\b(\d{4}-\d{2}-\d{2})\b/)
+         || said.match(/\b(\d{1,2}\/\d{1,2}\/\d{2,4})\b/);
+    if(d) out.dates = d[1];
+
+    /* --- who --- */
+    var ad = low.match(/(\d{1,2}|[a-z]+)\s+adults?\b/);
+    if(ad && num(ad[1])) out.adults = String(num(ad[1]));
+    var ch = low.match(/(\d{1,2}|[a-z]+)\s+(?:children|kids?|child)\b/);
+    if(ch && num(ch[1])) out.children = String(num(ch[1]));
+    var pax = low.match(/(?:just\s+)?(?:the\s+)?(\d{1,2}|[a-z]+)\s+of\s+us\b/)
+           || low.match(/(?:party|group|family)\s+of\s+(\d{1,2}|[a-z]+)\b/)
+           || low.match(/(\d{1,2}|[a-z]+)\s+(?:people|pax|travellers|travelers)\b/);
+    if(pax && num(pax[1])) out.travellers = String(num(pax[1]));
+    if(!out.travellers && /\b(my (wife|husband|partner) and i|me and my (wife|husband|partner)|honeymoon|anniversary)\b/.test(low))
+      out.travellers = '2';
+    if(!out.travellers && /\b(solo|on my own|by myself|just me)\b/.test(low)) out.travellers = '1';
+    if(!out.travellers && out.adults) {
+      out.travellers = String(num(out.adults) + (num(out.children) || 0));
+    }
+
+    /* --- money. "5k each", "around 4000", "$3,500" --- */
+    var b = said.match(/\$\s?([\d,]{3,7})/)
+         || low.match(/\b([\d,]{3,7})\s*(?:dollars|aud|usd|bucks)\b/)
+         || low.match(/\b(\d{1,3})\s*k\b/);
+    if(b){
+      var raw = b[1].replace(/,/g,'');
+      var val = /k$/.test(b[0].trim()) || b[0].indexOf('k') > -1 ? Number(raw) * 1000 : Number(raw);
+      if(val >= 500 && val <= 100000) out.budget = '$' + val.toLocaleString('en-US');
+    }
+
+    /* --- hotels --- */
+    if(/heritage|palace/.test(low))                 out.hotel = 'Heritage / palace stays';
+    else if(/5[\s-]?star|luxur|five[\s-]star/.test(low)) out.hotel = '5-star – luxury';
+    else if(/4[\s-]?star|four[\s-]star|premium/.test(low)) out.hotel = '4-star – premium';
+    else if(/3[\s-]?star|three[\s-]star|budget|cheap|comfortable/.test(low)) out.hotel = '3-star – comfortable';
+
+    /* --- flights --- */
+    if(/land only|our own flights|book(ing)? (?:our|the) (?:own )?flights|without flights|no flights/.test(low))
+      out.flights = "Land only – we'll book our own flights";
+    else if(/include flights|with flights|need flights|book(?:ing)? flights for us|flights included/.test(low))
+      out.flights = 'Please include flights';
+
+    /* --- what kind of enquiry --- */
+    if(/yatra|pilgrimage|jyotirlinga|char dham|temple tour/.test(low)) out.reason = 'Pilgrimage / yatra enquiry';
+    else if(/group|family|friends|colleagues|\bwe are \d+/.test(low))  out.reason = 'Group or family booking';
+    else if(/custom|tailor|bespoke|our own itinerary|build us/.test(low)) out.reason = 'Planning a custom trip';
+    else if(out.destination)                                           out.reason = 'Enquiring about a tour';
+
     return out;
   }
-
   function transcript(){
     return history.map(function(m){
       return (m.role==='user' ? 'Visitor: ' : 'Arjun: ') + m.content;
