@@ -6,21 +6,22 @@
 // ========== NAVIGATION SCROLL EFFECT ==========
 const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-links a');
-let lastScroll = 0;
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+function syncHeader() {
+    navbar?.classList.toggle('scrolled', window.scrollY > 50);
+}
+let headerFramePending = false;
 window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    // Add shadow on scroll
-    if (currentScroll > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-
-    lastScroll = currentScroll;
-});
+    if (headerFramePending) return;
+    headerFramePending = true;
+    requestAnimationFrame(() => {
+        syncHeader();
+        headerFramePending = false;
+    });
+}, { passive: true });
+window.addEventListener('pageshow', syncHeader);
+syncHeader();
 
 // Active navigation link on scroll
 const sections = document.querySelectorAll('section[id]');
@@ -44,24 +45,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ========== MOBILE NAVIGATION TOGGLE ==========
-const navToggle = document.getElementById('navToggle');
-const navLinksContainer = document.getElementById('navLinks');
-
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navLinksContainer.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
-
-    // Close menu when clicking on a link
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinksContainer.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
-    });
-}
+// Full-screen navigation lives in assets/jeevo-navigation.js.
 
 // ========== SMOOTH HERO SLIDESHOW ==========
 const heroSlides = document.querySelectorAll('.hero-slide');
@@ -78,9 +62,25 @@ function nextSlide() {
     heroSlides[currentSlide].classList.add('active');
 }
 
-// Change slide every 5 seconds with smooth transition
-if (heroSlides.length > 1 && !prefersReducedMotion) {
-    setInterval(nextSlide, 5000);
+// Pause off-screen/background animation so phones only render what is visible.
+if (heroSlides.length > 1) {
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let timer, visible = true;
+    const syncSlideshow = () => {
+        clearInterval(timer);
+        if (visible && !document.hidden && !motion.matches) {
+            timer = setInterval(() => {
+                if (!document.documentElement.classList.contains('jv-menu-open')) nextSlide();
+            }, 6500);
+        }
+    };
+    new IntersectionObserver(entries => {
+        visible = entries[0].isIntersecting;
+        syncSlideshow();
+    }, { threshold: 0 }).observe(document.querySelector('.hero'));
+    document.addEventListener('visibilitychange', syncSlideshow);
+    motion.addEventListener('change', syncSlideshow);
+    syncSlideshow();
 }
 
 // ========== ANIMATED COUNTER ==========
@@ -98,7 +98,7 @@ function animateCounters() {
         if (!Number.isFinite(target)) return;
 
         if (prefersReducedMotion) {
-            counter.textContent = target;
+            counter.textContent = target + (counter.dataset.suffix || '');
             return;
         }
 
@@ -109,10 +109,10 @@ function animateCounters() {
         const updateCounter = () => {
             current += increment;
             if (current < target) {
-                counter.textContent = Math.floor(current);
+                counter.textContent = Math.floor(current) + (counter.dataset.suffix || '');
                 requestAnimationFrame(updateCounter);
             } else {
-                counter.textContent = target;
+                counter.textContent = target + (counter.dataset.suffix || '');
             }
         };
 
@@ -272,11 +272,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(href);
 
         if (target) {
-            const offsetTop = target.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+            // offsetTop is relative to a positioned ancestor on tour pages.
+            // Native anchor alignment honors the shared header scroll padding.
+            history.pushState(null, '', href);
+            target.scrollIntoView({
+                block: 'start',
+                behavior: prefersReducedMotion ? 'instant' : 'smooth'
             });
+            if (this.classList.contains('skip-link')) {
+                target.setAttribute('tabindex', '-1');
+                target.focus({ preventScroll: true });
+            }
         }
     });
 });

@@ -13,7 +13,7 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const TYPES = { '.html':'text/html; charset=utf-8', '.css':'text/css', '.js':'text/javascript',
-  '.svg':'image/svg+xml', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.png':'image/png',
+  '.svg':'image/svg+xml', '.jpg':'image/jpeg', '.jpeg':'image/jpeg', '.png':'image/png', '.webp':'image/webp',
   '.json':'application/json', '.ico':'image/x-icon' };
 
 const handler = require('./api/enquiry.js');

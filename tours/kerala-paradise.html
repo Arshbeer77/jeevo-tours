@@ -7,18 +7,22 @@
     <meta name="description" content="Experience God's Own Country with our 10-day Kerala tour. Backwaters, tea plantations, Ayurveda, and pristine beaches await.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Martel:wght@400;600;700&family=Mukta:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../styles.css?v=1791018950">
-    <link rel="stylesheet" href="tour-page.css?v=1791018950">
-    <link rel="stylesheet" href="../assets/jeevo-loader.css?v=1791018950">
-    <link rel="stylesheet" href="../assets/jeevo-scroll.css?v=1791018950">
-    <link rel="stylesheet" href="../assets/jeevo-delight.css?v=1791018950">
-    <link rel="stylesheet" href="../assets/jeevo-flourish.css?v=1791018950">
-    <link rel="stylesheet" href="../assets/jeevo-chat.css?v=1791018950">
+    <link rel="stylesheet" href="../styles.css?v=20261004-orange">
+    <link rel="stylesheet" href="tour-page.css?v=20261004-orange">
+    <link rel="stylesheet" href="../assets/jeevo-loader.css?v=20261004">
+    <link rel="stylesheet" href="../assets/jeevo-scroll.css?v=20261004">
+    <link rel="stylesheet" href="../assets/jeevo-delight.css?v=20261004">
+    <link rel="stylesheet" href="../assets/jeevo-flourish.css?v=20261004-orange">
+    <link rel="stylesheet" href="../assets/jeevo-chat.css?v=20261004">
+    <link rel="stylesheet" href="../assets/jeevo-presentation.css?v=20261004-hero">
+    <link rel="stylesheet" href="../assets/jeevo-navigation.css?v=20261004">
+    <link rel="icon" href="../assets/jeevo-logo.svg" type="image/svg+xml">
+    <link rel="preload" as="image" href="../assets/img/kerala-backwaters-1280.webp" fetchpriority="high">
 </head>
 <body>
-<script src="../assets/jeevo-loader.js?v=1791018950"></script>
+<script src="../assets/jeevo-loader.js?v=20261004"></script>
 
 
 
@@ -36,7 +40,7 @@
                 <li><a href="../index.html#interactive-tours">Packages</a></li>
                 <li><a href="../index.html#contact">Contact</a></li>
             </ul>
-            <a href="#booking" class="nav-cta">Book Now</a>
+            <a href="#booking" class="nav-cta">Plan a trip</a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
             </button>
@@ -44,7 +48,7 @@
     </nav>
 
     <section class="tour-hero">
-        <div class="tour-hero-bg" style="background-image: url('../assets/img/kerala-backwaters.jpg')"></div>
+        <div class="tour-hero-bg" style="background-image: url('../assets/img/kerala-backwaters-1280.webp')"></div>
         <div class="tour-hero-overlay"></div>
         <div class="container">
             <div class="tour-hero-content">
@@ -61,6 +65,7 @@
                     <span class="price-label">Pricing Available on Request</span>
                     <span class="price-enquiry">Contact us for personalized rates</span>
                 </div>
+                <a class="tour-enquire" href="#booking">Enquire about this tour <span aria-hidden="true">↗</span></a>
             </div>
         </div>
     </section>
@@ -341,24 +346,24 @@
                         <form class="booking-form" data-jeevo-form="booking">
                             <input type="hidden" name="tour" value="Kerala Paradise Escape - 10 Days">
                             <div class="form-group">
-                                <label><i class="fas fa-user"></i> Full Name</label>
-                                <input name="name" type="text" placeholder="Your name" required>
+                                <label for="booking-name"><i class="fas fa-user"></i> Full Name</label>
+                                <input id="booking-name" autocomplete="name" name="name" type="text" placeholder="Your name" required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-envelope"></i> Email</label>
-                                <input name="email" type="email" placeholder="your@email.com" required>
+                                <label for="booking-email"><i class="fas fa-envelope"></i> Email</label>
+                                <input id="booking-email" autocomplete="email" name="email" type="email" placeholder="your@email.com" required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-phone"></i> Phone</label>
-                                <input name="phone" type="tel" placeholder="+61 ... or +91 ..." required>
+                                <label for="booking-phone"><i class="fas fa-phone"></i> Phone</label>
+                                <input id="booking-phone" autocomplete="tel" name="phone" type="tel" placeholder="+61 ... or +91 ..." required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-calendar"></i> Preferred Date</label>
-                                <input name="date" type="date" required>
+                                <label for="booking-date"><i class="fas fa-calendar"></i> Preferred Date</label>
+                                <input id="booking-date" name="date" type="date" required>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-users"></i> Number of Travelers</label>
-                                <select name="travellers" required>
+                                <label for="booking-travellers"><i class="fas fa-users"></i> Number of Travelers</label>
+                                <select id="booking-travellers" name="travellers" required>
                                     <option value="">Select</option>
                                     <option value="1">1 Person</option>
                                     <option value="2">2 People</option>
@@ -368,8 +373,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-bed"></i> Hotel Standard</label>
-                                <select name="hotel_standard">
+                                <label for="booking-hotel_standard"><i class="fas fa-bed"></i> Hotel Standard</label>
+                                <select id="booking-hotel_standard" name="hotel_standard">
                                     <option value="">Not sure yet</option>
                                     <option>3-star &ndash; comfortable</option>
                                     <option>4-star &ndash; premium</option>
@@ -378,8 +383,8 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label><i class="fas fa-wallet"></i> Budget Per Person</label>
-                                <select name="budget">
+                                <label for="booking-budget"><i class="fas fa-wallet"></i> Budget Per Person</label>
+                                <select id="booking-budget" name="budget">
                                     <option value="">Rather not say</option>
                                     <option>Under $2,000</option>
                                     <option>$2,000 &ndash; $3,500</option>
@@ -464,7 +469,7 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>&copy; 2024 Jeevo Tours & Travels. All Rights Reserved.</p>
+                <p>&copy; 2026 Jeevo Tours & Travels. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -472,12 +477,13 @@
     <a href="#" class="back-to-top" id="backToTop">
         <i class="fas fa-chevron-up"></i>
     </a>
-    <script src="../assets/jeevo-forms.js?v=1791018950"></script>
-    <script src="../assets/jeevo-scroll.js?v=1791018950"></script>
-    <script src="../assets/jeevo-delight.js?v=1791018950"></script>
-    <script src="../assets/jeevo-flourish.js?v=1791018950"></script>
+    <script src="../assets/jeevo-forms.js?v=20261004-hero"></script>
+    <script src="../assets/jeevo-scroll.js?v=20261004"></script>
+    <script src="../assets/jeevo-delight.js?v=20261004"></script>
+    <script src="../assets/jeevo-flourish.js?v=20261004"></script>
 
-    <script src="../script.js?v=1791018950"></script>
-    <script src="../assets/jeevo-chat.js?v=1791018950"></script>
+    <script src="../script.js?v=20261004-hero"></script>
+    <script src="../assets/jeevo-chat.js?v=20261004-hero"></script>
+    <script src="../assets/jeevo-navigation.js?v=20261004"></script>
 </body>
 </html>

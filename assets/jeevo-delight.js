@@ -19,7 +19,7 @@
   /* ---------- 1. the plane rides the scroll bar ---------- */
   function flyer() {
     var bar = doc.querySelector('.jv-progress');
-    if (!bar || reduce) return;
+    if (!bar || reduce || win.matchMedia('(max-width: 1024px)').matches) return;
 
     var el = doc.createElement('div');
     el.className = 'jv-flyer';

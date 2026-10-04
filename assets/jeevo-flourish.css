@@ -15,7 +15,7 @@
   transform:translateY(-50%);
   z-index:-1;
   pointer-events:none;
-  color:#0B4EA2;
+  color:#e96a28;
   opacity:0;
   transition:opacity 1s ease;
 }

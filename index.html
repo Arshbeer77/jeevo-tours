@@ -25,22 +25,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="styles.css?v=1791018950">
-    <link rel="stylesheet" href="assets/jeevo-loader.css?v=1791018950">
-    <link rel="stylesheet" href="assets/jeevo-scroll.css?v=1791018950">
-    <link rel="stylesheet" href="assets/jeevo-delight.css?v=1791018950">
-    <link rel="stylesheet" href="assets/jeevo-flourish.css?v=1791018950">
-    <link rel="stylesheet" href="assets/jeevo-selector.css">
+    <link rel="stylesheet" href="styles.css?v=20261004-orange">
+    <link rel="stylesheet" href="assets/jeevo-loader.css?v=20261004">
+    <link rel="stylesheet" href="assets/jeevo-scroll.css?v=20261004">
+    <link rel="stylesheet" href="assets/jeevo-delight.css?v=20261004">
+    <link rel="stylesheet" href="assets/jeevo-flourish.css?v=20261004-orange">
+    <link rel="stylesheet" href="assets/jeevo-selector.css?v=20261004-hero">
     <link rel="stylesheet" href="assets/jeevo-origin-button.css">
-    <link rel="stylesheet" href="assets/jeevo-chat.css?v=1791018950">
+    <link rel="stylesheet" href="assets/jeevo-chat.css?v=20261004">
+    <link rel="stylesheet" href="assets/jeevo-presentation.css?v=20261004-hero">
+    <link rel="stylesheet" href="assets/jeevo-navigation.css?v=20261004">
+    <link rel="preload" as="image" href="assets/img/taj-mahal-1280.webp" fetchpriority="high">
 </head>
 <body>
-<script src="assets/jeevo-loader.js?v=1791018950"></script>
+<script src="assets/jeevo-loader.js?v=20261004"></script>
 
     <a href="#main-content" class="skip-link">Skip to content</a>
 
     <!-- ======= NAVIGATION ======= -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar navbar--hero" id="navbar">
         <div class="nav-container">
             <a href="#home" class="nav-logo">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -24 416 184" class="jv-logo jv-logo--nav" role="img" aria-label="Jeevo Tours and Travels"> <g class="jv-logo__word"> <text x="10" y="118" font-family="'Playfair Display', Didot, 'Bodoni 72', Georgia, serif" font-size="126" fill="#5A2D0C">jeev</text> <circle cx="33" cy="27" r="15" fill="#F5A623"/> </g> <g class="jv-logo__globe" transform="translate(300,72)"> <circle cx="0" cy="0" r="54" fill="#F5A623"/> <clipPath id="jvLogoClip"><circle cx="0" cy="0" r="54"/></clipPath> <g clip-path="url(#jvLogoClip)"> <g class="jv-spin"> <g fill="#D8830B"> <path d="M-30-34c8-3 15 2 16 9 1 8-5 12-4 19 1 6 8 8 8 15 0 9-9 13-10 21 -1 8 3 16-4 19-7 3-13-5-14-12-3-13-1-25 0-37 1-13 3-31 8-34Z"/> <path d="M8-38c13-2 24 4 27 12 3 8-3 14 0 20 3 7 11 9 11 17 0 9-10 12-17 10 -7-1-13-6-19-3-6 3-6 12-5 19 1 9 5 17 0 24-6 6-15 1-17-6 -6-14-3-28-1-42 1-14 4-30 11-43 3-5 6-8 10-8Z"/> </g> <g stroke="#FFFFFF" stroke-width="2.2" fill="none" opacity=".9"> <path d="M-52-22 H52"/><path d="M-54 2 H54"/><path d="M-50 26 H50"/> <ellipse cx="0" cy="0" rx="22" ry="54"/> <line x1="0" y1="-54" x2="0" y2="54"/> </g> </g> </g> </g> <g class="jv-logo__swoosh"> <path fill="#5A2D0C" d="M 146 122 C 206 152, 292 152, 340 120 C 374 97, 382 62, 372 38 C 388 64, 382 104, 346 130 C 296 166, 200 160, 146 122 Z"/> <g transform="translate(382,30) rotate(-28) scale(0.40)"> <path fill="#5A2D0C" d="M 62 0 L 30 -4 L 8 -26 L -2 -26 L 10 -5 L -18 -3 L -30 -16 L -38 -16 L -32 -2 L -42 0 L -32 2 L -38 16 L -30 16 L -18 3 L 10 5 L -2 26 L 8 26 L 30 4 Z"/> </g> </g> </svg>
@@ -54,7 +57,7 @@
                 <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#interactive-tours" class="nav-cta">Book Now</a>
+            <a href="#interactive-tours" class="nav-cta">Plan a trip</a>
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
                 <span></span><span></span><span></span>
             </button>
@@ -66,10 +69,10 @@
     <!-- ======= HERO SECTION ======= -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <div class="hero-slide active" style="background-image: url('assets/img/taj-mahal.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('assets/img/amber-fort.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('assets/img/varanasi-ghats.jpg')"></div>
-            <div class="hero-slide" style="background-image: url('assets/img/kerala-backwaters.jpg')"></div>
+            <div class="hero-slide active" style="background-image: url('assets/img/taj-mahal-1280.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/img/amber-fort-1280.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/img/varanasi-ghats-1280.webp')"></div>
+            <div class="hero-slide" style="background-image: url('assets/img/kerala-backwaters-1280.webp')"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-mandala"></div>
@@ -88,12 +91,12 @@
             </div>
             <div class="hero-stats animate-up delay-4">
                 <div class="stat">
-                    <span class="stat-num" data-count="6">0</span>
+                    <span class="stat-num" data-count="6">6</span>
                     <span class="stat-label">Curated Itineraries</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat">
-                    <span class="stat-num" data-count="8">0</span>+
+                    <span class="stat-num" data-count="8" data-suffix="+">8+</span>
                     <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-divider"></div>
@@ -119,10 +122,10 @@
             <div class="about-grid">
                 <div class="about-images">
                     <div class="about-img-main">
-                        <img src="assets/img/mysore-palace.jpg" alt="Indian Palace" loading="lazy">
+                        <img src="assets/img/mysore-palace-640.webp" srcset="assets/img/mysore-palace-640.webp 640w, assets/img/mysore-palace-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="936" decoding="async" alt="Indian Palace" loading="lazy">
                     </div>
                     <div class="about-img-float">
-                        <img src="assets/img/taj-mahal.jpg" alt="Taj Mahal" loading="lazy">
+                        <img src="assets/img/taj-mahal-640.webp" srcset="assets/img/taj-mahal-640.webp 640w, assets/img/taj-mahal-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1262" decoding="async" alt="Taj Mahal" loading="lazy">
                     </div>
                     <div class="about-experience-badge">
                         <span class="badge-num">8+</span>
@@ -182,7 +185,7 @@
             </div>
             <div class="dest-grid">
                 <div class="dest-card dest-large">
-                    <img src="assets/img/taj-mahal.jpg" alt="Taj Mahal, Agra" loading="lazy">
+                    <img src="assets/img/taj-mahal-640.webp" srcset="assets/img/taj-mahal-640.webp 640w, assets/img/taj-mahal-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1262" decoding="async" alt="Taj Mahal, Agra" loading="lazy">
                     <div class="dest-overlay">
                         <span class="dest-tag">Most Popular</span>
                         <h3>Agra</h3>
@@ -191,7 +194,7 @@
                     </div>
                 </div>
                 <div class="dest-card">
-                    <img src="assets/img/amber-fort.jpg" alt="Jaipur, Rajasthan" loading="lazy">
+                    <img src="assets/img/amber-fort-640.webp" srcset="assets/img/amber-fort-640.webp 640w, assets/img/amber-fort-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1277" decoding="async" alt="Jaipur, Rajasthan" loading="lazy">
                     <div class="dest-overlay">
                         <span class="dest-tag">Royal Heritage</span>
                         <h3>Rajasthan</h3>
@@ -200,7 +203,7 @@
                     </div>
                 </div>
                 <div class="dest-card">
-                    <img src="assets/img/kerala-backwaters.jpg" alt="Kerala Backwaters" loading="lazy">
+                    <img src="assets/img/kerala-backwaters-640.webp" srcset="assets/img/kerala-backwaters-640.webp 640w, assets/img/kerala-backwaters-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1280" decoding="async" alt="Kerala Backwaters" loading="lazy">
                     <div class="dest-overlay">
                         <span class="dest-tag">God's Own Country</span>
                         <h3>Kerala</h3>
@@ -209,7 +212,7 @@
                     </div>
                 </div>
                 <div class="dest-card">
-                    <img src="assets/img/goa-beach.jpg" alt="Goa Beaches" loading="lazy">
+                    <img src="assets/img/goa-beach-640.webp" srcset="assets/img/goa-beach-640.webp 640w, assets/img/goa-beach-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1280" decoding="async" alt="Goa Beaches" loading="lazy">
                     <div class="dest-overlay">
                         <span class="dest-tag">Beach Paradise</span>
                         <h3>Goa</h3>
@@ -218,7 +221,7 @@
                     </div>
                 </div>
                 <div class="dest-card">
-                    <img src="assets/img/varanasi-ghats.jpg" alt="Varanasi Ghats" loading="lazy">
+                    <img src="assets/img/varanasi-ghats-640.webp" srcset="assets/img/varanasi-ghats-640.webp 640w, assets/img/varanasi-ghats-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1440" decoding="async" alt="Varanasi Ghats" loading="lazy">
                     <div class="dest-overlay">
                         <span class="dest-tag">Spiritual Capital</span>
                         <h3>Varanasi</h3>
@@ -227,7 +230,7 @@
                     </div>
                 </div>
                 <div class="dest-card">
-                    <img src="assets/img/ladakh.jpg" alt="Ladakh Mountains" loading="lazy">
+                    <img src="assets/img/ladakh-640.webp" srcset="assets/img/ladakh-640.webp 640w, assets/img/ladakh-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1080" decoding="async" alt="Ladakh Mountains" loading="lazy">
                     <div class="dest-overlay">
                         <span class="dest-tag">Adventure</span>
                         <h3>Ladakh</h3>
@@ -244,13 +247,14 @@
         <div class="container">
             <div class="jv-selector-header">
                 <span class="jv-selector-tag"><i class="fas fa-sparkles"></i> Featured Expeditions</span>
-                <h2 class="jv-selector-title">Interactive <span class="text-gradient">Tour Explorer</span></h2>
-                <p class="jv-selector-desc">Hover or click on any expedition below to view details and start your journey.</p>
+                <h2 class="jv-selector-title">Find your <span class="text-gradient">next journey.</span></h2>
+                <p class="jv-selector-desc">Six thoughtfully planned routes. Swipe through and find your starting point.</p>
             </div>
 
             <div class="jv-selector-wrapper">
                 <!-- Tour 1 -->
-                <div class="jv-selector-item active" style="background-image: url('https://images.unsplash.com/photo-1564507592333-c60657eea523?w=800&q=80')">
+                <div class="jv-selector-item">
+                    <img class="jv-selector-image" src="assets/img/taj-mahal-640.webp" srcset="assets/img/taj-mahal-640.webp 640w, assets/img/taj-mahal-1280.webp 1280w" sizes="(max-width: 600px) 85vw, (max-width: 1024px) 55vw, 440px" alt="Taj Mahal in Agra" width="640" height="800" loading="lazy" decoding="async">
                     <div class="jv-selector-overlay"></div>
                     <span class="jv-selector-badge">Best Seller</span>
                     <div class="jv-selector-info">
@@ -266,7 +270,8 @@
                 </div>
 
                 <!-- Tour 2 -->
-                <div class="jv-selector-item" style="background-image: url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80')">
+                <div class="jv-selector-item">
+                    <img class="jv-selector-image" src="assets/img/kerala-backwaters-640.webp" srcset="assets/img/kerala-backwaters-640.webp 640w, assets/img/kerala-backwaters-1280.webp 1280w" sizes="(max-width: 600px) 85vw, (max-width: 1024px) 55vw, 440px" alt="Kerala backwaters" width="640" height="800" loading="lazy" decoding="async">
                     <div class="jv-selector-overlay"></div>
                     <span class="jv-selector-badge">Most Popular</span>
                     <div class="jv-selector-info">
@@ -282,7 +287,8 @@
                 </div>
 
                 <!-- Tour 3 -->
-                <div class="jv-selector-item" style="background-image: url('https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80')">
+                <div class="jv-selector-item">
+                    <img class="jv-selector-image" src="assets/img/amber-fort-640.webp" srcset="assets/img/amber-fort-640.webp 640w, assets/img/amber-fort-1280.webp 1280w" sizes="(max-width: 600px) 85vw, (max-width: 1024px) 55vw, 440px" alt="Amber Fort in Rajasthan" width="640" height="800" loading="lazy" decoding="async">
                     <div class="jv-selector-overlay"></div>
                     <span class="jv-selector-badge">Luxury</span>
                     <div class="jv-selector-info">
@@ -298,7 +304,8 @@
                 </div>
 
                 <!-- Tour 4 -->
-                <div class="jv-selector-item" style="background-image: url('https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80')">
+                <div class="jv-selector-item">
+                    <img class="jv-selector-image" src="assets/img/halong-bay-640.webp" srcset="assets/img/halong-bay-640.webp 640w, assets/img/halong-bay-1280.webp 1280w" sizes="(max-width: 600px) 85vw, (max-width: 1024px) 55vw, 440px" alt="Ha Long Bay in Vietnam" width="640" height="800" loading="lazy" decoding="async">
                     <div class="jv-selector-overlay"></div>
                     <span class="jv-selector-badge">International</span>
                     <div class="jv-selector-info">
@@ -314,7 +321,8 @@
                 </div>
 
                 <!-- Tour 5 -->
-                <div class="jv-selector-item" style="background-image: url('https://images.unsplash.com/photo-1561361513-2d000a50f0dc?w=800&q=80')">
+                <div class="jv-selector-item">
+                    <img class="jv-selector-image" src="assets/img/varanasi-ghats-640.webp" srcset="assets/img/varanasi-ghats-640.webp 640w, assets/img/varanasi-ghats-1280.webp 1280w" sizes="(max-width: 600px) 85vw, (max-width: 1024px) 55vw, 440px" alt="Varanasi ghats beside the Ganges" width="640" height="800" loading="lazy" decoding="async">
                     <div class="jv-selector-overlay"></div>
                     <span class="jv-selector-badge">Spiritual</span>
                     <div class="jv-selector-info">
@@ -330,7 +338,8 @@
                 </div>
 
                 <!-- Tour 6 -->
-                <div class="jv-selector-item" style="background-image: url('https://images.unsplash.com/photo-1605640840605-14ac1855827b?w=800&q=80')">
+                <div class="jv-selector-item">
+                    <img class="jv-selector-image" src="assets/img/india-gate-640.webp" srcset="assets/img/india-gate-640.webp 640w, assets/img/india-gate-1280.webp 1280w" sizes="(max-width: 600px) 85vw, (max-width: 1024px) 55vw, 440px" alt="India Gate in Delhi" width="640" height="800" loading="lazy" decoding="async">
                     <div class="jv-selector-overlay"></div>
                     <span class="jv-selector-badge">Adventure</span>
                     <div class="jv-selector-info">
@@ -358,35 +367,35 @@
             </div>
             <div class="gallery-grid">
                 <div class="gallery-item gi-tall">
-                    <img src="assets/img/taj-mahal.jpg" alt="Taj Mahal at sunset" loading="lazy">
+                    <img src="assets/img/taj-mahal-640.webp" srcset="assets/img/taj-mahal-640.webp 640w, assets/img/taj-mahal-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1262" decoding="async" alt="Taj Mahal at sunset" loading="lazy">
                     <div class="gallery-overlay"><span>Taj Mahal, Agra</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/holi.jpg" alt="Holi Festival" loading="lazy">
+                    <img src="assets/img/holi-640.webp" srcset="assets/img/holi-640.webp 640w, assets/img/holi-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1086" decoding="async" alt="Holi Festival" loading="lazy">
                     <div class="gallery-overlay"><span>Festival of Colors</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/india-gate.jpg" alt="India Gate Delhi" loading="lazy">
+                    <img src="assets/img/india-gate-640.webp" srcset="assets/img/india-gate-640.webp 640w, assets/img/india-gate-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="2400" decoding="async" alt="India Gate Delhi" loading="lazy">
                     <div class="gallery-overlay"><span>India Gate, Delhi</span></div>
                 </div>
                 <div class="gallery-item gi-wide">
-                    <img src="assets/img/kerala-backwaters.jpg" alt="Kerala Backwaters" loading="lazy">
+                    <img src="assets/img/kerala-backwaters-640.webp" srcset="assets/img/kerala-backwaters-640.webp 640w, assets/img/kerala-backwaters-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1280" decoding="async" alt="Kerala Backwaters" loading="lazy">
                     <div class="gallery-overlay"><span>Backwaters, Kerala</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/amber-fort.jpg" alt="Rajasthan Fort" loading="lazy">
+                    <img src="assets/img/amber-fort-640.webp" srcset="assets/img/amber-fort-640.webp 640w, assets/img/amber-fort-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1277" decoding="async" alt="Rajasthan Fort" loading="lazy">
                     <div class="gallery-overlay"><span>Mehrangarh Fort</span></div>
                 </div>
                 <div class="gallery-item gi-tall">
-                    <img src="assets/img/varanasi-ghats.jpg" alt="Indian Woman in Sari" loading="lazy">
+                    <img src="assets/img/varanasi-ghats-640.webp" srcset="assets/img/varanasi-ghats-640.webp 640w, assets/img/varanasi-ghats-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1440" decoding="async" alt="Indian Woman in Sari" loading="lazy">
                     <div class="gallery-overlay"><span>Colors of India</span></div>
                 </div>
                 <div class="gallery-item">
-                    <img src="assets/img/goa-beach.jpg" alt="Goa Beach" loading="lazy">
+                    <img src="assets/img/goa-beach-640.webp" srcset="assets/img/goa-beach-640.webp 640w, assets/img/goa-beach-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1280" decoding="async" alt="Goa Beach" loading="lazy">
                     <div class="gallery-overlay"><span>Beaches of Goa</span></div>
                 </div>
                 <div class="gallery-item gi-wide">
-                    <img src="assets/img/ladakh.jpg" alt="Himalayan Mountains" loading="lazy">
+                    <img src="assets/img/ladakh-640.webp" srcset="assets/img/ladakh-640.webp 640w, assets/img/ladakh-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1080" decoding="async" alt="Himalayan Mountains" loading="lazy">
                     <div class="gallery-overlay"><span>Himalayas, Ladakh</span></div>
                 </div>
             </div>
@@ -447,7 +456,7 @@
 
     <!-- ======= CTA SECTION ======= -->
     <section class="cta-section">
-        <div class="cta-bg" style="background-image: url('assets/img/taj-mahal.jpg')"></div>
+        <div class="cta-bg" style="background-image: url('assets/img/taj-mahal-1280.webp')"></div>
         <div class="cta-overlay"></div>
         <div class="container">
             <div class="cta-content">
@@ -684,19 +693,15 @@
         <i class="fas fa-chevron-up"></i>
     </a>
 
-    <!-- GSAP and Lenis for Parallax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-
-    <script src="assets/jeevo-forms.js?v=1791018950"></script>
-    <script src="assets/jeevo-scroll.js?v=1791018950"></script>
-    <script src="assets/jeevo-delight.js?v=1791018950"></script>
-    <script src="assets/jeevo-flourish.js?v=1791018950"></script>
-    <script src="assets/jeevo-selector.js"></script>
+    <script src="assets/jeevo-forms.js?v=20261004-hero"></script>
+    <script src="assets/jeevo-scroll.js?v=20261004"></script>
+    <script src="assets/jeevo-delight.js?v=20261004"></script>
+    <script src="assets/jeevo-flourish.js?v=20261004"></script>
+    <script src="assets/jeevo-selector.js?v=20261004"></script>
     <script src="assets/jeevo-origin-button.js"></script>
 
-    <script src="script.js?v=1791018950"></script>
-    <script src="assets/jeevo-chat.js?v=1791018950"></script>
+    <script src="script.js?v=20261004-hero"></script>
+    <script src="assets/jeevo-chat.js?v=20261004-hero"></script>
+    <script src="assets/jeevo-navigation.js?v=20261004"></script>
 </body>
 </html>

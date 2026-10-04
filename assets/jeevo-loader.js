@@ -7,8 +7,8 @@
 (function (win, doc) {
   'use strict';
 
-  var HOLD   = 2000;   // watch the plane go round, read the greeting
-  var FLIGHT = 1650;   // must match jvFly in the css
+  var HOLD   = 350;
+  var FLIGHT = 650;   // must match jvFly in the css
   var reduce = win.matchMedia &&
                win.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -53,6 +53,12 @@
     var navSwoosh = doc.querySelector('.nav-logo .jv-logo__swoosh');
     var bar       = doc.querySelector('.navbar');
     var done      = function () { doc.documentElement.classList.add('jv-ready'); };
+
+    // Returning visitors and page-to-page navigation should reach content immediately.
+    try {
+      if (win.sessionStorage.getItem('jeevo_intro_seen')) { done(); return; }
+      win.sessionStorage.setItem('jeevo_intro_seen', '1');
+    } catch (e) { /* The intro still works when storage is unavailable. */ }
 
     var vw = win.innerWidth || doc.documentElement.clientWidth || 0;
     if (!navGlobe || reduce || vw < 320) { done(); return; }
@@ -133,15 +139,14 @@
         if (flight.parentNode) flight.parentNode.removeChild(flight);
         if (bar) bar.classList.remove('jv-lift');
         done();
-      }, 900);
+      }, 300);
     }
 
     var launched = false;
     function launch() { if (launched) return; launched = true; win.setTimeout(fly, HOLD); }
 
-    if (doc.readyState === 'complete') launch();
-    else win.addEventListener('load', launch);
-    win.setTimeout(launch, 4000);
+    // The nav is already laid out; remote fonts and photos must not hold the intro.
+    win.requestAnimationFrame(launch);
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', intro);

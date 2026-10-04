@@ -122,7 +122,10 @@
     }, 3000);
   }
 
-  function init() { chakra(); ribbon(); headings(); }
+  function init() {
+    if (win.matchMedia('(min-width: 1201px)').matches && !reduce) chakra();
+    ribbon(); headings();
+  }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
   else init();
 
