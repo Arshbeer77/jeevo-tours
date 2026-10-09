@@ -239,132 +239,208 @@
  },
  {
   "source": "FLAVORS FACES AND INDIAN CULTURE.pdf",
-  "tour": "Flavors Faces And Indian Culture",
-  "title_line": "Flavors, Faces & Culture",
+  "tour": "Palaces, Tigers & the Ganges",
+  "title_line": "Palaces, Tigers & the Ganges",
   "day_count": 15,
-  "spanish_markers": 1,
-  "words": 3730,
+  "spanish_markers": 0,
+  "words": 627,
   "days": [
    {
     "day": 1,
     "label": 1,
-    "heading": "ARRIVAL – DELHI",
-    "body": "Meeting and assistance upon arrival at Delhi International airport and transfer to hotel. Upon arrival check in at hotel in Delhi. Overnight stay in Delhi Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr",
+    "heading": "Arrival in Delhi",
+    "body": "Meet your representative at Delhi International Airport and transfer to your hotel. Check in and settle in for the start of your journey. Overnight: Delhi.",
     "km": null,
     "hours": null
    },
    {
     "day": 2,
     "label": 2,
-    "heading": "DELHI",
-    "body": "Morning after breakfast proceed for sightseeing tour of Delhi visiting New Delhi reflects a distinct British colonial character, marked by broad, tree- lined avenues, stately government buildings, and elegant colonial bungalows. The tour begins with a visit to Laxminarayan Temple (Birla Mandir), a modern Hindu temple dedicated to Goddess Lakshmi, admired for its graceful architecture and spiritual ambiance. Continue to the iconic India Gate, the 42-meter-high War Memorial Arch honoring the soldiers of the Indian Army. Enjoy a drive past the architectural landmarks of Lutyens’ Delhi, including the Parliament House, the Secretariat Buildings (North and South Block), and the former Viceroy’s Palace, now the official residence of the President of India, Rashtrapati Bhavan. The journey continues to the magnificent Qutub Minar, envisioned as the most glorious tower of victory and regarded as the prototype for minarets across India, showcasing exceptional Indo- Islamic craftsmanship. Proceed to Old Delhi, where the city’s historic charm unfolds. Visit the grand Jama Masjid, built in the 17th century and recognized as the largest mosque in India. Explore Chandni Chowk, the bustling heart and traditional shopping hub of Old Delhi, offering a vivid glimpse into local life. Drive past the historic Red Fort for a photo stop, and conclude the tour with a visit to Raj Ghat, the serene memorial marking the cremation site of Mahatma Gandhi. Overnight stay in Delhi",
+    "heading": "Old Delhi & New Delhi",
+    "body": "After breakfast, visit Laxminarayan Temple and India Gate. Drive past Parliament House, the Secretariat Buildings and Rashtrapati Bhavan. Explore Qutub Minar, then visit Jama Masjid in Old Delhi. Experience Chandni Chowk and a rickshaw ride. Stop for photographs outside the Red Fort and visit Raj Ghat. Overnight: Delhi.",
     "km": null,
     "hours": null
    },
    {
     "day": 3,
     "label": 3,
-    "heading": "DELHI – NEEMRANA – SHAHPURA (223Kms / 04 Hrs)",
-    "body": "Morning after breakfast drive to Shahpura enroot visiting Neemrana Fort: Nestled amidst the majestic Aravalli Hills, Neemrana Fort Palace sprawls across nearly ten hectares of terraced grandeur, standing as a magnificent testament to India’s royal legacy. Dating back to the 15th century, the fort’s history is deeply rooted in legend and valor. After his defeat by Muhammad Ghori, Prithviraj Chauhan III is believed to have fled Delhi in 1464 and established Neemrana as his stronghold. Over the centuries, the Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr fort witnessed the rise and fall of dynasties. By 1947, as its façade began to crumble and the ramparts showed signs of decay, Raja Rajinder Singh of Neemrana was compelled to abandon the palace. What followed, however, was a remarkable revival. Meticulously restored, the fort has been transformed into a grand heritage hotel, seamlessly blending royal architecture with contemporary luxury and comfort. Today, Neemrana Fort Palace is celebrated as one of Jaipur’s oldest and finest heritage resorts, offering guests an immersive experience of regal living. With its historic charm, panoramic views, and world-class hospitality, the palace promises a unique confluence of history, elegance, and indulgence—making it a truly unforgettable heritage stay. Continue to Shahpura. Upon arrival, check in at the hotel. Overnight stay in Shahpura",
+    "heading": "Delhi → Neemrana → Shahpura",
+    "body": "After breakfast, drive towards Shahpura, stopping at Neemrana Fort Palace in the Aravalli Hills. Explore the restored heritage fort, its terraces and royal architecture. Continue to Shahpura and check in at your hotel. Overnight: Shahpura.",
     "km": 223,
-    "hours": 4
+    "hours": null
    },
    {
     "day": 4,
     "label": 4,
-    "heading": "SHAHPURA – JAIPUR (73 km / 01 hrs)",
-    "body": "After relaxing breakfast, drive to Jaipur. Upon arrival, check in at the hotel in Jaipur. Afternoon excursion to Sanganer: Located about 16 km south of Jaipur, the quaint town of Sanganer is approached through the evocative ruins of two triple-arched gateways, hinting at its historic past. Though the former palace now lies in ruins, the town retains a distinctive old-world charm. Sanganer is also home to a renowned group of Jain temples, celebrated for their exquisite stone carvings and architectural finesse. While entry to the temples is restricted, their intricate exteriors alone reflect exceptional craftsmanship and spiritual significance. Widely acclaimed for its traditional arts, Sanganer is particularly famous for handmade paper production and traditional block printing, practices that have been preserved and perfected over generations. These crafts continue to play a vital role in the town’s identity, making Sanganer an important center of Rajasthan’s artistic heritage. Overnight stay in Jaipur",
+    "heading": "Shahpura → Jaipur & Sanganer",
+    "body": "Enjoy breakfast before travelling to Jaipur and checking in. In the afternoon, visit Sanganer, known for traditional block printing, handmade paper and finely carved Jain temple exteriors. Temple access is restricted. Overnight: Jaipur.",
     "km": 73,
-    "hours": 1
+    "hours": null
    },
    {
     "day": 5,
     "label": 5,
-    "heading": "JAIPUR",
-    "body": "Morning after breakfast visit the ancient Rajput capital of Amber, located just 11 km from Jaipur. Perched on a hillside overlooking Maota Lake, this magnificent fort-palace was begun by Raja Man Singh and served as the principal stronghold of the Rajput rulers until Sawai Jai Singh II shifted his capital to the newly founded city of Jaipur. An architectural masterpiece blending Hindu and Mughal styles, Amber Fort houses several remarkable structures. Explore the Diwan-i-Aam (Hall of Public Audience), the revered Kali Temple, and the exquisite Jai Mandir (Hall of Victory), famed for its intricately inlaid panels and shimmering mirror ceiling. Also visit Sukh Niwas, designed with a sophisticated water-cooling system that offered royal comfort during the summer months. From its ramparts and courtyards, the fort offers breathtaking panoramic views of the lake below and the surrounding Aravalli hills, making Amber Fort one of Rajasthan’s most iconic and unforgettable landmarks Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr Afternoon enjoy a half-day tour of Jaipur, exploring its most celebrated royal and cultural landmarks. Begin with a visit to the magnificent City Palace, the historic residence of the Maharaja and a splendid example of Rajasthani and Mughal architecture. Built in 1732 AD, the walled City Palace complex occupies nearly one-seventh of Jaipur’s old city area. Within the palace, visit the elegant Mubarak Mahal, which houses museums displaying royal textiles, costumes, and armoury, along with the impressive Diwan-i-Khas (Hall of Private Audience) and Diwan-i-Aam (Hall of Public Audience). Continue to the remarkable Jantar Mantar Observatory, a UNESCO World Heritage Site and the oldest of its kind in India. The name Jantar Mantar literally translates to “instruments for measuring the harmony of the heavens.” Each architectural instrument here was designed for a specific astronomical purpose and continues to provide highly accurate readings even today. Conclude the tour with a photo stop at the iconic Hawa Mahal (Palace of the Winds), famed for its ornate pink façade and latticed windows. The drive further offers a glimpse of Jaipur’s signature rose-pink residential and commercial areas, reflecting the city’s unique urban charm and heritage. Overnight stay in Jaipur",
+    "heading": "Amber Fort & the Pink City",
+    "body": "After breakfast, explore Amber Fort, including the Diwan-i-Aam, Kali Temple, Jai Mandir and Sukh Niwas. Visit Jaipur’s City Palace and Mubarak Mahal, with its royal textiles, costumes and armoury, and the audience halls. Explore Jantar Mantar and stop for photographs at Hawa Mahal. Overnight: Jaipur.",
     "km": null,
     "hours": null
    },
    {
     "day": 6,
     "label": 6,
-    "heading": "JAIPUR – CHOWKI DHANI – RANTHAMBORE (176 Kms / 03 Hrs)",
-    "body": "After breakfast, drive to Ranthambore enroot visiting Chokhi Dhani – A Celebration of Rajasthan’s Rural Heritage: Experience the serene and blissful charm of traditional village life with an immersive visit to Chokhi Dhani, a vibrant ethnic village resort that beautifully recreates the rustic soul of Rajasthan. Step into a lively rural setting where age-old traditions, warm hospitality, and cultural richness come together in a memorable evening experience. Enjoy delightful camel and bullock cart rides, offering an authentic glimpse into village life. Witness the colorful spirit of Rajasthan through captivating folk dance performances, accompanied by live traditional music that brings the region’s cultural heritage to life. Indulge your senses with the authentic flavours of Rajasthani cuisine, served in a traditional style that reflects the warmth and generosity of local hospitality. Dine comfortably at low tables in ethnic seating arrangements at Sangri, Chaupad, and the Open-Air Dining Halls, enhancing the overall cultural experience. Complete your visit with a stroll through Kalagram, the ethnic marketplace showcasing genuine Rajasthani handicrafts and artefacts— an ideal place to pick up unique souvenirs and mementos. Chokhi Dhani offers a perfect blend of entertainment, culture, cuisine, and tradition, making it an unforgettable introduction to Rajasthan’s timeless village heritage. Continue drive to Ranthambore. Upon arrival check in at hotel in Ranthambore. Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr Dinner & Overnight stay in Ranthambore",
+    "heading": "Jaipur → Chokhi Dhani → Ranthambore",
+    "body": "Travel towards Ranthambore with a visit to Chokhi Dhani. Experience Rajasthan’s village traditions through folk dance, live music, regional cuisine, camel and bullock-cart rides, and the Kalagram handicraft marketplace. Continue to Ranthambore and check in. The visit sequence will be confirmed around travel and opening times. Overnight: Ranthambore.",
     "km": 176,
-    "hours": 3
+    "hours": null
    },
    {
     "day": 7,
     "label": 7,
-    "heading": "RANTHAMBORE",
-    "body": "Morning and afternoon safari at Ranthambore National Park. Ranthambore National Park – A Legendary Wildlife Experience: One of India’s finest and most celebrated tiger reserves, Ranthambore National Park offers an exceptional opportunity to witness the majestic Royal Bengal Tiger in its natural habitat. Visitors staying for a couple of nights significantly enhance their chances of spotting these elusive predators amidst the park’s dramatic landscape. Once the private hunting reserve of the Maharaja of Jaipur, Ranthambore was brought under the Project Tiger scheme in 1972, marking a major step in wildlife conservation in India. Spread over approximately 410 sq km, the park stretches from the easternmost spur of the Aravalli Range to the Vindhya Hills, creating a unique and diverse ecological setting. The park encompasses both the historic Ranthambore Fort and the wildlife sanctuary, with the nearby town of Sawai Madhopur lending its name to the region. The area also features ancient Jain temples adorned with delicate gilded paintings. Beyond tigers, the park supports a rich variety of wildlife. Sightings often include herds of chital (spotted deer) and sambar, sounders of wild boar, along with nilgai antelope and chinkara gazelles. The park is also home to sloth bears, a few leopards, and marsh crocodiles found near lakes and water bodies. Ranthambore is equally renowned for its diverse birdlife, making it a paradise for birdwatchers. Species commonly seen include spurfowl, jungle fowl, partridges, quails, crested serpent eagles, woodpeckers, flycatchers, and various migratory and resident water birds such as storks, ducks, and geese, especially around the lakes and waterholes. Lunch, Dinne & Overnight stay in Ranthambore Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr",
+    "heading": "Ranthambore wildlife safaris",
+    "body": "Head into Ranthambore National Park for morning and afternoon safaris with a naturalist. Look for Bengal tigers, deer, nilgai, wild boar, crocodiles and the park’s varied birdlife. Sightings depend on wildlife movement. Return to the hotel between drives; lunch and dinner are included during the Ranthambore stay. Overnight: Ranthambore.",
     "km": null,
     "hours": null
    },
    {
     "day": 8,
     "label": 8,
-    "heading": "RANTHAMBORE – ABHANERI – FATEHPUR SIKRI – AGRA (321Kms / 05 Hrs)",
-    "body": "Morning after breakfast, drive to Agra enroot visiting Abhaneri: Located in the village of Abhaneri, Chand Baori is one of India’s most extraordinary and visually striking stepwells. The structure is traditionally believed to be named after Raja Chanda of the Nikumbh dynasty, although no epigraphic evidence has been discovered to conclusively confirm the identity of its patron or the exact circumstances of its construction. Based on stylistic similarities in architectural design and intricate stone carvings with the terraced temples of Paranagar and Mandore, scholars date Chand Baori to the 8th–9th century, making it one of the earliest surviving stepwells in the country. It is widely believed that the stepwell was constructed prior to the adjoining Harshat Mata Temple, further underlining its significance in the region’s early water-management traditions. As noted by architectural historian Morna Livingston in Steps to Water: The Ancient Stepwells of India, Chand Baori is among the rare stepwells that display “two classical periods of water building in a single setting.” With its geometrically precise, descending tiers of steps and imposing depth, the baori stands as a remarkable example of ancient Indian engineering, combining functionality, aesthetics, and spiritual symbolism. Fatehpur Sikri – Akbar’s Abandoned Capital: The magnificent fortified city of Fatehpur Sikri was built by Emperor Akbar in 1569 and served as the Mughal capital for a brief yet glorious period of about 15 years. The city was later abandoned, reportedly due to a severe scarcity of water, leaving behind one of the finest and most remarkably preserved examples of Mughal architecture in India. As you explore this UNESCO World Heritage Site, visit its most graceful and historically significant structures, including the grand Jama Masjid, the revered Tomb of Sheikh Salim Chishti, the elegant Panch Mahal, the Diwan-i-Khas (Hall of Private Audience), and several royal palaces that reflect Akbar’s vision of imperial grandeur. Fatehpur Sikri is particularly renowned for its unique architectural harmony, where Islamic structural design seamlessly blends with Hindu and Jain decorative elements. This fusion of styles, combined with the city’s hauntingly serene atmosphere, makes Fatehpur Sikri a compelling testament to Akbar’s inclusive vision and a timeless jewel of India’s architectural heritage. Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr Continue drive to Agra. Upon arrival check in at hotel in Agra Overnight stay in Agra",
+    "heading": "Ranthambore → Abhaneri → Fatehpur Sikri → Agra",
+    "body": "After breakfast, travel to Agra via Chand Baori at Abhaneri, known for its striking geometric tiers of steps. Explore Fatehpur Sikri, including Jama Masjid, the Tomb of Sheikh Salim Chishti, Panch Mahal, Diwan-i-Khas and the royal palaces. Continue to Agra and check in. Overnight: Agra.",
     "km": 321,
-    "hours": 5
+    "hours": null
    },
    {
     "day": 9,
     "label": 9,
-    "heading": "AGRA",
-    "body": "Morning after breakfast, proceed for sightseeing tour of Agra visiting The Taj Mahal – A Timeless Monument of Love: Emperor Shah Jahan, a passionate patron of architecture, resolved to create a marble memorial that the world would never forget. The site was deliberately chosen on a gentle bend of the Yamuna River, allowing the monument to be viewed from Shah Jahan’s personal palace within Agra Fort, located further upstream—an enduring visual link between the emperor and his beloved. Construction of the Taj Mahal began in 1631 and involved the extraordinary efforts of nearly 20,000 skilled artisans, craftsmen, and architects. The project took 22 years to complete, culminating in one of the most poignant and universally admired mausoleums ever created. The Taj Mahal stands as a masterful fusion of grandeur and subtlety, combining a monumental overall design with exquisitely intricate craftsmanship. Every detail—from the flawless symmetry to the delicate marble inlay work—reflects a level of artistic perfection that has secured the Taj Mahal’s place as an eternal symbol of love and one of the greatest architectural achievements in human history. Agra Fort – The Imperial Stronghold of the Mughals: The construction of Agra Fort was initiated by Emperor Akbar in 1565, establishing one of the most formidable and historically significant forts of the Mughal era. Enclosed by massive red sandstone walls stretching over 2.5 kilometers and encircled by a deep moat more than 10 meters wide, the fort stands as a powerful symbol of Mughal authority and architectural brilliance. Often described as a “city within a city,” Agra Fort encompasses an extraordinary collection of palaces, mosques, and audience halls. Key highlights include the elegant Moti Masjid (Pearl Mosque), the Diwan-i-Aam (Hall of Public Audience), and the richly adorned Diwan- i-Khas (Hall of Private Audience). Visitors also explore the imposing Octagonal Tower (Musamman Burj), Jahangir’s Palace, and several other royal structures that together narrate the grandeur of imperial life. Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr Itmad-ud-Daulah’s Tomb (Baby Taj) – A Jewel of Mughal Architecture: This exquisite tomb was built in 1622 for Mirza Ghiyas Beg, the father of Empress Noor Jahan, consort of Emperor Jahangir. Often regarded as a milestone in Mughal architecture, the monument is celebrated as the first Mughal structure faced entirely in white marble, richly inlaid with contrasting semi- precious stones. Gracefully conceived with delicate mosaic work, intricate lattice screens (jalis), and refined proportions, the tomb represents a significant departure from the red sandstone architecture of earlier Mughal monuments. Its artistic innovation later influenced the design and craftsmanship of the Taj Mahal. Affectionately known as the “Baby Taj,” the monument is intimate in scale and enveloped in a sense of gentle serenity. Set amidst tranquil gardens along the Yamuna River, Itmad-ud-Daulah’s Tomb offers visitors a quiet, contemplative experience and stands as a timeless testament to elegance, refinement, and architectural evolution in Mughal India. Overnight stay in Agra",
+    "heading": "Agra’s marble & sandstone masterpieces",
+    "body": "Visit the Taj Mahal and admire its marble craftsmanship and setting beside the Yamuna. Explore Agra Fort, including its palace and audience-hall complexes, Musamman Burj and Jahangir’s Palace. Visit Itmad-ud-Daulah’s Tomb, often called the Baby Taj, with its marble inlay and lattice screens. Overnight: Agra.",
     "km": null,
     "hours": null
    },
    {
     "day": 10,
     "label": 10,
-    "heading": "AGRA - JHANSI (22470 VANDE BHARAT EXPRESS – 07:45Hrs / 10:30Hrs) – ORCHA (18 Kms /",
-    "body": "42 Mnts) Morning on time transfer to Agra Cantt station to board train for Jhansi. Meeting and assistance at Jhansi railway station and drive to Orchha. Upon arrival check in at hotel in Orchha. Afternoon, explore the historic town of Orchha, renowned for its remarkable fusion of royal architecture and spiritual traditions. Visit the majestic Jahangir Mahal, an architectural masterpiece built in a harmonious blend of Hindu and Islamic styles, reflecting the grandeur of the Bundela rulers. Continue to the Raj Mahal, celebrated for its beautifully preserved murals that vividly depict religious themes and royal life. A unique highlight of Orchha is the Ram Raja Temple, the only palace-turned-temple in India, where Lord Rama is worshipped as a king, making it an exceptional example of living heritage. Also visit the impressive Chaturbhuj Temple, designed in the shape of a cross symbolizing the four-armed form of Lord Krishna, and the Lakshminarayan Temple, famous for its well-preserved murals depicting mythological and historical Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr scenes. Orchha offers a rare and evocative experience where palatial elegance, sacred architecture, and centuries-old traditions coexist seamlessly, transporting visitors to a bygone era of royal splendor. Dinner & Overnight stay in Orchha",
-    "km": 18,
-    "hours": 45
+    "heading": "Agra → Jhansi by train → Orchha",
+    "body": "Transfer to Agra Cantt station for the Vande Bharat Express to Jhansi. Meet your representative and continue by road to Orchha. Explore Jahangir Mahal, Raj Mahal and its murals, Ram Raja Temple, Chaturbhuj Temple and Lakshminarayan Temple. The source programme lists dinner in Orchha; ask your consultant to confirm it in the meal plan. Overnight: Orchha.",
+    "km": null,
+    "hours": null
    },
    {
     "day": 11,
     "label": 11,
-    "heading": "ORCHHA – KHAJURAHO (172 km / 2 hrs)",
-    "body": "Morning after breakfast, drive to Khajuraho. Upon arrival check in at hotel in Khajuraho. Rest of the day free for relaxation / explore surrounding Overnight stay in Khajuraho",
+    "heading": "Orchha → Khajuraho",
+    "body": "After breakfast, drive to Khajuraho and check in. Spend the rest of the day relaxing or exploring the surroundings. Overnight: Khajuraho.",
     "km": 172,
-    "hours": 2
+    "hours": null
    },
    {
     "day": 12,
     "label": 12,
-    "heading": "KHAJURAHO",
-    "body": "Morning after breakfast, Enjoy exploration of the world-renowned Khajuraho Temples, visiting both the Western and Eastern Groups of Temples, celebrated for their architectural brilliance and artistic expression. The Western Group of Temples, the most prominent and extensively preserved, is highlighted by the magnificent Kandariya Mahadev Temple, rising to a height of 32 meters. This temple is famed for its extraordinary range of stone sculptures, including intricately carved figures depicting everyday life, celestial beings, and sensuous themes that exemplify the artistic mastery of the Chandela dynasty. Other notable temples in this group include the Chaunsat Yogini Temple, an austere granite structure; the Devi Jagdambe Temple, dedicated to the Mother Goddess; and the Chitragupta Temple, devoted to Surya, the Sun God. The Eastern Group of Temples comprises a harmonious mix of Hindu and Jain shrines, reflecting Khajuraho’s religious tolerance. The largest and finest among the Jain temples is the Parsvanath Temple, admired for its refined sculptures and inscriptions. Additional temples in this group include the Adinatha Temple, Ghantai Temple, Vamana Temple, and others, each contributing to the rich spiritual and architectural legacy of Khajuraho. Overnight stay in Khajuraho Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr",
+    "heading": "Khajuraho’s temple artistry",
+    "body": "Explore the Western and Eastern Groups of Khajuraho temples. Visit Kandariya Mahadev, Chaunsat Yogini, Devi Jagdambe and Chitragupta temples. Discover the Jain and Hindu shrines of the Eastern Group, including Parsvanath, Adinatha, Ghantai and Vamana. Overnight: Khajuraho.",
     "km": null,
     "hours": null
    },
    {
     "day": 13,
     "label": 13,
-    "heading": "KHAJURAHO – VARANASI (26505 VANDE BHARAT EXPRESS – 15:20Hrs / 23:10Hrs)",
-    "body": "On time transfer to Khajuraho railway station to board train for Varanasi. Meeting and assistance upon arrival and transfer to hotel. Upon arrival check in at hotel in Varanasi. Overnight stay in Varanasi",
+    "heading": "Khajuraho → Varanasi by train",
+    "body": "Transfer to Khajuraho railway station for the Vande Bharat Express to Varanasi. Meet your representative on arrival and transfer to your hotel. Train details will be confirmed for your dates. Overnight: Varanasi.",
     "km": null,
-    "hours": 20
+    "hours": null
    },
    {
     "day": 14,
     "label": 14,
-    "heading": "VARANASI",
-    "body": "Begin your day with an early morning boat ride on the sacred River Ganges, offering a deeply moving introduction to the spiritual heart of India. As the sun rises over the riverfront, witness the timeless rituals of life unfolding along the bathing ghats and cremation sites. Pilgrims can be seen performing prayers, ablutions, and sacred rites, creating one of the most profound and extraordinary experiences of any visit to India. The gentle glow of sunrise reflected on the river, viewed from a boat, is a truly spiritually uplifting and unforgettable sight. Later, visit the revered Kashi Vishwanath Temple, also known as the Golden Temple due to its gold-plated towers. Dedicated to Lord Shiva, it is one of the most sacred shrines in Hinduism and a focal point of devotion in Varanasi. Please note: entry into the inner sanctum is permitted only for Hindus; non-Hindus may view the temple complex from designated areas outside. Return to hotel for breakfast and freshn up. Later in the morning Enjoy a half-day sightseeing tour of Varanasi, exploring its sacred temples, cultural landmarks, and centers of learning. Begin with a visit to the unique Bharat Mata Temple, renowned for its impressive marble relief map of India, symbolizing national unity rather than traditional deity worship. Continue to the revered Durga Temple, dedicated to Goddess Durga, followed by the elegant Tulsi Manas Temple, a modern marble structure whose walls are beautifully engraved with scenes and verses from the Ramcharitmanas, the Hindi retelling of the epic Ramayana by Tulsidas. Also view the New Vishwanath Temple, among the tallest temple structures in India, located Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr within the campus of Banaras Hindu University (BHU). (Please note: entry into the temple is restricted to Hindus.) Enjoy a drive around the expansive BHU campus and visit its museum, which houses a valuable collection of sculptures, manuscripts, and artefacts reflecting India’s rich heritage. The tour also includes a visit to the mosque built by Mughal Emperor Aurangzeb, standing as a historical reminder of the region’s complex past and architectural legacy. Afternoon proceed for tour of Sarnath – The Cradle of Buddhist Teachings: Visit the sacred ruins of Sarnath, one of the most important Buddhist sites in the world, where Lord Buddha delivered his first sermon after attaining enlightenment. The site is dominated by the imposing Dhamekh Stupa, believed to mark the exact spot of this historic discourse, symbolizing the birth of the Buddhist Sangha. Explore the atmospheric ruins of ancient monasteries and stupas, along with the remains of the legendary Ashoka Pillar, which once stood over 20 meters high and testified to Emperor Ashoka’s patronage of Buddhism. The visit also includes the Sarnath Museum, which houses an exceptional collection of archaeological finds from the site. Among its most celebrated exhibits is the Lion Capital of Ashoka, now India’s national emblem, renowned for its exquisite craftsmanship and historical significance. Overnight stay in Varanasi",
+    "heading": "Varanasi at sunrise & Sarnath",
+    "body": "Take an early-morning boat ride on the Ganges to see the riverfront ghats and daily rituals. Visit Kashi Vishwanath Temple, subject to applicable entry rules. Return for breakfast, then visit Bharat Mata, Durga and Tulsi Manas temples, and view the New Vishwanath Temple at Banaras Hindu University. Explore the BHU campus and museum and the mosque associated with Emperor Aurangzeb. Visit Sarnath’s Dhamekh Stupa, monastery ruins, Ashoka Pillar remains and archaeological museum. Attend the Ganga Aarti ceremony in Varanasi, with timing arranged locally. Overnight: Varanasi.",
     "km": null,
     "hours": null
    },
    {
     "day": 15,
     "label": 15,
-    "heading": "VARANASI – DELHI (FLIGHT) – DEPART DELHI",
-    "body": "On time transfer to airport to board flight for Delhi. Upon arrival transfer to international airport to board flight for onward destination. “Thank you for choosing to explore INDIA with us!” Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr HOTELS TO BE USED – 4 & 5 STAR CITY HOTEL 4* HOTEL 5* NIGHTS Delhi Hans Plaza, Royal Plaza or similar Le Meridien, The Park or similar 02 Night Shahpura Shahpura House Shahpra House 01 Night Jaipur Lemon Tree, Fern Residency or similar Indana Palace, Holiday Inn or similar 02 Night Ranthambore Nahargarh, Jas Vilas Resort or similar Tigress, Fort Barwara or similar 02 Night Agra Howard Palza, Holiday Inn or similar Trident, Taj Convention or similar 02 Night Orchha Orchha Palace, Orchha Mahal Orchha Palace, Orchha Mahal 01 Night Khajuraho Golden Tulip, Bundela Resort or similar Radisson Jass, Ramada or similar 02 Night Varanasi The Amaya, HHI or similar Ramada, Radisson or simiar 02 Night Total number of nights 14 Nights INCLUSIONS • Accommodation in hotels as per itinerary • Daily breakfast at hotels except in Ranthambore on full board (Breakfast, Lunch, Dinner) • All transfers, sightseeing tours, excursions by air-conditioned vehicle • Local English-speaking guide during sightseeing as per program • Morning and afternoon safari at Ranthambore National Park with a naturalist • Boat ride on the Ganges in Varanasi • Rickshaw ride in Delhi • Aarti ceremony in Varanasi • Train tickets for travel Agra – Jhansi and Khajuraho – Varanasi by Airconditioned Chair Car • Entrance fees to monuments mentioned in the itinerary • All applicable hotel and government taxes EXCLUSIONS / NON-INCLUSIONS • International & domestic airfares • Entry visa (apply online: www.indianvisaonline.gov.in) • Travel & cancellation insurance (optional) • Tips to guides, drivers & hotel staff • Lunches, dinners & beverages • Camera/video fees at monuments • Personal expenses (laundry, phone calls, minibar, etc.) • Any services not specifically mentioned in the inclusions Triptresor Online LLP, agencia de viajes controlada por el Estado indio. Dirección: D-20 Saket 110017, Nueva Delhi | Web:www.triptresor.fr",
+    "heading": "Varanasi → Delhi & onward departure",
+    "body": "Transfer to Varanasi Airport for your flight to Delhi. On arrival, transfer for your onward international departure. Domestic and international airfares are excluded.",
     "km": null,
     "hours": null
    }
+  ],
+  "inclusions": [
+   "14 nights in the hotels listed or similar, subject to availability.",
+   "Daily breakfast; full board (breakfast, lunch and dinner) in Ranthambore.",
+   "Air-conditioned vehicle for transfers, sightseeing and excursions.",
+   "Local English-speaking guides during scheduled sightseeing.",
+   "Morning and afternoon Ranthambore safaris with a naturalist.",
+   "Ganges boat ride, Delhi rickshaw ride and Varanasi Aarti ceremony.",
+   "Air-conditioned Chair Car train tickets: Agra–Jhansi and Khajuraho–Varanasi.",
+   "Entrance fees for monuments in the programme and applicable hotel and government taxes."
+  ],
+  "exclusions": [
+   "International and domestic airfares, including Varanasi–Delhi.",
+   "Entry visa and travel or cancellation insurance.",
+   "Tips for guides, drivers and hotel staff.",
+   "Lunches, dinners and beverages except meals specifically included.",
+   "Camera and video fees at monuments.",
+   "Personal expenses such as laundry, telephone calls and minibar.",
+   "Services not specifically mentioned in the inclusions."
+  ],
+  "notes": [
+   "The itinerary is subject to changes depending on circumstances. Train services, flight connections, sightseeing and safari slots will be confirmed for your travel dates.",
+   "Temple access restrictions apply. Your local guide will confirm permitted areas and entry arrangements.",
+   "Wildlife sightings are not guaranteed.",
+   "The programme lists dinner in Orchha, while the inclusion list specifies breakfast outside Ranthambore; confirm the final meal plan when enquiring.",
+   "Hotel names are indicative; the listed property or a similar alternative will be confirmed with your quote."
+  ],
+  "hotels": [
+   [
+    "Delhi",
+    "2",
+    "Hans Plaza, Royal Plaza or similar",
+    "Le Meridien, The Park or similar"
+   ],
+   [
+    "Shahpura",
+    "1",
+    "Shahpura House",
+    "Shahpura House"
+   ],
+   [
+    "Jaipur",
+    "2",
+    "Lemon Tree, Fern Residency or similar",
+    "Indana Palace, Holiday Inn or similar"
+   ],
+   [
+    "Ranthambore",
+    "2",
+    "Nahargarh, Jas Vilas Resort or similar",
+    "Tigress, Fort Barwara or similar"
+   ],
+   [
+    "Agra",
+    "2",
+    "Howard Plaza, Holiday Inn or similar",
+    "Trident, Taj Convention or similar"
+   ],
+   [
+    "Orchha",
+    "1",
+    "Orchha Palace, Orchha Mahal",
+    "Orchha Palace, Orchha Mahal"
+   ],
+   [
+    "Khajuraho",
+    "2",
+    "Golden Tulip, Bundela Resort or similar",
+    "Radisson Jass, Ramada or similar"
+   ],
+   [
+    "Varanasi",
+    "2",
+    "The Amaya, HHI or similar",
+    "Ramada, Radisson or similar"
+   ]
   ]
  },
  {
@@ -1605,6 +1681,82 @@
     "km": null,
     "hours": null
    }
+  ]
+ },
+ {
+  "source": "EXPLORE DIBRUGARH.pdf",
+  "tour": "Dibrugarh: Tea Gardens & River Islands",
+  "title_line": "Dibrugarh: Tea Gardens & River Islands",
+  "day_count": 6,
+  "spanish_markers": 0,
+  "words": 256,
+  "days": [
+   {
+    "day": 1,
+    "label": 1,
+    "heading": "Arrival in Dibrugarh",
+    "body": "Meet at Dibrugarh Airport and transfer to Mancotta or Chowkidinghee Heritage Chang Bungalow for a five-night stay. In the afternoon, take an optional tea walk at Mancotta Tea Estate. Visit Jagannath Temple in the evening. Overnight: Dibrugarh.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 2,
+    "label": 2,
+    "heading": "Tea estates, tasting & village life",
+    "body": "After breakfast, tour Ethelwold Tea Estate and learn about CTC tea production. Taste different teas with a knowledgeable tea specialist or practising estate manager. Visit Hiloidhari village and enjoy an evening cultural programme at Mancotta Heritage Chang Bungalow. Overnight: Dibrugarh.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 3,
+    "label": 3,
+    "heading": "Namphake, Barekuri & Maguri Beel",
+    "body": "Drive to Namphake near Naharkatiya and visit the Tai Phake village and its Buddhist monastery. Meet local residents and learn about their traditions and handwoven textiles. Continue to Barekuri village to look for hoolock gibbons. Take a boat ride on Maguri Beel for birdwatching. Return to Dibrugarh and visit Asama in Alimur, where village artisans create handwoven natural-fibre homeware and gifts. Overnight: Dibrugarh.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 4,
+    "label": 4,
+    "heading": "Majuli’s satras & island crafts",
+    "body": "Travel to Majuli via Bogibeel Bridge, with views of the Brahmaputra. Visit Kamalabari, Auniati and Shamaguri satras to explore Assam’s Vaishnavite cultural traditions. Visit a Mishing village, meet traditional mask makers and see the Majuli mustard oil project. Return to the bungalow in Dibrugarh in the evening. Overnight: Dibrugarh.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 5,
+    "label": 5,
+    "heading": "Sivasagar & the royal maidams",
+    "body": "After breakfast, travel to Sivasagar via Moran. Meet acclaimed weaver Hemprabha Chutia, subject to her availability. An optional visit to Teporcali Bam, known as Hornbill Village, can be arranged. Explore Ahom monuments and temples, including Talatal Ghar, Rang Ghar, Shiva Dol and the Sivasagar tank. Visit the royal maidams at Charaideo before returning to Dibrugarh. Overnight: Dibrugarh.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 6,
+    "label": 6,
+    "heading": "Departure from Dibrugarh",
+    "body": "Transfer to Dibrugarh Airport in time for your onward flight.",
+    "km": null,
+    "hours": null
+   }
+  ],
+  "inclusions": [
+   "Planned five-night stay at Mancotta or Chowkidinghee Heritage Chang Bungalow.",
+   "Tea estate visits and a tea-tasting experience.",
+   "Excursions to Namphake, Barekuri, Maguri Beel, Majuli, Sivasagar and Charaideo.",
+   "Arrival and departure transfers at Dibrugarh Airport."
+  ],
+  "exclusions": [
+   "The source itinerary does not specify a complete inclusion or exclusion list.",
+   "Ask for confirmation of meals, guides, entrance fees, boat charges and the cultural programme in your quote.",
+   "Flights, personal expenses and booking terms are to be confirmed by the consultant."
+  ],
+  "notes": [
+   "Tea factory visits depend on operations. Factories are closed on Mondays; tea plucking and processing demonstrations are unavailable from December to mid-March.",
+   "November to March is the suggested period in the itinerary for birding at Maguri Beel.",
+   "Meeting Hemprabha Chutia is subject to her availability; the tea walk and Hornbill Village visit are optional.",
+   "Wildlife sightings are not guaranteed. Excursion timings, river access and arrangements will be confirmed for your dates.",
+   "The itinerary also describes organic Mukul Tea Estate, including hand plucking and roasted green tea; ask about adding this experience."
   ]
  }
 ]

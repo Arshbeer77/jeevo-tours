@@ -49,17 +49,18 @@
    "source_file": "DELH AND KATHMANDU.docx"
   },
   {
-   "id": "flavors-faces-and-indian-culture",
-   "tour": "Flavors Faces And Indian Culture",
+   "id": "palaces-tigers-ganges",
+   "tour": "Palaces, Tigers & the Ganges",
    "nights": 14,
    "days": 15,
-   "region": "Rajasthan",
+   "region": "North & Central India",
    "route": [
     "Delhi",
     "Neemrana",
     "Shahpura",
     "Jaipur",
-    "Chowki Dhani",
+    "Sanganer",
+    "Chokhi Dhani",
     "Ranthambore",
     "Abhaneri",
     "Fatehpur Sikri",
@@ -67,9 +68,12 @@
     "Jhansi",
     "Orchha",
     "Khajuraho",
-    "Varanasi"
+    "Varanasi",
+    "Sarnath",
+    "Delhi"
    ],
-   "source_file": "FLAVORS FACES AND INDIAN CULTURE.pdf"
+   "source_file": "FLAVORS FACES AND INDIAN CULTURE.pdf",
+   "url": "/tours/palaces-tigers-ganges.html"
   },
   {
    "id": "from-southern-serenity-to-northern-grandeur",
@@ -292,6 +296,24 @@
     "Saigon"
    ],
    "source_file": "VIETNAM PACKAGE.docx"
+  },
+  {
+   "id": "dibrugarh-tea-river-islands",
+   "tour": "Dibrugarh: Tea Gardens & River Islands",
+   "nights": 5,
+   "days": 6,
+   "region": "Assam",
+   "route": [
+    "Dibrugarh",
+    "Namphake",
+    "Barekuri",
+    "Maguri Beel",
+    "Majuli",
+    "Sivasagar",
+    "Charaideo"
+   ],
+   "source_file": "EXPLORE DIBRUGARH.pdf",
+   "url": "/tours/dibrugarh-tea-river-islands.html"
   }
  ],
  "routes": [
@@ -372,7 +394,7 @@
    "hours": 4,
    "seen": 1,
    "source": [
-    "Flavors Faces And Indian Culture"
+    "Palaces, Tigers & the Ganges"
    ]
   },
   {
@@ -382,7 +404,7 @@
    "hours": 1,
    "seen": 1,
    "source": [
-    "Flavors Faces And Indian Culture"
+    "Palaces, Tigers & the Ganges"
    ]
   },
   {
@@ -392,7 +414,7 @@
    "hours": 3,
    "seen": 2,
    "source": [
-    "Flavors Faces And Indian Culture",
+    "Palaces, Tigers & the Ganges",
     "Royalty, Art & Spirituality-Journey Through Heart Of India"
    ]
   },
@@ -403,7 +425,7 @@
    "hours": 5,
    "seen": 2,
    "source": [
-    "Flavors Faces And Indian Culture",
+    "Palaces, Tigers & the Ganges",
     "Royalty, Art & Spirituality-Journey Through Heart Of India"
    ]
   },
@@ -414,7 +436,7 @@
    "hours": 45,
    "seen": 1,
    "source": [
-    "Flavors Faces And Indian Culture"
+    "Palaces, Tigers & the Ganges"
    ]
   },
   {
@@ -424,7 +446,7 @@
    "hours": 2,
    "seen": 2,
    "source": [
-    "Flavors Faces And Indian Culture",
+    "Palaces, Tigers & the Ganges",
     "Royalty, Art & Spirituality-Journey Through Heart Of India"
    ]
   },

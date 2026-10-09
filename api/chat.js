@@ -82,6 +82,8 @@ function knowledge() {
 }
 
 const ALIASES = {
+  assam:['dibrugarh','namphake','majuli','sivasagar','charaideo'],
+  'tea gardens':['dibrugarh'],
   kerala:['cochin','munnar','alleppey','periyar','kumarakom','kovalam','trivandrum'],
   backwaters:['alleppey','kumarakom'],
   rajasthan:['jaipur','jodhpur','udaipur','jaisalmer','bikaner','ranakpur','bundi'],
@@ -101,7 +103,7 @@ function pickItineraries(text, k, max) {
   const nights = Number((t.match(/(\d{1,2})\s*(?:nights?|days?)/) || [])[1]) || 0;
 
   return k.index.itineraries.map(it => {
-    let score = 0;
+    let score = t.includes(it.tour.toLowerCase()) ? 20 : 0;
     for (const place of it.route.map(r => r.toLowerCase())) {
       if (place.length > 3 && t.includes(place)) score += 10;
       for (const w of wanted) if (place.includes(w)) { score += 8; break; }
