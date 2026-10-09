@@ -12,7 +12,7 @@ window.JEEVO_CONFIG = {
   web3formsKey : "5c467136-9c4a-4188-a56c-2d16c0e29c35",
 
   // 2. Where enquiries land (also the fallback address)
-  contactEmail : "jazzdtrainer@gmail.com",
+  contactEmail : "jeevotoursandtravels@gmail.com",
 
   // 3. WhatsApp — digits only. No +, no spaces. e.g. "61412345678"
   whatsapp     : "919876543210",
@@ -33,6 +33,7 @@ window.JEEVO_CONFIG = {
   /* ---------- point every contact link at the real details ---------- */
   function applyContactDetails() {
     doc.querySelectorAll('a[href*="wa.me/"]').forEach(function (a) {
+      if (!waReady()) { a.remove(); return; }   // never leave a dead chat link
       a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + digits(CFG.whatsapp));
     });
     doc.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
@@ -55,6 +56,14 @@ window.JEEVO_CONFIG = {
   }
 
   /* ---------- success panel ---------- */
+  /* No WhatsApp number is configured yet, and a button that opens a dead
+     chat is worse than no button. Everything WhatsApp stays switched off
+     until CFG.whatsapp is a real number, then it comes back by itself. */
+  function waReady() {
+    var n = digits(CFG.whatsapp);
+    return n.length > 6 && PLACEHOLDERS.indexOf(CFG.whatsapp) === -1;
+  }
+
   function successPanel(firstName, waText) {
     var wa = 'https://wa.me/' + digits(CFG.whatsapp) +
              '?text=' + encodeURIComponent(waText || 'Hi Jeevo Tours, I just sent an enquiry.');
@@ -62,10 +71,12 @@ window.JEEVO_CONFIG = {
              '<i class="fas fa-circle-check"></i>' +
              '<h3>Thanks' + (firstName ? ', ' + firstName : '') + '</h3>' +
              '<p>Your enquiry is in. We reply within one business day, usually a lot sooner.</p>' +
-             '<p style="margin-top:18px">' +
-               '<a class="btn btn-whatsapp" target="_blank" rel="noopener" href="' + wa + '">' +
-                 '<i class="fab fa-whatsapp"></i> Or message us now on WhatsApp</a>' +
-             '</p>' +
+             (waReady()
+               ? '<p style="margin-top:18px">' +
+                   '<a class="btn btn-whatsapp" target="_blank" rel="noopener" href="' + wa + '">' +
+                     '<i class="fab fa-whatsapp"></i> Or message us now on WhatsApp</a>' +
+                 '</p>'
+               : '') +
            '</div>';
   }
 

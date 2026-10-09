@@ -203,7 +203,15 @@ if (contactForm) {
 
         const firstName = (payload.name || '').split(' ')[0];
         const cfg = window.JEEVO_CONFIG || {};
-        const waLink = 'https://wa.me/' + String(cfg.whatsapp || '919876543210');
+        /* Only offer WhatsApp if there is a real number behind it. This text
+           is shown when a submission has already failed - pointing someone at
+           a dead chat at that moment loses the enquiry for good. */
+        const waDigits = String(cfg.whatsapp || '').replace(/[^\d]/g, '');
+        const waReal = waDigits.length > 6 && waDigits !== '919876543210';
+        const fallbackContact = waReal
+            ? 'or <a href="https://wa.me/' + waDigits + '" target="_blank" rel="noopener">message us on WhatsApp</a>'
+            : 'or email us at <a href="mailto:' + (cfg.contactEmail || 'jeevotoursandtravels@gmail.com') + '">' +
+              (cfg.contactEmail || 'jeevotoursandtravels@gmail.com') + '</a>';
 
         /* Airtable first, then email, so an enquiry is never lost. */
         const sendByEmail = async () => {
@@ -243,12 +251,12 @@ if (contactForm) {
                 contactForm.reset();
             } else {
                 showFormStatus(contactForm, 'error',
-                    'That did not go through. Please call us or <a href="' + waLink + '" target="_blank" rel="noopener">message us on WhatsApp</a> and we will sort it out.');
+                    'That did not go through. Please call us ' + fallbackContact + ' and we will sort it out.');
             }
         } catch (error) {
             console.error('Submission error:', error);
             showFormStatus(contactForm, 'error',
-                'That did not go through. Please call us or <a href="' + waLink + '" target="_blank" rel="noopener">message us on WhatsApp</a> and we will sort it out.');
+                'That did not go through. Please call us ' + fallbackContact + ' and we will sort it out.');
         } finally {
             if (submitBtn) {
                 submitBtn.disabled = false;
