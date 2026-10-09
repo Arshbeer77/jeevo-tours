@@ -1,0 +1,52 @@
+/* Editorial destination index: existing Jeevo type, photography and warm palette. */
+.destinations .destinations-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:40px; text-align:left; margin-bottom:44px; }
+.destinations-heading > div { flex:1 1 65%; min-width:0; }
+.destinations .destinations-heading .section-title { font-size:clamp(32px,3.6vw,52px); line-height:1.14; margin-bottom:0; }
+.destinations-heading > p { flex:0 1 300px; margin:0 0 4px; color:#6c615b; font-size:18px; line-height:1.6; }
+.destination-stories { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:42px 26px; }
+.destination-story { grid-column:span 4; display:flex; flex-direction:column; min-width:0; color:#472b1e; text-decoration:none; border-bottom:1px solid #dfd2c8; padding-bottom:22px; }
+.destination-story--lead { grid-column:span 6; }
+.destination-story--new { grid-column:span 3; }
+.destination-story__photo { height:250px; overflow:hidden; border-radius:6px; background:#eee6de; }
+.destination-story--lead .destination-story__photo,.destination-story--new .destination-story__photo { height:290px; }
+.destination-story__photo img { display:block; width:100%; height:100%; object-fit:cover; transition:transform 550ms cubic-bezier(.2,.65,.3,1); }
+.destination-story__body { display:flex; flex:1; flex-direction:column; align-items:flex-start; padding-top:21px; }
+.destination-story__meta { color:#a9461c; font-size:14px; line-height:1.5; font-weight:600; letter-spacing:.045em; }
+.destination-story h3 { color:#472b1e; font-family:var(--font-heading,'Playfair Display',serif); font-size:28px; line-height:1.2; margin:9px 0 12px; overflow-wrap:break-word; }
+.destination-story--lead h3 { font-size:38px; }
+.destination-story p { color:#6c615b; font-size:17px; line-height:1.55; margin:0 0 19px; }
+.destination-story__link { display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; min-height:44px; margin-top:auto; font-size:16px; font-weight:600; color:#a9461c; }
+.destination-story__link i { font-size:14px; transition:transform 250ms ease; }
+.destination-story:focus-visible { outline:3px solid #a9461c; outline-offset:6px; border-radius:6px; }
+@media (hover:hover) and (pointer:fine) {
+  .destination-story:hover .destination-story__photo img { transform:scale(1.035); }
+  .destination-story:hover .destination-story__link i { transform:translateX(5px); }
+  .destination-story:hover h3 { color:#a9461c; }
+}
+.destinations-footer { display:flex; flex-wrap:wrap; align-items:center; gap:12px 24px; margin-top:35px; }
+.destinations-footer p { margin:0; color:#6c615b; font-size:17px; }
+.destinations-footer a { display:inline-flex; align-items:center; gap:12px; min-height:44px; color:#a9461c; text-underline-offset:4px; font-weight:600; }
+.destinations-footer .destinations-credits { margin-left:auto; font-size:13px; font-weight:400; color:#6c615b; text-decoration:underline; }
+@media (max-width:1000px) {
+  .destinations .destinations-heading { align-items:flex-start; flex-direction:column; gap:20px; }
+  .destinations-heading > p { flex:auto; max-width:520px; }
+  .destination-stories { grid-template-columns:repeat(2,minmax(0,1fr)); gap:34px 24px; }
+  .destination-story,.destination-story--new { grid-column:span 1; }
+  .destination-story--lead { grid-column:span 2; }
+  .destination-story--lead .destination-story__photo { height:350px; }
+  .destination-story--new .destination-story__photo { height:250px; }
+}
+@media (max-width:600px) {
+  .destinations .destinations-heading { margin-bottom:30px; }
+  .destination-stories { grid-template-columns:minmax(0,1fr); gap:30px; }
+  .destination-story,.destination-story--lead,.destination-story--new { grid-column:auto; }
+  .destination-story .destination-story__photo { height:auto; aspect-ratio:4/3; }
+  .destination-story h3,.destination-story--lead h3 { font-size:29px; }
+  .destination-story__body { padding-top:18px; }
+  .destinations-footer { align-items:flex-start; flex-direction:column; gap:4px; }
+  .destinations-footer .destinations-credits { margin-left:0; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .destination-story__photo img,.destination-story__link i { transition:none; }
+  .destination-story:hover .destination-story__photo img,.destination-story:hover .destination-story__link i { transform:none; }
+}

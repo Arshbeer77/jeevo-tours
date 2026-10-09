@@ -42,6 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="stylesheet" href="assets/jeevo-chat.css?v=20261004">
     <link rel="stylesheet" href="assets/jeevo-presentation.css?v=20261004-hero">
     <link rel="stylesheet" href="assets/jeevo-navigation.css?v=20261004">
+    <link rel="stylesheet" href="assets/jeevo-destinations.css?v=20261009">
     <link rel="preload" as="image" href="assets/img/taj-mahal-1280.webp" fetchpriority="high">
 </head>
 <body>
@@ -187,68 +188,102 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </section>
 
     <!-- ======= DESTINATIONS SECTION ======= -->
-    <section class="destinations section" id="destinations">
+    <section class="destinations section" id="destinations" aria-labelledby="destinations-title">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag">Popular Destinations</span>
-                <h2 class="section-title">Where Do You Want to <span class="text-gradient">Wander?</span></h2>
-                <div class="title-ornament"><span></span><i class="fas fa-om"></i><span></span></div>
+            <div class="section-header destinations-heading">
+                <div>
+                    <span class="section-tag">Popular Destinations</span>
+                    <h2 class="section-title" id="destinations-title">Somewhere new.<br><span class="text-gradient">Something unforgettable.</span></h2>
+                </div>
+                <p>From Assam’s tea gardens to Rajasthan’s royal cities, find a place that stays with you. Start with our newest journeys.</p>
             </div>
-            <div class="dest-grid">
-                <div class="dest-card dest-large">
-                    <img src="assets/img/taj-mahal-640.webp" srcset="assets/img/taj-mahal-640.webp 640w, assets/img/taj-mahal-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1262" decoding="async" alt="Taj Mahal, Agra" loading="lazy">
-                    <div class="dest-overlay">
-                        <span class="dest-tag">Most Popular</span>
-                        <h3>Agra</h3>
+            <div class="destination-stories">
+                <a class="destination-story destination-story--lead" href="tours/seven-sisters.html" aria-labelledby="destination-0">
+                    <div class="destination-story__photo"><img src="assets/img/seven-sisters-umiam-640.webp" srcset="assets/img/seven-sisters-umiam-640.webp 640w, assets/img/seven-sisters-umiam-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(100vw - 64px), 600px" width="1280" height="853" loading="lazy" decoding="async" alt="Umiam Lake framed by the hills of Meghalaya"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">12 days / 11 nights</span>
+                        <h3 id="destination-0">Seven Sisters</h3>
+                        <p>Rivers, rainforests &amp; living traditions across Northeast India.</p>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a class="destination-story destination-story--new" href="tours/dibrugarh-tea-river-islands.html" aria-labelledby="destination-1">
+                    <div class="destination-story__photo"><img src="assets/img/dibrugarh-tea-estate-640.webp" srcset="assets/img/dibrugarh-tea-estate-640.webp 640w, assets/img/dibrugarh-tea-estate-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1280" height="706" loading="lazy" decoding="async" alt="Tea gardens in Dibrugarh, Assam"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">6 days / 5 nights</span>
+                        <h3 id="destination-1">Dibrugarh</h3>
+                        <p>Tea gardens, river islands &amp; the quiet rhythms of Assam.</p>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a class="destination-story destination-story--new" href="tours/palaces-tigers-ganges.html" aria-labelledby="destination-2">
+                    <div class="destination-story__photo"><img src="assets/img/ranthambore-safari-640.webp" srcset="assets/img/ranthambore-safari-640.webp 640w, assets/img/ranthambore-safari-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="735" height="490" loading="lazy" decoding="async" alt="Wildlife on safari in Ranthambore"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">15 days / 14 nights</span>
+                        <h3 id="destination-2">Palaces, Tigers &amp; the Ganges</h3>
+                        <p>Royal Rajasthan, wild Ranthambore &amp; sacred Varanasi.</p>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+                    </div>
+                </a>
+                <a class="destination-story" href="tours/golden-triangle.html" aria-labelledby="destination-3">
+                    <div class="destination-story__photo"><img src="assets/img/taj-mahal-640.webp" srcset="assets/img/taj-mahal-640.webp 640w, assets/img/taj-mahal-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1279" height="841" loading="lazy" decoding="async" alt="Taj Mahal, Agra"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">Most Popular</span>
+                        <h3 id="destination-3">Agra</h3>
                         <p>Home of the Taj Mahal, a monument to eternal love</p>
-                        <a href="tours/golden-triangle.html" class="dest-link">Explore <i class="fas fa-arrow-right"></i></a>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="assets/img/amber-fort-640.webp" srcset="assets/img/amber-fort-640.webp 640w, assets/img/amber-fort-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1277" decoding="async" alt="Jaipur, Rajasthan" loading="lazy">
-                    <div class="dest-overlay">
-                        <span class="dest-tag">Royal Heritage</span>
-                        <h3>Rajasthan</h3>
-                        <p>Majestic forts, golden deserts & royal palaces</p>
-                        <a href="tours/royal-rajasthan.html" class="dest-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </a>
+                <a class="destination-story" href="tours/royal-rajasthan.html" aria-labelledby="destination-4">
+                    <div class="destination-story__photo"><img src="assets/img/amber-fort-640.webp" srcset="assets/img/amber-fort-640.webp 640w, assets/img/amber-fort-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1279" height="851" loading="lazy" decoding="async" alt="Jaipur, Rajasthan"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">Royal Heritage</span>
+                        <h3 id="destination-4">Rajasthan</h3>
+                        <p>Majestic forts, golden deserts &amp; royal palaces</p>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="assets/img/kerala-backwaters-640.webp" srcset="assets/img/kerala-backwaters-640.webp 640w, assets/img/kerala-backwaters-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1280" decoding="async" alt="Kerala Backwaters" loading="lazy">
-                    <div class="dest-overlay">
-                        <span class="dest-tag">God's Own Country</span>
-                        <h3>Kerala</h3>
-                        <p>Serene backwaters, Ayurveda & spice plantations</p>
-                        <a href="tours/kerala-paradise.html" class="dest-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </a>
+                <a class="destination-story" href="tours/kerala-paradise.html" aria-labelledby="destination-5">
+                    <div class="destination-story__photo"><img src="assets/img/kerala-backwaters-640.webp" srcset="assets/img/kerala-backwaters-640.webp 640w, assets/img/kerala-backwaters-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1279" height="853" loading="lazy" decoding="async" alt="Kerala Backwaters"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">God&#x27;s Own Country</span>
+                        <h3 id="destination-5">Kerala</h3>
+                        <p>Serene backwaters, Ayurveda &amp; spice plantations</p>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="assets/img/goa-beach-640.webp" srcset="assets/img/goa-beach-640.webp 640w, assets/img/goa-beach-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1280" decoding="async" alt="Goa Beaches" loading="lazy">
-                    <div class="dest-overlay">
-                        <span class="dest-tag">Beach Paradise</span>
-                        <h3>Goa</h3>
-                        <p>Golden beaches, vibrant nightlife & Portuguese charm</p>
-                        <a href="#interactive-tours" class="dest-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </a>
+                <a class="destination-story" href="#interactive-tours" aria-labelledby="destination-6">
+                    <div class="destination-story__photo"><img src="assets/img/goa-beach-640.webp" srcset="assets/img/goa-beach-640.webp 640w, assets/img/goa-beach-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1279" height="853" loading="lazy" decoding="async" alt="Goa Beaches"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">Beach Paradise</span>
+                        <h3 id="destination-6">Goa</h3>
+                        <p>Golden beaches, vibrant nightlife &amp; Portuguese charm</p>
+                        <span class="destination-story__link">Browse journeys <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="assets/img/varanasi-ghats-640.webp" srcset="assets/img/varanasi-ghats-640.webp 640w, assets/img/varanasi-ghats-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1440" decoding="async" alt="Varanasi Ghats" loading="lazy">
-                    <div class="dest-overlay">
-                        <span class="dest-tag">Spiritual Capital</span>
-                        <h3>Varanasi</h3>
-                        <p>Ancient ghats, sacred rituals & timeless spirituality</p>
-                        <a href="tours/spiritual-india.html" class="dest-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </a>
+                <a class="destination-story" href="tours/spiritual-india.html" aria-labelledby="destination-7">
+                    <div class="destination-story__photo"><img src="assets/img/varanasi-ghats-640.webp" srcset="assets/img/varanasi-ghats-640.webp 640w, assets/img/varanasi-ghats-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1280" height="960" loading="lazy" decoding="async" alt="Varanasi Ghats"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">Spiritual Capital</span>
+                        <h3 id="destination-7">Varanasi</h3>
+                        <p>Ancient ghats, sacred rituals &amp; timeless spirituality</p>
+                        <span class="destination-story__link">View itinerary <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                </div>
-                <div class="dest-card">
-                    <img src="assets/img/ladakh-640.webp" srcset="assets/img/ladakh-640.webp 640w, assets/img/ladakh-1280.webp 1280w" sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 600px" width="1920" height="1080" decoding="async" alt="Ladakh Mountains" loading="lazy">
-                    <div class="dest-overlay">
-                        <span class="dest-tag">Adventure</span>
-                        <h3>Ladakh</h3>
-                        <p>Breathtaking passes, monasteries & raw Himalayan beauty</p>
-                        <a href="#interactive-tours" class="dest-link">Explore <i class="fas fa-arrow-right"></i></a>
+                </a>
+                <a class="destination-story" href="#interactive-tours" aria-labelledby="destination-8">
+                    <div class="destination-story__photo"><img src="assets/img/ladakh-640.webp" srcset="assets/img/ladakh-640.webp 640w, assets/img/ladakh-1280.webp 1280w" sizes="(max-width: 600px) calc(100vw - 40px), (max-width: 1000px) calc(50vw - 44px), 420px" width="1280" height="720" loading="lazy" decoding="async" alt="Ladakh Mountains"></div>
+                    <div class="destination-story__body">
+                        <span class="destination-story__meta">Adventure</span>
+                        <h3 id="destination-8">Ladakh</h3>
+                        <p>Breathtaking passes, monasteries &amp; raw Himalayan beauty</p>
+                        <span class="destination-story__link">Browse journeys <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
-                </div>
+                </a>
+            </div>
+            <div class="destinations-footer">
+                <p>A place in mind? We’ll help you make it your own.</p>
+                <a href="#contact">Plan your journey <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+                <a class="destinations-credits" href="tours/seven-sisters.html#photo-credits">Photograph credits</a>
             </div>
         </div>
     </section>
