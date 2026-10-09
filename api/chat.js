@@ -82,7 +82,13 @@ function knowledge() {
 }
 
 const ALIASES = {
-  assam:['dibrugarh','namphake','majuli','sivasagar','charaideo'],
+  'seven sisters':['shillong','bhalukpong','kohima','imphal','aizawl','agartala'],
+  'northeast':['shillong','bhalukpong','kohima','imphal','aizawl','agartala'],
+  'north east':['shillong','bhalukpong','kohima','imphal','aizawl','agartala'],
+  meghalaya:['shillong','sohra'], arunachal:['bhalukpong'],
+  nagaland:['dimapur','khonoma','kohima'], manipur:['imphal','loktak lake'],
+  mizoram:['aizawl','reiek'], tripura:['agartala','neermahal'],
+  assam:['dibrugarh','namphake','majuli','sivasagar','charaideo','guwahati','kaziranga'],
   'tea gardens':['dibrugarh'],
   kerala:['cochin','munnar','alleppey','periyar','kumarakom','kovalam','trivandrum'],
   backwaters:['alleppey','kumarakom'],

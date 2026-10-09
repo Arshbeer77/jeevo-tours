@@ -1,0 +1,16 @@
+/* Destination photographs within the existing itinerary layout. */
+.tour-hero-bg img { width:100%; height:100%; object-fit:cover; object-position:center 55%; }
+.seven-sisters-planning { padding:24px; background:var(--bg-light); border-left:4px solid var(--primary); border-radius:12px; }
+.seven-sisters-planning a { color:#ad4616; text-decoration:underline; text-underline-offset:3px; }
+.seven-sisters-gallery { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.seven-sisters-gallery figure { margin:0; min-width:0; }
+.seven-sisters-gallery img { width:100%; aspect-ratio:3/2; height:auto; object-fit:cover; border-radius:10px; display:block; }
+.seven-sisters-gallery figure:last-child { grid-column:1/-1; }
+.seven-sisters-gallery figure:last-child img { aspect-ratio:16/7; }
+.seven-sisters-gallery figcaption { padding:12px 0 0; line-height:1.5; }
+.seven-sisters-gallery figcaption strong { display:block; color:var(--dark); font-size:20px; }
+.seven-sisters-gallery figcaption span { color:var(--gray); }
+.seven-sisters-gallery small { display:block; margin-top:6px; color:var(--gray); font-size:12px; overflow-wrap:anywhere; }
+.seven-sisters-gallery small a { color:inherit; text-decoration:underline; text-underline-offset:2px; }
+.seven-sisters-photo-note { margin-top:20px; font-size:14px; color:var(--gray); }
+@media(max-width:600px) { .seven-sisters-gallery { grid-template-columns:minmax(0,1fr); gap:22px; } .seven-sisters-gallery figure:last-child img { aspect-ratio:3/2; } .seven-sisters-planning { padding:22px 18px; } }

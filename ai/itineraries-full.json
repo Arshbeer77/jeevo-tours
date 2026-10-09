@@ -1758,5 +1758,187 @@
    "Wildlife sightings are not guaranteed. Excursion timings, river access and arrangements will be confirmed for your dates.",
    "The itinerary also describes organic Mukul Tea Estate, including hand plucking and roasted green tea; ask about adding this experience."
   ]
+ },
+ {
+  "source": "Jeevo approved Seven Sisters itinerary",
+  "tour": "Seven Sisters: Rivers, Rainforests & Living Traditions",
+  "title_line": "Seven Sisters: Rivers, Rainforests & Living Traditions",
+  "day_count": 12,
+  "spanish_markers": 0,
+  "words": 784,
+  "days": [
+   {
+    "day": 1,
+    "label": 1,
+    "heading": "Arrive in Guwahati → Shillong",
+    "body": "Assam & Meghalaya. Meet your representative at Guwahati Airport and drive into Meghalaya. Arrival before midday is preferred so the journey can be completed comfortably. Stop at Umiam Lake before continuing to Shillong. Check in and rest. If arrival time permits, take a short evening walk around Police Bazaar and enjoy an introduction to Khasi food. Overnight: Shillong. Meals proposed: Dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 2,
+    "label": 2,
+    "heading": "Sohra’s waterfalls & limestone caves",
+    "body": "Meghalaya. After breakfast, set out for Sohra, also known as Cherrapunji, with stops at viewpoints along the road. Visit the Nohkalikai Falls viewpoint. Explore Mawsmai Cave, subject to access and your comfort with narrow, uneven passages. Visit the Nohsngithiang, or Seven Sisters, Falls viewpoint, weather permitting. Enjoy lunch locally before returning to Shillong. Waterfall flow and visibility vary by season, so stops may be adjusted. Overnight: Shillong. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 3,
+    "label": 3,
+    "heading": "Shillong → Bhalukpong",
+    "body": "Meghalaya, Assam & Arunachal Pradesh. Leave early for the drive through Assam towards Bhalukpong in Arunachal Pradesh’s foothills. This is a substantial transfer day. Plan regular breaks and keep sightseeing light. Check in at your lodge or hotel on the Arunachal Pradesh side. Enjoy the forested surroundings and Kameng River views, with a short local walk if daylight and conditions permit. Overnight: Bhalukpong. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 4,
+    "label": 4,
+    "heading": "Tipi’s orchids → Kaziranga",
+    "body": "Arunachal Pradesh & Assam. After breakfast, visit the Tipi Orchid Research Centre, subject to opening arrangements. Explore its orchid collections and learn about the region’s plant diversity. Continue through Assam to Kaziranga and check in at your wildlife lodge. Relax before the following morning’s safari. Overnight: Kaziranga. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 5,
+    "label": 5,
+    "heading": "Kaziranga safari → Dimapur",
+    "body": "Assam & Nagaland. Begin with an early jeep safari in Kaziranga National Park, subject to park opening, range access and permit availability. Look for one-horned rhinoceroses, wild buffalo, deer, elephants and birdlife. Wildlife sightings cannot be guaranteed. After breakfast and check-out, continue by road to Dimapur. Keep the remainder of this substantial travel day for the journey and rest; no additional sightseeing is scheduled. Overnight: Dimapur. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 6,
+    "label": 6,
+    "heading": "Dimapur → Khonoma → Kohima",
+    "body": "Nagaland. After an early breakfast, travel towards Kohima and visit Khonoma, an Angami village known for community conservation initiatives. With a local guide, walk through village lanes, learn about Angami traditions and architecture, and view the surrounding cultivated hillsides. Meet residents or craftspeople where visits have been arranged. Continue to Kohima. Visit Kohima War Cemetery if time permits; otherwise, settle into your accommodation. Overnight: Kohima. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 7,
+    "label": 7,
+    "heading": "Kohima → Dimapur → Imphal",
+    "body": "Nagaland & Manipur. Leave Kohima with sufficient time for the road transfer to Dimapur Airport. Fly to Imphal, using a direct service where available. The departure date depends on confirmed flight operations. Meet your local representative and transfer to your hotel. If arrival time permits, visit Ima Keithel, the women-run market, or take a gentle orientation walk. Otherwise, keep the afternoon free. Overnight: Imphal. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 8,
+    "label": 8,
+    "heading": "Loktak Lake & Imphal’s heritage",
+    "body": "Manipur. Subject to local conditions and confirmed access, travel towards Moirang and Loktak Lake. Visit lake viewpoints and observe its distinctive floating vegetation. Visit the INA Memorial in Moirang. Return to Imphal for Kangla, time permitting. The local guide may adjust the sequence. If the lake excursion cannot operate, an approved city programme will be arranged. Overnight: Imphal. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 9,
+    "label": 9,
+    "heading": "Imphal → Aizawl",
+    "body": "Manipur & Mizoram. After breakfast, transfer to Imphal Airport for the journey to Aizawl. Direct services are preferred; a connection may be required. Meet your representative at Lengpui Airport and drive to your hotel. Enjoy an introduction to Aizawl’s hillside setting and a short neighbourhood walk if arrival time permits. Try a Mizo meal, with dietary preferences communicated in advance. Overnight: Aizawl. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 10,
+    "label": 10,
+    "heading": "Reiek & Aizawl",
+    "body": "Mizoram. After breakfast, travel to Reiek for a village and countryside experience. Explore the heritage village area, subject to access, and learn about traditional Mizo homes and ways of life. Enjoy the hill scenery and choose a short walk according to weather and personal ability. Return to Aizawl for a local market or handicraft visit, depending on opening hours. Overnight: Aizawl. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 11,
+    "label": 11,
+    "heading": "Aizawl → Agartala",
+    "body": "Mizoram & Tripura. Transfer to Lengpui Airport for your journey to Agartala. Use a direct flight where available; otherwise, allow the day for a suitable connection. After arrival, check in. If flight timing and museum opening hours permit, visit Ujjayanta Palace and the Tripura State Museum. Otherwise, move the visit to Day 12. Overnight: Agartala. Meals proposed: Breakfast and dinner.",
+    "km": null,
+    "hours": null
+   },
+   {
+    "day": 12,
+    "label": 12,
+    "heading": "Neermahal & departure from Agartala",
+    "body": "Tripura. With a late-evening departure, leave early for Neermahal, the water palace on Rudrasagar Lake. Visit the palace by boat, subject to boat operations, weather and opening arrangements. Return towards Agartala with ample time for the airport transfer. For an earlier flight, replace Neermahal with a shorter Agartala programme, prioritising Ujjayanta Palace if it was not visited on Day 11. Overnight: None. Meals proposed: Breakfast.",
+    "km": null,
+    "hours": null
+   }
+  ],
+  "overview": [
+   "Discover Northeast India through its changing landscapes and the people who call them home. Travel from Meghalaya’s misty escarpments to Arunachal’s forested foothills, Assam’s wildlife grasslands and Nagaland’s village landscapes. Continue to Manipur’s lake country, Mizoram’s hillside capital and Tripura’s royal heritage.",
+   "This active 12-day journey brings together experiences from all Seven Sisters: waterfalls and limestone caves, a Kaziranga wildlife safari, village walks, traditional markets, regional food and palace architecture. Local guides introduce the distinct histories and traditions of each destination."
+  ],
+  "states": [
+   "Assam",
+   "Meghalaya",
+   "Arunachal Pradesh",
+   "Nagaland",
+   "Manipur",
+   "Mizoram",
+   "Tripura"
+  ],
+  "stays": [
+   {
+    "city": "Shillong",
+    "nights": 2
+   },
+   {
+    "city": "Bhalukpong",
+    "nights": 1
+   },
+   {
+    "city": "Kaziranga",
+    "nights": 1
+   },
+   {
+    "city": "Dimapur",
+    "nights": 1
+   },
+   {
+    "city": "Kohima",
+    "nights": 1
+   },
+   {
+    "city": "Imphal",
+    "nights": 2
+   },
+   {
+    "city": "Aizawl",
+    "nights": 2
+   },
+   {
+    "city": "Agartala",
+    "nights": 1
+   }
+  ],
+  "inclusions": [
+   "Eleven nights’ accommodation on twin-sharing basis.",
+   "Eleven breakfasts and eleven dinners.",
+   "Private road transfers and scheduled sightseeing.",
+   "Airport transfers for the regional flights.",
+   "Local guides for selected cultural visits.",
+   "One Kaziranga jeep safari, including applicable entry charges.",
+   "Entrance fees for the final agreed sightseeing programme.",
+   "Neermahal boat transfer if included in the confirmed departure-day plan.",
+   "Applicable taxes on included services."
+  ],
+  "exclusions": [
+   "Flights to Guwahati and from Agartala.",
+   "Regional flights between Dimapur, Imphal, Aizawl and Agartala, quoted separately.",
+   "Lunches, beverages and meals outside the agreed plan.",
+   "Personal expenses, tips and optional activities.",
+   "Permit or registration charges unless specifically included.",
+   "Travel insurance.",
+   "Charges arising from flight changes, disrupted access or additional nights."
+  ],
+  "notes": [
+   "Flight-dependent route: The departure date and route order must be checked against bookable flights before accepting bookings. A connection requiring an extra overnight may extend the trip.",
+   "Manipur: Its inclusion remains conditional on a current review of local conditions, applicable travel advisories and operational access.",
+   "Entry requirements: Permits and registrations must be checked for each traveller’s nationality and circumstances.",
+   "Seasonal access: Kaziranga safari operations, river activities and outdoor visits depend on official access and weather.",
+   "Limited flexibility: This active route has early starts, several substantial travel days and little spare time for disruptions. Allow additional days for a gentler pace.",
+   "Arunachal coverage: This programme visits Bhalukpong and Tipi. Tawang, Dirang and Ziro require a longer itinerary."
+  ],
+  "package_status": "Proposed services; confirmed quotation required."
  }
 ]

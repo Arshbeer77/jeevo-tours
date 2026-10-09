@@ -1,0 +1,93 @@
+[
+  {
+    "slug": "seven-sisters-umiam",
+    "source": "https://commons.wikimedia.org/wiki/File:Umiam%20Lake%2C%20Shillong%2C%20Meghalaya.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/4/41/Umiam_Lake%2C_Shillong%2C_Meghalaya.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "author": "Prof. Vikramjit Kakati",
+    "license": "CC BY-SA 4.0",
+    "original_size": [
+      5760,
+      3840
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit.",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "seven-sisters-kameng",
+    "source": "https://unsplash.com/photos/p-TP9tjUntA",
+    "original": "https://images.unsplash.com/photo-1607172885237-385fbeace643?auto=format&fit=max&w=2400&q=90",
+    "author": "Irshadul Haque",
+    "license": "Unsplash License",
+    "license_url": "https://unsplash.com/license",
+    "original_size": [
+      2400,
+      1800
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit."
+  },
+  {
+    "slug": "seven-sisters-kaziranga",
+    "source": "https://commons.wikimedia.org/wiki/File:Kaziranga%20Rhinoceros%20unicornis.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Kaziranga_Rhinoceros_unicornis.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "author": "Diganta Talukdar",
+    "license": "CC BY 2.0",
+    "original_size": [
+      1024,
+      683
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit.",
+    "license_url": "https://creativecommons.org/licenses/by/2.0/"
+  },
+  {
+    "slug": "seven-sisters-khonoma",
+    "source": "https://commons.wikimedia.org/wiki/File:Khonoma%20village%2C%20Nagaland%2C%20India1.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/6/69/Khonoma_village%2C_Nagaland%2C_India1.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "author": "Joli Rumi",
+    "license": "CC BY-SA 4.0",
+    "original_size": [
+      4080,
+      3072
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit.",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "seven-sisters-loktak",
+    "source": "https://commons.wikimedia.org/wiki/File:The%20Loktak%20Lake.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/e/e9/The_Loktak_Lake.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "author": "Sudiptorana",
+    "license": "CC BY-SA 4.0",
+    "original_size": [
+      1600,
+      1044
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit.",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+  },
+  {
+    "slug": "seven-sisters-aizawl",
+    "source": "https://commons.wikimedia.org/wiki/File:Aizawl%20panoramicview.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Aizawl_panoramicview.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "author": "Jokomarel",
+    "license": "CC BY 4.0",
+    "original_size": [
+      1648,
+      688
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit.",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  {
+    "slug": "seven-sisters-neermahal",
+    "source": "https://commons.wikimedia.org/wiki/File:Neer%20Mahal%2C%20the%20water%20palace%20of%20Tripura%2012.jpg",
+    "original": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Neer_Mahal%2C_the_water_palace_of_Tripura_12.jpg?utm_source=commons.wikimedia.org&utm_campaign=index&utm_content=original",
+    "author": "Kingshuk Mondal",
+    "license": "CC BY 4.0",
+    "original_size": [
+      4516,
+      3010
+    ],
+    "changes": "Resized and converted to WebP; display may crop to fit.",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  }
+]
