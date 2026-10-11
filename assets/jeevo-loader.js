@@ -147,6 +147,16 @@
 
     // The nav is already laid out; remote fonts and photos must not hold the intro.
     win.requestAnimationFrame(launch);
+
+    /* requestAnimationFrame does not fire in a background tab, so a page
+       opened in one - a middle click, a restored session - never started
+       the flight and sat under an opaque veil indefinitely. A plain timer
+       cannot be suspended the same way. */
+    win.setTimeout(launch, 150);
+
+    /* Last line of defence. Whatever happens above, the page must not stay
+       covered: a blank screen is the worst failure this file can produce. */
+    win.setTimeout(finish, HOLD + FLIGHT + 2500);
   }
 
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', intro);
