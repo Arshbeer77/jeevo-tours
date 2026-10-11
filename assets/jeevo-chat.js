@@ -356,10 +356,31 @@
      real substance, offer the hand-off below the chat - without taking
      the typing box away, so they can keep talking if they want to. */
   var offered = false;
+  /* Ask for contact details once Arjun actually has a trip to hand over,
+     not after an arbitrary number of messages. Asking at message three,
+     before anyone has said where or when, reads as a form ambushing a
+     conversation - and the record it produces is a name and nothing else,
+     which is no use to whoever picks it up.
+
+     "Enough" is somewhere to go plus two more details. The turn cap is a
+     backstop: if someone has talked for a while without pinning anything
+     down, take their details anyway rather than never asking. */
+  var ESSENTIALS = ['nights','month','dates','travellers','adults','budget','hotel','flights'];
+  var MAX_TURNS_BEFORE_ASKING = 7;
+
+  function enoughGathered(){
+    var seen = readConversation();
+    if(!seen.destination) return false;
+    var n = 0;
+    for(var i=0;i<ESSENTIALS.length;i++) if(seen[ESSENTIALS[i]]) n++;
+    return n >= 2;
+  }
+
   function maybeOfferContact(){
     if(offered || botOff) return;
     var turns = history.filter(function(m){ return m.role==='user'; }).length;
-    if(turns < 3) return;
+    if(turns < 2) return;                       // never on the first exchange
+    if(!enoughGathered() && turns < MAX_TURNS_BEFORE_ASKING) return;
     offered = true;
     askContact(true);
   }
