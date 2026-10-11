@@ -1,7 +1,9 @@
 /* Shared presentation layer, loaded after the existing component styles. */
 :root { --font-heading:'Playfair Display',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:80px; --section-padding:88px 0; }
-html { background:#fff; scroll-padding-top:calc(var(--header-height) + 20px); }
-body { background:#fff !important; font-size:18px; line-height:1.65; }
+html { background:#FFFDF8 /* cream, not flat white: the colours-of-india wash sits behind the page and a white ground flattens it */; scroll-padding-top:calc(var(--header-height) + 20px); }
+body { background:transparent !important /* was #fff, which painted over the
+     colours-of-india wash sitting at z-index:-1; the page ground lives
+     on <html> */; font-size:18px; line-height:1.65; }
 section { background-color:#fff !important; }
 section:nth-of-type(even) { background-color:#fff8f2 !important; }
 section.hero,section.tour-hero,section.cta-section { background-color:#c5521e !important; }

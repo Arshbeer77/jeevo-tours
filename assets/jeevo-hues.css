@@ -1,0 +1,9 @@
+/* the wash sits behind everything; html carries the base colour so the
+   body does not paint over it */
+html{ background:#FFFDF7; }
+body{ background:transparent; }
+.jv-hue{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  transition:background 1.1s ease;
+}
+@media (prefers-reduced-motion:reduce){ .jv-hue{ transition:none } }

@@ -7,8 +7,8 @@
 (function (win, doc) {
   'use strict';
 
-  var HOLD   = 350;
-  var FLIGHT = 650;   // must match jvFly in the css
+  var HOLD   = 1500;   // long enough to watch the plane orbit and read the greeting
+  var FLIGHT = 1300;  // must match jvFly in the css
   var reduce = win.matchMedia &&
                win.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
