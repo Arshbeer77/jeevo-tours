@@ -1,0 +1,35 @@
+/* ---- ticker: kinetic type, quiet everything else ---- */
+.jv-ticker{
+  overflow:hidden; width:100%;
+  padding:26px 0; margin:0;
+  border-top:1px solid rgba(90,45,12,.12);
+  border-bottom:1px solid rgba(90,45,12,.12);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.jv-ticker__rail{
+  display:flex; width:max-content;
+  animation:jvTick 64s linear infinite;
+}
+.jv-ticker:hover .jv-ticker__rail{ animation-play-state:paused }
+.jv-ticker__item{
+  display:inline-flex; align-items:center; flex:0 0 auto;
+  /* Playfair is already loaded and is the face used in the logo, so this
+     ties to the brand and costs no extra font request. Barlow Condensed
+     was specified first but is not on the page, so it was silently
+     falling back to a system sans. */
+  font-family:'Playfair Display',Didot,Georgia,serif;
+  font-size:clamp(26px,3.6vw,48px); font-weight:600;
+  letter-spacing:.055em; text-transform:uppercase;
+  color:rgba(90,45,12,.78); white-space:nowrap;
+}
+.jv-ticker__item i{
+  width:9px; height:9px; border-radius:50%;
+  background:#E8862E; margin:0 .62em; flex:0 0 auto;
+}
+@keyframes jvTick{ from{transform:translate3d(0,0,0)} to{transform:translate3d(-50%,0,0)} }
+
+@media (prefers-reduced-motion:reduce){
+  .jv-ticker__rail{ animation:none }
+  .jv-ticker{ -webkit-mask-image:none; mask-image:none }
+}
