@@ -532,6 +532,19 @@
     if(ad && num(ad[1])) out.adults = String(num(ad[1]));
     var ch = low.match(/(\d{1,2}|[a-z]+)\s+(?:children|kids?|child)\b/);
     if(ch && num(ch[1])) out.children = String(num(ch[1]));
+
+    /* People name children by age or relationship far more often than they
+       count them: "our 8 year old", "with our daughter". Counting only
+       "two children" missed a child entirely and left the party one short. */
+    if(!out.children){
+      var ages = low.match(/\b(\d{1,2})[\s-]?(?:year[\s-]?old|yo|yr[\s-]?old)\b/g) || [];
+      var kids = ages.filter(function(a){ var n = parseInt(a,10); return n >= 0 && n < 18; }).length;
+      if(!kids){
+        var rel = low.match(/\b(?:our|my|their|with (?:our|my))\s+(?:daughter|son|little one|youngest|eldest|kids?|children)\b/g) || [];
+        kids = rel.length ? Math.max(1, rel.length) : 0;
+      }
+      if(kids) out.children = String(kids);
+    }
     var pax = low.match(/(?:just\s+)?(?:the\s+)?(\d{1,2}|[a-z]+)\s+of\s+us\b/)
            || low.match(/(?:party|group|family)\s+of\s+(\d{1,2}|[a-z]+)\b/)
            || low.match(/(\d{1,2}|[a-z]+)\s+(?:people|pax|travellers|travelers)\b/);
