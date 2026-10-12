@@ -33,7 +33,6 @@ const FIELD = {
   people      : 'Number of Travellers',
   hotel       : 'Hotel Standard',
   budget      : 'Budget Per Person',
-  currency    : 'Currency',
   flights     : 'Flights Needed',
   message     : 'Notes',
   source      : 'Source',
@@ -130,7 +129,11 @@ module.exports = async (req, res) => {
     }
   }
   put('budget',  budget.slice(0, 60));
-  put('currency',cur.slice(0, 20));
+  /* No separate Currency column: the budget already reads "AUD 6,000", so
+     a second field holding "AUD" was duplicating it and showing up as a
+     dropped field on every single enquiry. Uncomment if a column is ever
+     added. */
+  // put('currency', cur.slice(0, 20));
   put('flights', String(body.flights || '').slice(0, 40));
   put('message', String(body.message || body.notes || '').slice(0, 2000));
   put('source',  body.source || 'Website form');
