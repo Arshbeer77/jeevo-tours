@@ -638,7 +638,9 @@
     else if(/3[\s-]?star|three[\s-]star|cheap|modest|simple|comfortable/.test(low)) out.hotel = '3-star \u2013 comfortable';
 
     /* --- flights --- */
-    if(/land only|our own flights|book(ing)? (?:our|the) (?:own )?flights|without flights|no flights/.test(low))
+    /* "my flights are booked" and "we've sorted flights" are how people
+       actually say it; only matching "land only" missed them. */
+    if(/land only|our own flights|book(?:ing)? (?:our|the) (?:own )?flights|without flights|no flights|flights (?:are|r) (?:already )?(?:booked|sorted|done)|(?:already|we have|we've|i have|i've) (?:got |booked )?(?:our |my )?flights|sorted (?:our |my )?flights/.test(low))
       out.flights = "Land only – we'll book our own flights";
     else if(/include flights|with flights|need flights|book(?:ing)? flights for us|flights included/.test(low))
       out.flights = 'Please include flights';

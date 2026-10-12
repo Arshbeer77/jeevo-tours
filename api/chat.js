@@ -51,7 +51,12 @@ async function candidates() {
 
 const MAX_TURNS = 20;
 const MAX_CHARS = 1200;
-const MAX_OUT   = 900;
+/* A full day-by-day itinerary plus the wrap-up runs well past 900 tokens,
+   and Google simply stops mid-sentence when it hits the ceiling - replies
+   were being cut off at "A Jeevo consultant will". The free tier caps
+   requests per day and tokens per minute, not the length of one reply, so
+   this costs nothing. */
+const MAX_OUT   = 2600;
 
 const ALLOWED = [
   'https://jeevo-tours.vercel.app',
@@ -221,6 +226,15 @@ module.exports = async (req, res) => {
     let reply = (data?.candidates?.[0]?.content?.parts || [])
       .map(p => p.text || '').join('').trim();
     if (!reply) return res.status(503).json({ error: 'assistant_unavailable', reason: 'empty' });
+
+    /* If it still runs out of room, trim back to the last finished sentence
+       rather than leaving the visitor staring at half a word. */
+    if (data?.candidates?.[0]?.finishReason === 'MAX_TOKENS') {
+      const cut = Math.max(reply.lastIndexOf('. '), reply.lastIndexOf('.\n'),
+                           reply.lastIndexOf('! '), reply.lastIndexOf('? '));
+      if (cut > reply.length * 0.5) reply = reply.slice(0, cut + 1);
+      reply += '\n\nA Jeevo consultant will confirm the details and pricing — pop your details in below.';
+    }
 
     /* Arjun ends with [[READY]] once he has what a consultant needs. He is
        the one having the conversation, so he judges that far better than
