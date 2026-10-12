@@ -86,6 +86,49 @@
     el.send=panel.querySelector('.jv-chat-send');
   }
 
+  /* Arjun's replies arrive whole, and a paragraph appearing in one lump
+     reads as a machine answering rather than a person writing. This lets
+     it in a word at a time, with a longer beat after punctuation so the
+     rhythm is not metronomic.
+
+     Anyone who has asked for reduced motion gets the whole thing at once,
+     and so does a long reply, where watching it type would be tedious. */
+  var TYPE_MS = 26, TYPE_MAX = 900;
+
+  function typeOut(node, text, done){
+    var reduce = window.matchMedia &&
+                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var words = String(text).split(/(\s+)/);          // keep the whitespace
+    if (reduce || words.length > 240){
+      node.textContent = text;
+      el.log.scrollTop = el.log.scrollHeight;
+      if (done) done();
+      return;
+    }
+
+    var i = 0, started = Date.now();
+    node.textContent = '';
+    (function step(){
+      /* never let a very long reply hold the reader hostage */
+      if (Date.now() - started > TYPE_MAX * 8){
+        node.textContent = text;
+        el.log.scrollTop = el.log.scrollHeight;
+        if (done) done();
+        return;
+      }
+      node.textContent += words[i];
+      var last = words[i] || '';
+      i++;
+      el.log.scrollTop = el.log.scrollHeight;
+      if (i >= words.length){ if (done) done(); return; }
+      var wait = TYPE_MS;
+      if (/[.!?]$/.test(last)) wait = 260;            // end of a sentence
+      else if (/[,;:]$/.test(last)) wait = 120;
+      else if (/\n/.test(last)) wait = 200;
+      setTimeout(step, wait);
+    })();
+  }
+
   function bubble(html, kind){
     var d=document.createElement('div');
     d.className='jv-chat-msg '+kind;
@@ -333,10 +376,12 @@
       .then(function(res){
         sending=false; el.send.disabled=false; dots(false);
         if(res.ok && res.j.reply){
-          bubble(res.j.reply,'bot');
+          var node = bubble('', 'bot');
           history.push({role:'assistant',content:res.j.reply});
           save();
-          maybeOfferContact();
+          /* wait for him to finish before the form slides in underneath,
+             otherwise it interrupts him mid-sentence */
+          typeOut(node, res.j.reply, maybeOfferContact);
           if(res.j.done){ el.row.hidden=true; askContact(); }
           return;
         }
@@ -365,22 +410,45 @@
      "Enough" is somewhere to go plus two more details. The turn cap is a
      backstop: if someone has talked for a while without pinning anything
      down, take their details anyway rather than never asking. */
-  var ESSENTIALS = ['nights','month','dates','travellers','adults','budget','hotel','flights'];
-  var MAX_TURNS_BEFORE_ASKING = 7;
+  /* A destination plus any two details was too low a bar: Arjun would
+     describe a route in detail and the form would slide in before he had
+     asked who was going, when, or what they wanted to spend. The lead that
+     produces is half a brief.
+
+     He now needs a place, a WHEN, and a WHO before the form appears, and
+     ideally something about money or standard too. The turn cap is the
+     backstop for someone who talks a lot without committing to anything. */
+  var WHEN  = ['nights','month','dates'];
+  var WHO   = ['travellers','adults','children'];
+  var MONEY = ['budget','hotel','flights'];
+  var MAX_TURNS_BEFORE_ASKING = 9;
+
+  function has(seen, keys){
+    for (var i = 0; i < keys.length; i++) if (seen[keys[i]]) return true;
+    return false;
+  }
 
   function enoughGathered(){
     var seen = readConversation();
-    if(!seen.destination) return false;
-    var n = 0;
-    for(var i=0;i<ESSENTIALS.length;i++) if(seen[ESSENTIALS[i]]) n++;
-    return n >= 2;
+    if (!seen.destination) return false;
+    if (!has(seen, WHEN)) return false;
+    if (!has(seen, WHO))  return false;
+    return true;
+  }
+
+  /* a fuller brief: everything above plus budget or standard */
+  function fullyGathered(){
+    var seen = readConversation();
+    return enoughGathered() && has(seen, MONEY);
   }
 
   function maybeOfferContact(){
     if(offered || botOff) return;
     var turns = history.filter(function(m){ return m.role==='user'; }).length;
-    if(turns < 2) return;                       // never on the first exchange
-    if(!enoughGathered() && turns < MAX_TURNS_BEFORE_ASKING) return;
+    if(turns < 3) return;                       // never that early
+    /* hold out for the fuller brief while the conversation is still young */
+    var ready = turns < 6 ? fullyGathered() : enoughGathered();
+    if(!ready && turns < MAX_TURNS_BEFORE_ASKING) return;
     offered = true;
     askContact(true);
   }
