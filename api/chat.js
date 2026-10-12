@@ -173,7 +173,7 @@ module.exports = async (req, res) => {
     const models = (await candidates()).filter(m => !DEAD.has(m));
     if (!models.length) { MODEL_LIST = null; DEAD.clear(); throw new Error('no_model'); }
 
-    let data = null, status = 0, used = null;
+    let data = null, status = 0, used = null, retried429 = false;
     for (const model of models.slice(0, 4)) {
       const r = await fetch(`${BASE}/models/${model}:generateContent?key=` + encodeURIComponent(KEY), {
         method : 'POST',
@@ -189,7 +189,25 @@ module.exports = async (req, res) => {
       if (r.ok) break;
       console.error('[chat]', model, r.status, JSON.stringify(data).slice(0, 240));
       if (r.status === 404 || r.status === 400 || r.status === 403) { DEAD.add(model); continue; }
-      break;                                  // 429 and 5xx are not the model's fault
+      /* A 429 is the per-minute limit, not a broken model. Pause once and
+         try the same model again rather than reporting the assistant down. */
+      if (r.status === 429 && !retried429) {
+        retried429 = true;
+        await new Promise(res2 => setTimeout(res2, 2200));
+        const again = await fetch(`${BASE}/models/${model}:generateContent?key=` + encodeURIComponent(KEY), {
+          method : 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body   : JSON.stringify({
+            systemInstruction: { parts: [{ text: system }] },
+            contents: messages.map(m => ({ role: m.role, parts: [{ text: m.text }] })),
+            generationConfig: { maxOutputTokens: MAX_OUT, temperature: 0.7 },
+          }),
+        });
+        data = await again.json().catch(() => ({}));
+        status = again.status;
+        if (again.ok) break;
+      }
+      break;                                  // anything else is not the model's fault
     }
 
     if (status !== 200) {

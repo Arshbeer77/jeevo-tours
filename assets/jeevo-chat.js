@@ -368,39 +368,46 @@
     setTimeout(ask, 320);
   }
 
-  function sendText(){
-    var text=(el.input.value||'').trim();
+  /* The free tier allows a limited number of requests a minute, so two
+     people testing at once is enough to get a 429. Treating that as "the
+     assistant is down" threw the whole conversation into the scripted
+     questions, which then ignored everything already said. A blip is now
+     just a blip: wait, try again, and only give up if it fails twice. */
+  function sendText(retryOf){
+    var text = retryOf || (el.input.value||'').trim();
     if(!text || sending || botOff) return;
-    el.input.value=''; el.input.style.height='auto';
-    bubble(text,'me'); history.push({role:'user',content:text}); save();
+    if(!retryOf){
+      el.input.value=''; el.input.style.height='auto';
+      bubble(text,'me'); history.push({role:'user',content:text}); save();
+    }
     sending=true; el.send.disabled=true; dots(true);
 
     fetch('/api/chat',{ method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ messages: history }) })
       .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
       .then(function(res){
-        sending=false; el.send.disabled=false; dots(false);
         if(res.ok && res.j.reply){
+          sending=false; el.send.disabled=false; dots(false);
           var node = bubble('', 'bot');
           history.push({role:'assistant',content:res.j.reply});
           save();
-          /* wait for him to finish before the form slides in underneath,
-             otherwise it interrupts him mid-sentence */
           typeOut(node, res.j.reply, function(){ maybeOfferContact(res.j.ready); });
-          if(res.j.done){ el.row.hidden=true; askContact(); }
           return;
         }
-        /* only the first failure switches modes; after that we would be
-           yanking the conversation away from someone mid-sentence */
-        bubble("Sorry \u2014 I lost my train of thought there. Let me ask you a few quick things instead.", 'bot');
-        fallToGuided(false);
+        throw new Error((res.j && res.j.reason) || 'failed');
       })
       .catch(function(){
+        if(!retryOf){
+          /* one quiet retry, long enough for a per-minute limit to clear */
+          setTimeout(function(){ sending=false; sendText(text); }, 3200);
+          return;
+        }
         sending=false; el.send.disabled=false; dots(false);
-        bubble("Sorry \u2014 I couldn't reach our planner just then. Let me ask you a few quick things instead.", 'bot');
+        bubble("Sorry — I could not reach our planner just then. Try me again in a moment, or answer a few quick questions instead.", 'bot');
         fallToGuided(false);
       });
   }
+
 
   /* A chat that goes nowhere is a lost lead. Once the conversation has
      real substance, offer the hand-off below the chat - without taking
