@@ -208,8 +208,23 @@ module.exports = async (req, res) => {
        the one having the conversation, so he judges that far better than
        pattern-matching the transcript from outside. Strip it before anyone
        sees it and pass the decision to the widget as a flag. */
-    const ready = /\[\[\s*READY\s*\]\]/i.test(reply);
+    let ready = /\[\[\s*READY\s*\]\]/i.test(reply);
     reply = reply.replace(/\[\[\s*READY\s*\]\]/gi, '').replace(/\s+$/, '');
+
+    /* He is not reliable about writing the marker - he will say "pop your
+       details in below" in plain words and skip it, and then the form he
+       just promised never appears. So take him at his word too. */
+    /* It must be THEIR details he is asking for. "The details of the Taj
+       visit are below" is about the itinerary, not a hand-off, and reading
+       it as one puts the form back in the middle of a conversation. */
+    const HANDOVER = [
+      /\b(your|their|her|his)\s+(?:contact\s+)?details?\b/i,
+      /\bcontact details?\b/i,
+      /\b(name and email|email and name|name, email)\b/i,
+      /\b(pop|put|leave|drop|enter|fill)\b[^.]{0,24}\b(your )?details?\b/i,
+      /\bconsultant\b[^.]{0,60}\b(take it from here|be in touch|come back to you|get in touch)\b/i,
+    ];
+    if (!ready) ready = HANDOVER.some(re => re.test(reply));
 
     return res.status(200).json({ reply, ready });
   } catch (e) {

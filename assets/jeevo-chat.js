@@ -93,38 +93,43 @@
 
      Anyone who has asked for reduced motion gets the whole thing at once,
      and so does a long reply, where watching it type would be tedious. */
-  var TYPE_MS = 26, TYPE_MAX = 900;
+  /* Reveal the reply as it would be written rather than dropping it whole.
+
+     The length test used to count the pieces of split(/(\s+)/), which keeps
+     the separators and so yields about two per word - a 120-word reply
+     tripped a 240 "too long" limit and dumped instantly, which is most of
+     what Arjun writes. Length now decides the PACE, not whether to animate
+     at all: the whole message lands inside a fixed budget however long it
+     is. */
+  var TYPE_BUDGET = 2600;   // ms for the whole reply, however long
+  var TYPE_MAX_MS = 34;     // per word, for short replies
 
   function typeOut(node, text, done){
-    var reduce = window.matchMedia &&
-                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var words = String(text).split(/(\s+)/);          // keep the whitespace
-    if (reduce || words.length > 240){
+    var finish = function(){
       node.textContent = text;
       el.log.scrollTop = el.log.scrollHeight;
       if (done) done();
-      return;
-    }
+    };
+    var reduce = window.matchMedia &&
+                 window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return finish();
 
-    var i = 0, started = Date.now();
-    node.textContent = '';
+    var parts = String(text).split(/(\s+)/);
+    var words = String(text).trim().split(/\s+/).length;
+    if (!words) return finish();
+
+    var per = Math.min(TYPE_MAX_MS, Math.max(6, TYPE_BUDGET / words));
+    var i = 0;
+
     (function step(){
-      /* never let a very long reply hold the reader hostage */
-      if (Date.now() - started > TYPE_MAX * 8){
-        node.textContent = text;
-        el.log.scrollTop = el.log.scrollHeight;
-        if (done) done();
-        return;
-      }
-      node.textContent += words[i];
-      var last = words[i] || '';
+      node.textContent += parts[i];
+      var last = parts[i] || '';
       i++;
       el.log.scrollTop = el.log.scrollHeight;
-      if (i >= words.length){ if (done) done(); return; }
-      var wait = TYPE_MS;
-      if (/[.!?]$/.test(last)) wait = 260;            // end of a sentence
-      else if (/[,;:]$/.test(last)) wait = 120;
-      else if (/\n/.test(last)) wait = 200;
+      if (i >= parts.length) { if (done) done(); return; }
+      var wait = per;
+      if (/[.!?]["')]?$/.test(last)) wait = per * 6;      // breathe at a full stop
+      else if (/[,;:]$/.test(last))  wait = per * 3;
       setTimeout(step, wait);
     })();
   }
