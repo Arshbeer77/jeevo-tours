@@ -531,19 +531,27 @@
            || low.match(/(?:party|group|family)\s+of\s+(\d{1,2}|[a-z]+)\b/)
            || low.match(/(\d{1,2}|[a-z]+)\s+(?:people|pax|travellers|travelers)\b/);
     if(pax && num(pax[1])) out.travellers = String(num(pax[1]));
+    /* Adults plus children is a fact; "anniversary" is a guess. Counting
+       the guess first produced two travellers for a couple who had just
+       said they were bringing their eight-year-old. */
+    if(out.adults){
+      out.travellers = String(num(out.adults) + (num(out.children) || 0));
+    }
     if(!out.travellers && /\b(my (wife|husband|partner) and i|me and my (wife|husband|partner)|honeymoon|anniversary)\b/.test(low))
       out.travellers = '2';
     if(!out.travellers && /\b(solo|on my own|by myself|just me)\b/.test(low)) out.travellers = '1';
-    if(!out.travellers && out.adults) {
-      out.travellers = String(num(out.adults) + (num(out.children) || 0));
-    }
 
     /* --- money. "5k each", "around 4000", "$3,500", "2 lakh"
        A bare "$" is ambiguous and worth 35% either way between AUD and USD,
        so it is recorded as unknown rather than assumed. */
     var b = said.match(/(?:A\$|AU\$|US\$|NZ\$|C\$|S\$|[$£€₹])\s?([\d,]+(?:\.\d+)?)/i)
          || low.match(/\b([\d,]{3,9})\s*(?:dollars|aud|usd|gbp|eur|pounds|euros|rupees|inr|bucks)\b/)
-         || low.match(/\b(\d{1,3}(?:\.\d+)?)\s*(?:k|lakhs?|lacs?)\b/);
+         || low.match(/\b(\d{1,3}(?:\.\d+)?)\s*(?:k|lakhs?|lacs?)\b/)
+         /* "around 6000 each", "budget 6000", "6000 per person" - people
+            drop the currency far more often than they include it, and the
+            whole figure was being lost when they did */
+         || low.match(/(?:budget|spend|spending|around|about|roughly|maybe|up to|under)\D{0,12}\b([\d,]{3,9})\b/)
+         || low.match(/\b([\d,]{3,9})\s*(?:each|per person|per head|pp|a head)\b/);
     if(b){
       var token = b[0];
       var raw   = Number(b[1].replace(/,/g,''));
@@ -575,7 +583,10 @@
     if(/heritage|palace/.test(low))                 out.hotel = 'Heritage / palace stays';
     else if(/5[\s-]?star|luxur|five[\s-]star/.test(low)) out.hotel = '5-star – luxury';
     else if(/4[\s-]?star|four[\s-]star|premium/.test(low)) out.hotel = '4-star – premium';
-    else if(/3[\s-]?star|three[\s-]star|budget|cheap|comfortable/.test(low)) out.hotel = '3-star – comfortable';
+    /* "budget" is not in this list: in "budget 2 lakh each" it means money,
+       and reading it as budget accommodation invented a hotel standard
+       nobody had asked for. */
+    else if(/3[\s-]?star|three[\s-]star|cheap|modest|simple|comfortable/.test(low)) out.hotel = '3-star \u2013 comfortable';
 
     /* --- flights --- */
     if(/land only|our own flights|book(ing)? (?:our|the) (?:own )?flights|without flights|no flights/.test(low))
