@@ -200,11 +200,18 @@ module.exports = async (req, res) => {
       });
     }
 
-    const reply = (data?.candidates?.[0]?.content?.parts || [])
+    let reply = (data?.candidates?.[0]?.content?.parts || [])
       .map(p => p.text || '').join('').trim();
     if (!reply) return res.status(503).json({ error: 'assistant_unavailable', reason: 'empty' });
 
-    return res.status(200).json({ reply });
+    /* Arjun ends with [[READY]] once he has what a consultant needs. He is
+       the one having the conversation, so he judges that far better than
+       pattern-matching the transcript from outside. Strip it before anyone
+       sees it and pass the decision to the widget as a flag. */
+    const ready = /\[\[\s*READY\s*\]\]/i.test(reply);
+    reply = reply.replace(/\[\[\s*READY\s*\]\]/gi, '').replace(/\s+$/, '');
+
+    return res.status(200).json({ reply, ready });
   } catch (e) {
     console.error('[chat] request failed', e && e.message, e && e.status);
     return res.status(503).json({

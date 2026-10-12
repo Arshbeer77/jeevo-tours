@@ -381,7 +381,7 @@
           save();
           /* wait for him to finish before the form slides in underneath,
              otherwise it interrupts him mid-sentence */
-          typeOut(node, res.j.reply, maybeOfferContact);
+          typeOut(node, res.j.reply, function(){ maybeOfferContact(res.j.ready); });
           if(res.j.done){ el.row.hidden=true; askContact(); }
           return;
         }
@@ -442,13 +442,22 @@
     return enoughGathered() && has(seen, MONEY);
   }
 
-  function maybeOfferContact(){
+  /* Arjun says when he is done, by ending a message with a marker the
+     server strips into a flag. He is in the conversation and judges it far
+     better than reading the transcript from outside ever did - that gate
+     swung from interrupting him mid-explanation to never opening at all.
+
+     The reading of the transcript stays as a safety net for the case where
+     he forgets to signal. */
+  function maybeOfferContact(arjunSaysReady){
     if(offered || botOff) return;
     var turns = history.filter(function(m){ return m.role==='user'; }).length;
-    if(turns < 3) return;                       // never that early
-    /* hold out for the fuller brief while the conversation is still young */
-    var ready = turns < 6 ? fullyGathered() : enoughGathered();
-    if(!ready && turns < MAX_TURNS_BEFORE_ASKING) return;
+
+    var open = arjunSaysReady
+            || (turns >= 4 && enoughGathered())
+            || turns >= MAX_TURNS_BEFORE_ASKING;
+    if(!open) return;
+
     offered = true;
     askContact(true);
   }
