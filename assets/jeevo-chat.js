@@ -457,15 +457,24 @@
   function maybeOfferContact(arjunSaysReady){
     if(offered || botOff) return;
     var turns = history.filter(function(m){ return m.role==='user'; }).length;
+    var seen  = readConversation();
 
-    var open = arjunSaysReady
-            || (turns >= 4 && enoughGathered())
-            || turns >= MAX_TURNS_BEFORE_ASKING;
-    if(!open) return;
+    /* Arjun is told to collect seven things before wrapping up and he still
+       skips the budget, which is the one a consultant most needs. So his
+       signal alone is not enough early on: hold the form back and let him
+       ask again. After enough turns he has had his chances and a half-filled
+       lead beats none at all. */
+    var open;
+    if (arjunSaysReady)      open = !!seen.budget || turns >= 7;
+    else if (turns >= 4)     open = enoughGathered() && !!seen.budget;
+    else                     open = false;
+    if (!open && turns >= MAX_TURNS_BEFORE_ASKING) open = true;
+    if (!open) return;
 
     offered = true;
     askContact(true);
   }
+
 
   /* Pull whatever the conversation revealed, so the agent is not reading
      a transcript cold. Place names come from the planner data. */
