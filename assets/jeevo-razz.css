@@ -33,3 +33,29 @@
   .jv-ticker__rail{ animation:none }
   .jv-ticker{ -webkit-mask-image:none; mask-image:none }
 }
+
+/* ---- editorial section numbers: scale contrast, nothing in between ---- */
+.jv-numrow{
+  display:flex; align-items:center; gap:clamp(12px,1.6vw,22px);
+  margin-bottom:10px;
+}
+.jv-num{
+  font-family:'Playfair Display',Didot,Georgia,serif;
+  font-size:clamp(54px,7.5vw,112px);
+  font-weight:700; line-height:.82;
+  color:transparent;
+  -webkit-text-stroke:1.4px rgba(232,134,46,.55);
+  letter-spacing:-.02em;
+  flex:0 0 auto;
+  /* the numeral is scenery; it must not push the heading around */
+  margin:0 0 -.06em 0;
+}
+.jv-numrow .section-tag{ margin:0 }
+
+@supports not (-webkit-text-stroke: 1px red){
+  .jv-num{ color:rgba(232,134,46,.3); -webkit-text-stroke:0 }
+}
+@media (max-width:640px){
+  .jv-numrow{ gap:12px }
+  .jv-num{ font-size:46px }
+}

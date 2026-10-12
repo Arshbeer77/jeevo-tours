@@ -69,7 +69,33 @@
     });
   }
 
-  function init() { ticker(); magnetic(); }
+  /* ---------- 3. editorial section numbers ----------
+     The loudest thing about the Lando Norris site is scale contrast: an
+     enormous element next to a tiny one, and almost nothing in between.
+     Each section gets a big numeral against its existing small label. */
+  function numbers() {
+    var heads = [].slice.call(doc.querySelectorAll('.section-header'));
+    if (!heads.length) return;
+
+    heads.forEach(function (h, i) {
+      if (h.querySelector('.jv-num')) return;
+      var tag = h.querySelector('.section-tag');
+      if (!tag) return;
+
+      var n = doc.createElement('span');
+      n.className = 'jv-num';
+      n.setAttribute('aria-hidden', 'true');       // decorative counting
+      n.textContent = String(i + 1).padStart(2, '0');
+
+      var row = doc.createElement('div');
+      row.className = 'jv-numrow';
+      tag.parentNode.insertBefore(row, tag);
+      row.appendChild(n);
+      row.appendChild(tag);                        // the small label sits beside it
+    });
+  }
+
+  function init() { ticker(); magnetic(); numbers(); }
   if (doc.readyState === 'loading') doc.addEventListener('DOMContentLoaded', init);
   else init();
 })(window, document);
