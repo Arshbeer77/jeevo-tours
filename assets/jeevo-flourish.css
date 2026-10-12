@@ -75,12 +75,16 @@
 
 /* ---------- 3. headings wipe in ---------- */
 .jv-wipe{
-  clip-path:inset(0 100% 0 0);
+  /* The inset is negative on three sides so the clip sits OUTSIDE the text
+     box. At inset(0 0 0 0) it clipped to the exact box and cut the tails off
+     descenders - the g in "Something unforgettable" lost its loop. Only the
+     right edge animates, which is the wipe itself. */
+  clip-path:inset(-0.2em 100% -0.35em -0.1em);
   opacity:.001;
   transition:clip-path 1s cubic-bezier(.16,.84,.3,1),
              opacity .45s ease;
 }
-.jv-wipe.is-in{ clip-path:inset(0 0 0 0); opacity:1 }
+.jv-wipe.is-in{ clip-path:inset(-0.2em -0.1em -0.35em -0.1em); opacity:1 }
 
 @media (prefers-reduced-motion:reduce){
   .jv-mandala{ display:none }
