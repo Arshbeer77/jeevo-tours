@@ -18,23 +18,27 @@ const ALLOWED = [
   'http://localhost:8899'
 ];
 
-/* ▼ Airtable column names, exactly as spelled in the table ▼ */
+/* These are the column names as they exist in the base, read off the
+   field list rather than guessed. Four of them had been guessed wrong and
+   Omni created duplicates alongside the originals, so every enquiry was
+   landing in a second set of columns off the side of the screen while the
+   ones actually being looked at stayed empty. */
 const FIELD = {
   name        : 'Customer Name',
   email       : 'Email',
   phone       : 'Phone',
-  destination : 'Travel Destination',
-  reason      : 'Enquiry Type',
-  month       : 'Travel Month',
+  destination : 'Travel Destination Interests',
   dates       : 'Travel Dates',
+  budget      : 'Budget Range',
+  people      : 'Number of Travelers',
+  message     : 'Special Requests/Queries',
+  month       : 'Travel Month',
   nights      : 'Nights',
   adults      : 'Adults',
   children    : 'Children',
-  people      : 'Number of Travellers',
   hotel       : 'Hotel Standard',
-  budget      : 'Budget Per Person',
   flights     : 'Flights Needed',
-  message     : 'Notes',
+  reason      : 'Enquiry Type',
   source      : 'Source',
 };
 
