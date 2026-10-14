@@ -636,6 +636,12 @@ p {
     margin-bottom: 20px;
 }
 
+.about-content .about-story-lead {
+    color: var(--dark);
+    font-size: 1.12rem;
+    line-height: 1.75;
+}
+
 .about-features {
     display: grid;
     grid-template-columns: 1fr 1fr;
