@@ -2,7 +2,7 @@
   <g class="jv-logo__word">
     <text x="10" y="118" font-family="'Playfair Display', Didot, 'Bodoni 72', Georgia, serif"
           font-size="126" fill="#5A2D0C">jeev</text>
-    <circle cx="33" cy="27" r="15" fill="#F5A623"/>
+    
   </g>
   <g class="jv-logo__globe" transform="translate(300,72)">
     <circle cx="0" cy="0" r="54" fill="#F5A623"/>
