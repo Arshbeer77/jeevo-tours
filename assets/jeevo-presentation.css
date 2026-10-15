@@ -53,7 +53,9 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .hero-btns .btn-outline { background:#8c431c28; }
 .hero-stats { gap:32px; flex-wrap:nowrap; }
 .hero-stats .stat { min-width:0; flex:0 1 170px; }
-.stat-num { font-size:clamp(28px,3vw,40px); line-height:1.2; }
+.stat-num { font-size:clamp(28px,3vw,40px); line-height:1.2; color:#ffb27e; }  /* matches "Soul of India" */
+.testimonial-trip { font-family:var(--font-ui); font-size:15px; font-weight:600; color:#c5521e; margin:0 0 22px; }
+.testimonial-trip i { margin-right:7px; opacity:.8; }
 .stat-label { font-size:15px; margin-top:8px; }
 .hero-scroll { display:none; }
 .about-grid { gap:60px; }

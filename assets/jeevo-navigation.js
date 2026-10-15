@@ -13,7 +13,7 @@
     menu.id = 'jeevo-menu';
     menu.className = 'jv-menu';
     menu.setAttribute('aria-label', 'Explore Jeevo');
-    const links = [['Home','#home'],['Our story','#about'],['Destinations','#destinations'],['Journeys','#interactive-tours'],['Gallery','#gallery'],['Let’s plan a trip','#contact']];
+    const links = [['Home','#home'],['Our story','#about'],['Destinations','#destinations'],['Journeys','#interactive-tours'],['Gallery','#gallery'],['Our travellers','#testimonials'],['Let’s plan a trip','#contact']];
     const markup = links.map(([label, hash], index) => {
       const chars = [...label].map((char, i) => '<span style="--char:'+i+'">'+(char === ' ' ? '&nbsp;' : char)+'</span>').join('');
       return '<li style="--row:'+index+'"><a href="'+route(hash)+'"><span class="jv-menu-number" aria-hidden="true">0'+(index+1)+'</span><span class="jv-sr-only">'+label+'</span><span class="jv-menu-letters" aria-hidden="true">'+chars+'</span><span class="jv-menu-arrow" aria-hidden="true">↗</span></a></li>';
