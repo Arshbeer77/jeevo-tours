@@ -1,5 +1,5 @@
 /* Shared presentation layer, loaded after the existing component styles. */
-:root { --font-heading:'Playfair Display',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:114px; --section-padding:88px 0; }
+:root { --font-heading:'Martel','Mukta',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:114px; --section-padding:88px 0; }
 html { background:#FFFDF8 /* cream, not flat white: the colours-of-india wash sits behind the page and a white ground flattens it */; scroll-padding-top:calc(var(--header-height) + 20px); }
 body { background:transparent !important /* was #fff, which painted over the
      colours-of-india wash sitting at z-index:-1; the page ground lives
@@ -11,7 +11,19 @@ section.jv-selector-section { background:#252650 !important; }
 .jv-wash,.jv-pigment { display:none; }
 .jv-ribbon { background:#c5521e; padding:15px 0; border:0; }
 .jv-progress { background:#e96a28; height:3px; }
-.section-tag,.section-header .section-tag { color:#ad4616 !important; }
+.section-tag,.section-header .section-tag{
+  color:#ad4616 !important;
+  font-family:'Martel','Mukta',Georgia,serif !important;
+  font-weight:700; font-size:13px; letter-spacing:.22em;
+  background:none !important; padding:0 !important; border-radius:0 !important;
+}
+/* a small rule either side, the way Indian print sets a standfirst */
+.section-tag::before,.section-tag::after{
+  content:""; display:inline-block; width:26px; height:1px;
+  background:currentColor; opacity:.45; vertical-align:middle;
+}
+.section-tag::before{ margin-right:12px }
+.section-tag::after { margin-left:12px }
 .container { width:100%; padding-inline:clamp(20px,4vw,40px); }
 .nav-container { height:var(--header-height); }
 .navbar { background:rgba(255,255,255,.97); border-bottom:1px solid #8c431c0d; box-shadow:none; }
@@ -43,7 +55,7 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .hero-content { width:100%; max-width:970px; padding:0; }
 .hero-title { color:#fff; font-size:clamp(40px,5.6vw,72px); line-height:1.12; margin-bottom:22px; }
 .hero-title .text-gradient { color:#ffb27e; }
-.hero-subtitle { color:#fff; font-size:17px; margin-bottom:18px; }
+.hero-subtitle { color:#fff; font-size:25px; margin-bottom:20px; font-family:'Martel','Mukta',Georgia,serif; letter-spacing:.01em; }
 .hero-desc { font-size:clamp(18px,2vw,21px); line-height:1.6; max-width:57ch; margin:0 auto 30px; }
 .hero-overlay { background:linear-gradient(100deg,rgba(33,20,12,.52),rgba(33,20,12,.25)),linear-gradient(rgba(255,153,51,.16),rgba(255,153,51,.16)); }
 .hero-slide { transform:scale(1.055); transition:opacity 1.2s ease,transform 8s linear; will-change:auto; }
@@ -194,7 +206,7 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
   .hero { min-height:100svh; padding:calc(var(--header-height) + 38px) 24px 48px; }
   .hero-title { font-size:clamp(37px,10vw,52px); margin-bottom:20px; }
   .hero-desc { font-size:18px; line-height:1.55; margin-bottom:26px; }
-  .hero-subtitle { font-size:15px; margin-bottom:16px; }
+  .hero-subtitle { font-size:20px; margin-bottom:16px; }
   .hero-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
   .hero-btns a:first-child { grid-column:1/-1; }
   .hero-btns a { font-size:16px; padding:10px 8px; justify-content:center; min-width:0; }
