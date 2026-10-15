@@ -268,3 +268,42 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
   .hero-slide { transition:none; }
   .hero-slide.active { animation:none; }
 }
+
+/* ---------- Plan with Arjun ---------- */
+.jv-arjun{ padding:var(--section-padding); background:#FFF7F0; }
+.jv-arjun-grid{
+  display:grid; grid-template-columns:1.05fr .95fr;
+  gap:clamp(32px,5vw,72px); align-items:center;
+}
+.jv-arjun-copy h2{
+  font-family:var(--font-heading); color:var(--dark);
+  font-size:clamp(28px,3.4vw,44px); line-height:1.2; margin:14px 0 20px;
+}
+.jv-arjun-copy p{ color:var(--gray); font-size:17px; line-height:1.7; margin-bottom:16px; max-width:52ch; }
+.jv-arjun-note{ font-size:15.5px !important; opacity:.85; }
+.jv-arjun-points{ list-style:none; padding:0; margin:22px 0 28px; display:flex; flex-wrap:wrap; gap:10px 26px; }
+.jv-arjun-points li{
+  display:flex; align-items:center; gap:9px;
+  font:600 15px var(--font-ui); color:var(--dark);
+}
+.jv-arjun-points i{ color:#CE7A2E; font-size:14px; }
+.jv-arjun-cta{ display:inline-flex; align-items:center; gap:10px; }
+
+/* a still of a conversation - not the real chat, just the idea of it */
+.jv-arjun-demo{
+  display:flex; flex-direction:column; gap:12px;
+  padding:clamp(22px,3vw,32px); border-radius:18px;
+  background:#0C3D1C; box-shadow:0 18px 48px rgba(60,30,12,.16);
+}
+.jv-arjun-bubble{
+  max-width:86%; padding:13px 17px; border-radius:15px;
+  font:400 15.5px/1.5 var(--font-ui);
+}
+.jv-arjun-bubble--you{ align-self:flex-end; background:#FF9933; color:#2A1708; border-bottom-right-radius:5px; }
+.jv-arjun-bubble--him{ align-self:flex-start; background:#ffffff14; color:#EAF3EC; border-bottom-left-radius:5px; }
+.jv-arjun-bubble--him:last-child{ opacity:.72; }
+
+@media (max-width:860px){
+  .jv-arjun-grid{ grid-template-columns:1fr; gap:34px; }
+  .jv-arjun-demo{ order:-1; }
+}
