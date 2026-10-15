@@ -55,7 +55,7 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .hero-content { width:100%; max-width:970px; padding:0; }
 .hero-title { color:#fff; font-size:clamp(40px,5.6vw,72px); line-height:1.12; margin-bottom:22px; }
 .hero-title .text-gradient { color:#ffb27e; }
-.hero-subtitle { color:#fff; font-size:25px; margin-bottom:20px; font-family:'Martel','Mukta',Georgia,serif; letter-spacing:.01em; }
+.hero-subtitle { color:#fff; font-size:20px; margin-bottom:18px; font-family:'Martel','Mukta',Georgia,serif; letter-spacing:.01em; }
 .hero-desc { font-size:clamp(18px,2vw,21px); line-height:1.6; max-width:57ch; margin:0 auto 30px; }
 .hero-overlay { background:linear-gradient(100deg,rgba(33,20,12,.52),rgba(33,20,12,.25)),linear-gradient(rgba(255,153,51,.16),rgba(255,153,51,.16)); }
 .hero-slide { transform:scale(1.055); transition:opacity 1.2s ease,transform 8s linear; will-change:auto; }
@@ -206,7 +206,7 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
   .hero { min-height:100svh; padding:calc(var(--header-height) + 38px) 24px 48px; }
   .hero-title { font-size:clamp(37px,10vw,52px); margin-bottom:20px; }
   .hero-desc { font-size:18px; line-height:1.55; margin-bottom:26px; }
-  .hero-subtitle { font-size:20px; margin-bottom:16px; }
+  .hero-subtitle { font-size:17px; margin-bottom:16px; }
   .hero-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
   .hero-btns a:first-child { grid-column:1/-1; }
   .hero-btns a { font-size:16px; padding:10px 8px; justify-content:center; min-width:0; }
