@@ -51,7 +51,7 @@
     var navGlobe  = doc.querySelector('.nav-logo .jv-logo__globe');
     var navWord   = doc.querySelector('.nav-logo .jv-logo__word');
     var navSwoosh = doc.querySelector('.nav-logo .jv-logo__swoosh');
-    var navTag    = doc.querySelector('.nav-logo .jv-logo__tag');
+    var navTag    = doc.querySelector('.nav-logo__tag');
     var bar       = doc.querySelector('.navbar');
     var done      = function () { doc.documentElement.classList.add('jv-ready'); };
 
