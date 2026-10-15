@@ -19,3 +19,22 @@
   .jv-lang-current{ display:none }
   .jv-lang{ margin-right:8px }
 }
+
+/* ------------------------------------------------------------
+   Keep the language switcher out of the intro.
+   The loader adds .jv-ready to <html> when it finishes - and always
+   does, there is a fallback timeout - so this can never strand the
+   control off-screen.
+   ------------------------------------------------------------ */
+.jv-lang {
+    transition: opacity .45s ease .15s, visibility .45s ease .15s;
+}
+html:not(.jv-ready) .jv-lang {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .jv-lang { transition: none; }
+}
