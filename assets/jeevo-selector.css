@@ -1,5 +1,5 @@
 /* Native swipe rail: stable card sizes, visible labels, consistent motion. */
-.jv-selector-section{padding:clamp(56px,7vw,100px) 0;background:#252650;color:#fff;overflow:hidden}
+.jv-selector-section{padding:clamp(56px,7vw,100px) 0;background:#0C3D1C;color:#fff;overflow:hidden}
 .jv-selector-header{max-width:720px;margin:0 0 32px}
 .jv-selector-tag{display:block;color:#ffe1c9;font:600 13px var(--font-ui);text-transform:uppercase;letter-spacing:.16em;margin-bottom:12px}
 .jv-selector-tag i{display:none}
