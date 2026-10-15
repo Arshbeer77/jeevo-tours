@@ -18,7 +18,7 @@ window.JEEVO_CONFIG = {
   whatsapp     : "919876543210",
 
   // 4. Phone as you want it DISPLAYED on the page
-  phoneDisplay : "+91 98765 43210"
+  phoneDisplay : "+91 98100 22651"
 };
 /* ▲▲▲  STOP EDITING  ▲▲▲ */
 
@@ -35,9 +35,6 @@ window.JEEVO_CONFIG = {
     doc.querySelectorAll('a[href*="wa.me/"]').forEach(function (a) {
       if (!waReady()) { a.remove(); return; }   // never leave a dead chat link
       a.href = a.href.replace(/wa\.me\/\d+/, 'wa.me/' + digits(CFG.whatsapp));
-    });
-    doc.querySelectorAll('a[href^="tel:"]').forEach(function (a) {
-      a.href = 'tel:+' + digits(CFG.whatsapp);
     });
     doc.querySelectorAll('a[href^="mailto:"]').forEach(function (a) {
       a.href = a.href.replace(/mailto:[^?]*/, 'mailto:' + CFG.contactEmail);
