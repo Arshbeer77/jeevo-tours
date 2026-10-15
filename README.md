@@ -1,4 +1,4 @@
-# Jeevo Tours & Travels Website
+# Jeevo Website
 
 A modern, fully responsive travel agency website showcasing tours across India and international destinations. Built with vanilla HTML, CSS, and JavaScript featuring a professional Indian aesthetic with saffron/orange color scheme.
 
@@ -366,7 +366,7 @@ For questions about the website codebase:
 
 ## 📜 License
 
-This is a commercial website template for Jeevo Tours & Travels. All rights reserved.
+This is a commercial website template for Jeevo. All rights reserved.
 
 ---
 
@@ -393,4 +393,4 @@ This is a commercial website template for Jeevo Tours & Travels. All rights rese
 
 **Last Updated**: October 1, 2026  
 **Status**: Production Ready 🚀  
-**Maintained by**: Jeevo Tours & Travels Web Team
+**Maintained by**: Jeevo Web Team
