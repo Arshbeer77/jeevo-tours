@@ -56,6 +56,41 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .stat-num { font-size:clamp(28px,3vw,40px); line-height:1.2; color:#ffb27e; }  /* matches "Soul of India" */
 .testimonial-trip { font-family:var(--font-ui); font-size:15px; font-weight:600; color:#c5521e; margin:0 0 22px; }
 .testimonial-trip i { margin-right:7px; opacity:.8; }
+
+/* ---------- travellers: a sideways rail, so the list can keep growing ---------- */
+.jv-rail-wrap { position:relative; }
+.testimonials-grid{
+  display:flex; gap:26px;
+  overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:4px 4px 18px;
+  margin:0 -4px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:#e2b48f transparent;
+}
+.testimonials-grid::-webkit-scrollbar{ height:8px }
+.testimonials-grid::-webkit-scrollbar-track{ background:transparent }
+.testimonials-grid::-webkit-scrollbar-thumb{ background:#e2b48f; border-radius:4px }
+.testimonials-grid > .testimonial-card{
+  flex:0 0 clamp(270px, 78vw, 350px);
+  scroll-snap-align:start;
+}
+/* arrows - hidden from touch devices, which just swipe */
+.jv-rail-btn{
+  position:absolute; top:calc(50% - 18px); z-index:3;
+  width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+  background:#fff; color:#c5521e; font-size:17px; line-height:1;
+  box-shadow:0 3px 14px rgba(80,40,20,.18);
+  display:grid; place-items:center;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.jv-rail-btn:hover{ transform:scale(1.07) }
+.jv-rail-btn[disabled]{ opacity:0; pointer-events:none }
+.jv-rail-btn--prev{ left:-16px }
+.jv-rail-btn--next{ right:-16px }
+@media (hover:none){ .jv-rail-btn{ display:none } }
+@media (max-width:700px){ .testimonials-grid{ gap:16px } }
 .stat-label { font-size:15px; margin-top:8px; }
 .hero-scroll { display:none; }
 .about-grid { gap:60px; }

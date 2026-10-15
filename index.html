@@ -33,14 +33,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700&family=Martel:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="styles.css?v=20261015-clean">
-    <link rel="stylesheet" href="assets/jeevo-loader.css?v=20261015-trav">
+    <link rel="stylesheet" href="assets/jeevo-loader.css?v=20261015-rail2">
     <link rel="stylesheet" href="assets/jeevo-scroll.css?v=1791989577">
     <link rel="stylesheet" href="assets/jeevo-delight.css?v=1791989577">
     <link rel="stylesheet" href="assets/jeevo-flourish.css?v=1791989577">
     <link rel="stylesheet" href="assets/jeevo-selector.css?v=1791989577">
     <link rel="stylesheet" href="assets/jeevo-origin-button.css">
     <link rel="stylesheet" href="assets/jeevo-chat.css?v=1791989577">
-    <link rel="stylesheet" href="assets/jeevo-presentation.css?v=20261015-trav">
+    <link rel="stylesheet" href="assets/jeevo-presentation.css?v=20261015-rail2">
     <link rel="stylesheet" href="assets/jeevo-navigation.css?v=1791989577">
     <link rel="stylesheet" href="assets/jeevo-destinations.css?v=1791989577">
     <link rel="preload" as="image" href="assets/img/taj-mahal-1280.webp" fetchpriority="high">
@@ -459,7 +459,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <h2 class="section-title">Journeys We Have <span class="text-gradient">Planned</span></h2>
                 <div class="title-ornament"><span></span><i class="fas fa-om"></i><span></span></div>
             </div>
-            <div class="testimonials-grid">
+            <div class="jv-rail-wrap">
+                <button class="jv-rail-btn jv-rail-btn--prev" type="button" aria-label="Previous reviews"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+                <button class="jv-rail-btn jv-rail-btn--next" type="button" aria-label="More reviews"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            <div class="testimonials-grid" tabindex="0" role="group" aria-label="Traveller reviews, scroll sideways for more">
                 <div class="testimonial-card">
                     <p class="testimonial-trip"><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Amritsar</p>
                     <!-- QUOTE SLOT: when Gurpreet Singh sends their own words, add them here as
@@ -520,6 +523,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -766,6 +770,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <script src="script.js?v=1791989577"></script>
     <script src="assets/jeevo-chat.js?v=1791989577"></script>
-    <script src="assets/jeevo-navigation.js?v=20261015-trav"></script>
+    <script src="assets/jeevo-navigation.js?v=20261015-rail2"></script>
+    <script src="assets/jeevo-rail.js?v=20261015-rail2" defer></script>
 </body>
 </html>
