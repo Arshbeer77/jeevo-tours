@@ -149,7 +149,7 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 @media (max-width:600px) {
   :root { --header-height:72px; --section-padding:56px 0; }
   body { font-size:17px; }
-  .nav-logo .jv-logo { height:50px; }
+  .nav-logo .jv-logo { height:61px; }
   .hero { min-height:100svh; padding:calc(var(--header-height) + 38px) 24px 48px; }
   .hero-title { font-size:clamp(37px,10vw,52px); margin-bottom:20px; }
   .hero-desc { font-size:18px; line-height:1.55; margin-bottom:26px; }
