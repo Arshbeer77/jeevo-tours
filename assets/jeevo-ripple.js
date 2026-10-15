@@ -9,13 +9,13 @@
 (function (win, doc) {
   'use strict';
 
-  var R_MAX   = 140;    // open radius, px
+  var R_MAX   = 230;    // open radius, px - the zone is the whole section now
   var EASE    = [0.14, 0.075];   // front layer catches up faster than the trail
   var R_EASE  = 0.1;
   var SPEED_R = 46;     // how much a fast cursor widens the circle
 
   function init() {
-    var zone = doc.querySelector('.jv-selector-header');
+    var zone = doc.querySelector('.jv-selector-section');
     if (!zone) return;
 
     var fine = !win.matchMedia || win.matchMedia('(hover:hover)').matches;

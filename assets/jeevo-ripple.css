@@ -2,7 +2,7 @@
    A flag-coloured pattern sitting behind the heading, uncovered only
    in a soft circle that trails the cursor. The text is never covered:
    it sits above the layer and the mask hides all the rest.
-   Scoped to the "Find your next journey" block alone.
+   Spans the whole green "Find your next journey" section.
    --------------------------------------------------------------- */
 
 /* registered so the radius can be driven per-frame without the browser
@@ -13,9 +13,8 @@
   position:relative;
   isolation:isolate;
   overflow:hidden;
-  padding:34px 32px;
-  margin:-34px -32px 32px;      /* cancels its own padding, so nothing shifts */
-  border-radius:22px;
+  /* The zone is the whole green section, which already carries its own
+     padding - so no padding or negative-margin correction here. */
 }
 .jv-ripple-zone > *{ position:relative; z-index:1; }
 
