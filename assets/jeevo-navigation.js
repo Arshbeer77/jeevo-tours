@@ -15,7 +15,9 @@
     menu.setAttribute('aria-label', 'Explore Jeevo');
     const links = [['Home','#home'],['Our story','#about'],['Destinations','#destinations'],['Journeys','#interactive-tours'],['Gallery','#gallery'],['Our travellers','#testimonials'],['Plan with Arjun','#plan-with-arjun'],['Let’s plan a trip','#contact']];
     const markup = links.map(([label, hash], index) => {
-      const chars = [...label].map((char, i) => '<span style="--char:'+i+'">'+(char === ' ' ? '&nbsp;' : char)+'</span>').join('');
+      /* Yatra One's no-break-space is all but zero-width, so a space span
+         needs a width of its own or "Our story" closes up to "Ourstory". */
+      const chars = [...label].map((char, i) => '<span class="'+(char === ' ' ? 'jv-menu-space' : '')+'" style="--char:'+i+'">'+(char === ' ' ? '&nbsp;' : char)+'</span>').join('');
       return '<li style="--row:'+index+'"><a href="'+route(hash)+'"><span class="jv-menu-number" aria-hidden="true">0'+(index+1)+'</span><span class="jv-sr-only">'+label+'</span><span class="jv-menu-letters" aria-hidden="true">'+chars+'</span><span class="jv-menu-arrow" aria-hidden="true">↗</span></a></li>';
     }).join('');
     const photo = (file, name, caption, href, alt) => '<a href="'+new URL('../tours/'+href,scriptURL).href+'"><img src="'+asset('img/'+file+'-640.webp')+'" alt="'+alt+'" loading="lazy" width="640" height="800"><span><small>'+caption+'</small>'+name+' <b aria-hidden="true">↗</b></span></a>';
