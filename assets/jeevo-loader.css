@@ -168,9 +168,13 @@
 /* the tagline comes last - only once the logo has settled in the corner.
    word ends at 1.02s, swoosh at 1.2s, so this starts just after. */
 .nav-logo__tag.jv-slide{ animation:jvTag .65s ease-out 1.2s both }
+/* NB: these must carry the translateX(-50%) that centres the tagline on the
+   logo. An animation with fill:both holds its final transform forever, so a
+   bare "transform:none" here silently cancels the centring once the intro
+   finishes - which only shows up after the animation has actually run. */
 @keyframes jvTag{
-  from{ opacity:0; transform:translateY(5px) }
-  to  { opacity:1; transform:none }
+  from{ opacity:0; transform:translateX(-50%) translateY(5px) }
+  to  { opacity:1; transform:translateX(-50%) }
 }
 
 /* ---------- inline busy dots (forms) ---------- */
