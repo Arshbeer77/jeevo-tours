@@ -59,7 +59,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 112px;
+    scroll-padding-top: 126px;
 }
 
 body {
@@ -219,7 +219,7 @@ p {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 112px;
+    height: 126px;
 }
 
 .nav-logo {
