@@ -1,9 +1,14 @@
 /* ---------------------------------------------------------------
-   A flag-coloured pattern that exists underneath the heading and is
-   only uncovered in a soft circle around the cursor. Nothing is ever
-   covered up - the text sits above it and the mask hides the rest.
+   A flag-coloured pattern sitting behind the heading, uncovered only
+   in a soft circle that trails the cursor. The text is never covered:
+   it sits above the layer and the mask hides all the rest.
    Scoped to the "Find your next journey" block alone.
    --------------------------------------------------------------- */
+
+/* registered so the radius can be driven per-frame without the browser
+   re-parsing the whole mask as a string each time */
+@property --jv-r{ syntax:'<length>'; inherits:false; initial-value:0px; }
+
 .jv-ripple-zone{
   position:relative;
   isolation:isolate;
@@ -15,35 +20,44 @@
 .jv-ripple-zone > *{ position:relative; z-index:1; }
 
 .jv-reveal{
-  position:absolute; inset:-40px; z-index:0;
+  position:absolute; inset:-60px; z-index:0;
   pointer-events:none;
-  opacity:0; transition:opacity .5s ease;
+  --jv-r:0px;
 
-  /* the pattern: the flag's three colours on a slow diagonal */
+  /* the flag's three colours on a slow diagonal */
   background:repeating-linear-gradient(118deg,
-    rgba(255,153,51,.85)  0px,  rgba(255,153,51,.85)  26px,
-    rgba(255,255,255,.80) 26px, rgba(255,255,255,.80) 52px,
-    rgba(31,169,113,.85)  52px, rgba(31,169,113,.85)  78px);
+    rgba(255,153,51,.88)  0px,  rgba(255,153,51,.88)  26px,
+    rgba(255,255,255,.82) 26px, rgba(255,255,255,.82) 52px,
+    rgba(31,169,113,.88)  52px, rgba(31,169,113,.88)  78px);
   background-size:220px 220px;
-  filter:blur(7px) saturate(1.1);
+  filter:blur(8px) saturate(1.08);
+  opacity:.5;
 
-  /* only a circle around the cursor is ever visible */
-  -webkit-mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),
-    #000 0%, rgba(0,0,0,.85) 42%, rgba(0,0,0,.35) 68%, transparent 84%);
-          mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),
-    #000 0%, rgba(0,0,0,.85) 42%, rgba(0,0,0,.35) 68%, transparent 84%);
+  /* only a feathered circle of it is ever visible */
+  -webkit-mask-image:radial-gradient(circle var(--jv-r) at var(--mx,50%) var(--my,50%),
+    #000 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.34) 68%, transparent 85%);
+          mask-image:radial-gradient(circle var(--jv-r) at var(--mx,50%) var(--my,50%),
+    #000 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.34) 68%, transparent 85%);
   -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
 
-  animation:jvDrift 14s linear infinite;
+  animation:jvDrift 16s linear infinite;
 }
-.jv-ripple-zone.is-live .jv-reveal{ opacity:.55 }
 
-/* the stripes creep sideways, so the patch is never static under the cursor */
+/* the stripes creep, so a resting cursor still has something living under it */
 @keyframes jvDrift{
   from{ background-position:0 0 }
   to  { background-position:220px 0 }
 }
 
-/* a touch screen has no cursor to uncover anything with */
-@media (hover:none){ .jv-reveal{ display:none } }
-@media (prefers-reduced-motion:reduce){ .jv-reveal{ animation:none } }
+/* a second, fainter wash that lags further behind - gives the patch depth
+   instead of looking like one flat disc */
+.jv-reveal--trail{
+  filter:blur(26px) saturate(1.1);
+  opacity:.34;
+  animation-duration:24s;
+  animation-direction:reverse;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .jv-reveal{ animation:none }
+}
