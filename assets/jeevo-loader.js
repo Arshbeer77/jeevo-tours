@@ -51,6 +51,7 @@
     var navGlobe  = doc.querySelector('.nav-logo .jv-logo__globe');
     var navWord   = doc.querySelector('.nav-logo .jv-logo__word');
     var navSwoosh = doc.querySelector('.nav-logo .jv-logo__swoosh');
+    var navTag    = doc.querySelector('.nav-logo .jv-logo__tag');
     var bar       = doc.querySelector('.navbar');
     var done      = function () { doc.documentElement.classList.add('jv-ready'); };
 
@@ -63,10 +64,12 @@
     var vw = win.innerWidth || doc.documentElement.clientWidth || 0;
     if (!navGlobe || reduce || vw < 320) { done(); return; }
 
-    /* hold the three pieces of the logo back */
+    /* hold the pieces of the logo back - the tagline included, or it sits
+       in the corner on its own while the rest is still flying in */
     navGlobe.classList.add('jv-hold');
     if (navWord)   navWord.classList.add('jv-hold');
     if (navSwoosh) navSwoosh.classList.add('jv-hold');
+    if (navTag)    navTag.classList.add('jv-hold');
 
     var veil = doc.createElement('div');
     veil.className = 'jv-veil';
@@ -131,6 +134,8 @@
       navGlobe.classList.add('jv-land');
       if (navWord)   { navWord.classList.remove('jv-hold');   navWord.classList.add('jv-slide'); }
       if (navSwoosh) { navSwoosh.classList.remove('jv-hold'); navSwoosh.classList.add('jv-slide'); }
+      /* and the tagline last of all, once the logo has settled */
+      if (navTag)    { navTag.classList.remove('jv-hold');    navTag.classList.add('jv-slide'); }
 
       veil.classList.add('is-out');
       flight.classList.add('is-out');

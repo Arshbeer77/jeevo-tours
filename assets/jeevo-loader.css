@@ -122,7 +122,8 @@
 /* ---------- the logo assembling ---------- */
 .jv-logo__globe.jv-hold,
 .jv-logo__word.jv-hold,
-.jv-logo__swoosh.jv-hold{ opacity:0 }
+.jv-logo__swoosh.jv-hold,
+.jv-logo__tag.jv-hold{ opacity:0 }
 
 .jv-logo__globe.jv-land{ opacity:1 }          /* identical artwork: straight cut */
 
@@ -138,6 +139,17 @@
 }
 .jv-logo__swoosh.jv-slide{ animation:jvFade .7s ease-out .5s both }
 @keyframes jvFade{ from{opacity:0} to{opacity:1} }
+
+/* the tagline comes last - only once the logo has settled in the corner.
+   word ends at 1.02s, swoosh at 1.2s, so this starts just after. */
+.jv-logo__tag.jv-slide{
+  animation:jvTag .65s ease-out 1.2s both;
+  transform-box:fill-box;
+}
+@keyframes jvTag{
+  from{ opacity:0; transform:translateY(5px) }
+  to  { opacity:1; transform:none }
+}
 
 /* ---------- inline busy dots (forms) ---------- */
 .jv-busy{
@@ -159,6 +171,7 @@
 @media (prefers-reduced-motion:reduce){
   .jv-veil{ display:none }
   .jv-spin,.jv-orb__plane,.jv-busy span,.jv-namaste,.jv-namaste-en{ animation:none }
-  .jv-logo__globe.jv-hold,.jv-logo__word.jv-hold,.jv-logo__swoosh.jv-hold{ opacity:1 }
-  .jv-logo__word.jv-slide,.jv-logo__swoosh.jv-slide{ animation:none }
+  .jv-logo__globe.jv-hold,.jv-logo__word.jv-hold,.jv-logo__swoosh.jv-hold,
+  .jv-logo__tag.jv-hold{ opacity:1 }
+  .jv-logo__word.jv-slide,.jv-logo__swoosh.jv-slide,.jv-logo__tag.jv-slide{ animation:none }
 }
