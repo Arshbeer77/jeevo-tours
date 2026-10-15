@@ -1,50 +1,49 @@
 /* ---------------------------------------------------------------
-   Flag-colour ripple, scoped to the "Find your next journey" block.
-   Nothing outside .jv-selector-header is touched.
+   A flag-coloured pattern that exists underneath the heading and is
+   only uncovered in a soft circle around the cursor. Nothing is ever
+   covered up - the text sits above it and the mask hides the rest.
+   Scoped to the "Find your next journey" block alone.
    --------------------------------------------------------------- */
 .jv-ripple-zone{
   position:relative;
-  isolation:isolate;             /* keeps the glow behind the text, not the page */
-  padding:26px 28px;
-  margin:-26px -28px 32px;       /* cancels its own padding so nothing shifts */
-  border-radius:20px;
+  isolation:isolate;
+  overflow:hidden;
+  padding:34px 32px;
+  margin:-34px -32px 32px;      /* cancels its own padding, so nothing shifts */
+  border-radius:22px;
 }
 .jv-ripple-zone > *{ position:relative; z-index:1; }
 
-/* the soft glow that trails the cursor */
-.jv-ripple-glow{
-  position:absolute; inset:0; z-index:0; border-radius:inherit;
-  pointer-events:none; opacity:0;
-  transition:opacity .45s ease;
-  background:radial-gradient(
-    220px circle at var(--mx,50%) var(--my,50%),
-    rgba(255,153,51,.30) 0%,
-    rgba(255,255,255,.12) 38%,
-    rgba(19,136,8,.16) 62%,
-    transparent 76%);
-}
-.jv-ripple-zone.is-live .jv-ripple-glow{ opacity:1 }
+.jv-reveal{
+  position:absolute; inset:-40px; z-index:0;
+  pointer-events:none;
+  opacity:0; transition:opacity .5s ease;
 
-/* expanding rings, one per flick of the cursor */
-.jv-ripple{
-  position:absolute; z-index:0; pointer-events:none;
-  width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%;
-  border:1.5px solid currentColor;
-  opacity:.55;
-  animation:jvRipple 1.15s cubic-bezier(.22,.7,.18,1) forwards;
-  will-change:transform,opacity;
+  /* the pattern: the flag's three colours on a slow diagonal */
+  background:repeating-linear-gradient(118deg,
+    rgba(255,153,51,.85)  0px,  rgba(255,153,51,.85)  26px,
+    rgba(255,255,255,.80) 26px, rgba(255,255,255,.80) 52px,
+    rgba(31,169,113,.85)  52px, rgba(31,169,113,.85)  78px);
+  background-size:220px 220px;
+  filter:blur(7px) saturate(1.1);
+
+  /* only a circle around the cursor is ever visible */
+  -webkit-mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),
+    #000 0%, rgba(0,0,0,.85) 42%, rgba(0,0,0,.35) 68%, transparent 84%);
+          mask-image:radial-gradient(circle 130px at var(--mx,50%) var(--my,50%),
+    #000 0%, rgba(0,0,0,.85) 42%, rgba(0,0,0,.35) 68%, transparent 84%);
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+
+  animation:jvDrift 14s linear infinite;
 }
-.jv-ripple--saffron{ color:#FF9933 }
-.jv-ripple--white  { color:#FFFFFF }
-.jv-ripple--green  { color:#3FA64A }
-@keyframes jvRipple{
-  from{ transform:scale(.4); opacity:.55 }
-  to  { transform:scale(11);  opacity:0 }
+.jv-ripple-zone.is-live .jv-reveal{ opacity:.55 }
+
+/* the stripes creep sideways, so the patch is never static under the cursor */
+@keyframes jvDrift{
+  from{ background-position:0 0 }
+  to  { background-position:220px 0 }
 }
 
-/* no cursor to follow, and no taste for motion */
-@media (hover:none){ .jv-ripple-glow,.jv-ripple{ display:none } }
-@media (prefers-reduced-motion:reduce){
-  .jv-ripple{ display:none }
-  .jv-ripple-glow{ transition:none }
-}
+/* a touch screen has no cursor to uncover anything with */
+@media (hover:none){ .jv-reveal{ display:none } }
+@media (prefers-reduced-motion:reduce){ .jv-reveal{ animation:none } }
