@@ -1,5 +1,5 @@
 /* Shared presentation layer, loaded after the existing component styles. */
-:root { --font-heading:'Martel','Mukta',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:114px; --section-padding:88px 0; }
+:root { --font-heading:'Rozha One','Martel',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:114px; --section-padding:88px 0; }
 html { background:#FFFDF8 /* cream, not flat white: the colours-of-india wash sits behind the page and a white ground flattens it */; scroll-padding-top:calc(var(--header-height) + 20px); }
 body { background:transparent !important /* was #fff, which painted over the
      colours-of-india wash sitting at z-index:-1; the page ground lives
@@ -13,8 +13,8 @@ section.jv-selector-section { background:#0C3D1C !important; }   /* same India g
 .jv-progress { background:#e96a28; height:3px; }
 .section-tag,.section-header .section-tag{
   color:#ad4616 !important;
-  font-family:'Martel','Mukta',Georgia,serif !important;
-  font-weight:700; font-size:13px; letter-spacing:.22em;
+  font-family:var(--font-ui) !important;
+  font-weight:700; font-size:12.5px; letter-spacing:.2em;
   background:none !important; padding:0 !important; border-radius:0 !important;
 }
 /* a small rule either side, the way Indian print sets a standfirst */
@@ -53,9 +53,9 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .title-ornament { margin-top:20px; }
 .hero { height:auto; min-height: min(900px,100svh); padding:calc(var(--header-height) + 65px) 20px 76px; }
 .hero-content { width:100%; max-width:970px; padding:0; }
-.hero-title { color:#fff; font-size:clamp(40px,5.6vw,72px); line-height:1.12; margin-bottom:22px; }
+.hero-title { color:#fff; font-size:clamp(34px,4.4vw,58px); line-height:1.16; margin-bottom:22px; font-weight:400; letter-spacing:.005em; }
 .hero-title .text-gradient { color:#ffb27e; }
-.hero-subtitle { color:#fff; font-size:20px; margin-bottom:18px; font-family:'Martel','Mukta',Georgia,serif; letter-spacing:.01em; }
+.hero-subtitle { color:#fff; font-size:19px; margin-bottom:18px; font-family:var(--font-ui); letter-spacing:.02em; }
 .hero-desc { font-size:clamp(18px,2vw,21px); line-height:1.6; max-width:57ch; margin:0 auto 30px; }
 .hero-overlay { background:linear-gradient(100deg,rgba(33,20,12,.52),rgba(33,20,12,.25)),linear-gradient(rgba(255,153,51,.16),rgba(255,153,51,.16)); }
 .hero-slide { transform:scale(1.055); transition:opacity 1.2s ease,transform 8s linear; will-change:auto; }
@@ -273,8 +273,8 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .jv-arjun{ padding:var(--section-padding); background:#FFF7F0; }
 .jv-arjun-inner{ max-width:740px; margin:0 auto; text-align:center; }
 .jv-arjun-copy h2{
-  font-family:var(--font-heading); color:var(--dark);
-  font-size:clamp(28px,3.4vw,44px); line-height:1.2; margin:14px 0 20px;
+  font-family:var(--font-heading); color:var(--dark); font-weight:400;
+  font-size:clamp(25px,2.8vw,38px); line-height:1.25; margin:14px 0 20px;
 }
 .jv-arjun-copy p{ color:var(--gray); font-size:17px; line-height:1.7; margin:0 auto 16px; max-width:58ch; }
 .jv-arjun-note{ font-size:15.5px !important; opacity:.85; }
@@ -288,3 +288,12 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 }
 .jv-arjun-points i{ color:#CE7A2E; font-size:14px; }
 .jv-arjun-cta{ display:inline-flex; align-items:center; gap:10px; }
+
+
+/* ---------- Rozha One is display only ---------- */
+.section-title, h1, h2 { font-family:var(--font-heading); font-weight:400; }
+/* a high-contrast face needs air around it, and none of the tight tracking
+   that suited Playfair */
+.section-title { font-size:clamp(27px,3vw,42px) !important; line-height:1.26; letter-spacing:.005em; }
+h3, h4, h5, h6 { font-family:var(--font-ui); }
+.jv-menu nav a { font-weight:400; letter-spacing:.004em; }
