@@ -1,5 +1,5 @@
 /* Shared presentation layer, loaded after the existing component styles. */
-:root { --font-heading:'Playfair Display',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:126px; --section-padding:88px 0; }
+:root { --font-heading:'Rozha One','Martel',Georgia,serif; --font-body:'Mukta',system-ui,sans-serif; --font-ui:'Mukta',system-ui,sans-serif; --dark:#472b1e; --gray:#6c615b; --bg-light:#fff7f0; --header-height:114px; --section-padding:88px 0; }
 html { background:#FFFDF8 /* cream, not flat white: the colours-of-india wash sits behind the page and a white ground flattens it */; scroll-padding-top:calc(var(--header-height) + 20px); }
 body { background:transparent !important /* was #fff, which painted over the
      colours-of-india wash sitting at z-index:-1; the page ground lives
@@ -11,7 +11,19 @@ section.hero,section.tour-hero,section.cta-section { background-color:#c5521e !i
 .jv-wash,.jv-pigment { display:none; }
 .jv-ribbon { background:#c5521e; padding:15px 0; border:0; }
 .jv-progress { background:#e96a28; height:3px; }
-.section-tag,.section-header .section-tag { color:#ad4616 !important; }
+.section-tag,.section-header .section-tag{
+  color:#ad4616 !important;
+  font-family:var(--font-ui) !important;
+  font-weight:700; font-size:12.5px; letter-spacing:.2em;
+  background:none !important; padding:0 !important; border-radius:0 !important;
+}
+/* a small rule either side, the way Indian print sets a standfirst */
+.section-tag::before,.section-tag::after{
+  content:""; display:inline-block; width:26px; height:1px;
+  background:currentColor; opacity:.45; vertical-align:middle;
+}
+.section-tag::before{ margin-right:12px }
+.section-tag::after { margin-left:12px }
 .container { width:100%; padding-inline:clamp(20px,4vw,40px); }
 .nav-container { height:var(--header-height); }
 .navbar { background:rgba(255,255,255,.97); border-bottom:1px solid #8c431c0d; box-shadow:none; }
@@ -31,7 +43,7 @@ section.hero,section.tour-hero,section.cta-section { background-color:#c5521e !i
   filter:drop-shadow(0 1px 2px rgba(0,0,0,.45)) drop-shadow(0 0 10px rgba(0,0,0,.28));
 }
 .jv-navigation-ready .navbar--hero:not(.scrolled) .nav-toggle { color:#fff; }
-.jv-navigation-ready .navbar--hero.scrolled .nav-toggle { color:#252650; }
+.jv-navigation-ready .navbar--hero.scrolled .nav-toggle { color:#0C3D1C; }
 .jv-navigation-ready .navbar--hero:not(.scrolled) .nav-cta { background:rgba(255,255,255,.1); color:#fff; border:1px solid #ffffff80; }
 .navbar--hero .nav-toggle { transition:color .35s ease; }
 h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
@@ -41,9 +53,9 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .title-ornament { margin-top:20px; }
 .hero { height:auto; min-height: min(900px,100svh); padding:calc(var(--header-height) + 65px) 20px 76px; }
 .hero-content { width:100%; max-width:970px; padding:0; }
-.hero-title { color:#fff; font-size:clamp(40px,5.6vw,72px); line-height:1.12; margin-bottom:22px; }
+.hero-title { color:#fff; font-size:clamp(34px,4.4vw,58px); line-height:1.16; margin-bottom:22px; font-weight:400; letter-spacing:.005em; }
 .hero-title .text-gradient { color:#ffb27e; }
-.hero-subtitle { color:#fff; font-size:17px; margin-bottom:18px; }
+.hero-subtitle { color:#fff; font-size:19px; margin-bottom:18px; font-family:var(--font-ui); letter-spacing:.02em; }
 .hero-desc { font-size:clamp(18px,2vw,21px); line-height:1.6; max-width:57ch; margin:0 auto 30px; }
 .hero-overlay { background:linear-gradient(100deg,rgba(33,20,12,.52),rgba(33,20,12,.25)),linear-gradient(rgba(255,153,51,.16),rgba(255,153,51,.16)); }
 .hero-slide { transform:scale(1.055); transition:opacity 1.2s ease,transform 8s linear; will-change:auto; }
@@ -53,7 +65,44 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
 .hero-btns .btn-outline { background:#8c431c28; }
 .hero-stats { gap:32px; flex-wrap:nowrap; }
 .hero-stats .stat { min-width:0; flex:0 1 170px; }
-.stat-num { font-size:clamp(28px,3vw,40px); line-height:1.2; }
+.stat-num { font-size:clamp(28px,3vw,40px); line-height:1.2; color:#ffb27e; }  /* matches "Soul of India" */
+.testimonial-trip { font-family:var(--font-ui); font-size:15px; font-weight:600; color:#c5521e; margin:0 0 22px; }
+.testimonial-trip i { margin-right:7px; opacity:.8; }
+
+/* ---------- travellers: a sideways rail, so the list can keep growing ---------- */
+.jv-rail-wrap { position:relative; }
+.testimonials-grid{
+  display:flex; gap:26px;
+  overflow-x:auto; overflow-y:hidden;
+  scroll-snap-type:x mandatory;
+  scroll-behavior:smooth;
+  padding:4px 4px 18px;
+  margin:0 -4px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:#e2b48f transparent;
+}
+.testimonials-grid::-webkit-scrollbar{ height:8px }
+.testimonials-grid::-webkit-scrollbar-track{ background:transparent }
+.testimonials-grid::-webkit-scrollbar-thumb{ background:#e2b48f; border-radius:4px }
+.testimonials-grid > .testimonial-card{
+  flex:0 0 clamp(270px, 78vw, 350px);
+  scroll-snap-align:start;
+}
+/* arrows - hidden from touch devices, which just swipe */
+.jv-rail-btn{
+  position:absolute; top:calc(50% - 18px); z-index:3;
+  width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+  background:#fff; color:#c5521e; font-size:17px; line-height:1;
+  box-shadow:0 3px 14px rgba(80,40,20,.18);
+  display:grid; place-items:center;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.jv-rail-btn:hover{ transform:scale(1.07) }
+.jv-rail-btn[disabled]{ opacity:0; pointer-events:none }
+.jv-rail-btn--prev{ left:-16px }
+.jv-rail-btn--next{ right:-16px }
+@media (hover:none){ .jv-rail-btn{ display:none } }
+@media (max-width:700px){ .testimonials-grid{ gap:16px } }
 .stat-label { font-size:15px; margin-top:8px; }
 .hero-scroll { display:none; }
 .about-grid { gap:60px; }
@@ -151,13 +200,13 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
   .jv-chat-teaser { display:none; }
 }
 @media (max-width:600px) {
-  :root { --header-height:112px; --section-padding:56px 0; }   /* taller: the lockup is logo + two tagline lines */
+  :root { --header-height:104px; --section-padding:56px 0; }   /* taller: the lockup is logo + two tagline lines */
   body { font-size:17px; }
   /* nav logo size lives in jeevo-loader.css via --jv-logo-h */
   .hero { min-height:100svh; padding:calc(var(--header-height) + 38px) 24px 48px; }
   .hero-title { font-size:clamp(37px,10vw,52px); margin-bottom:20px; }
   .hero-desc { font-size:18px; line-height:1.55; margin-bottom:26px; }
-  .hero-subtitle { font-size:15px; margin-bottom:16px; }
+  .hero-subtitle { font-size:17px; margin-bottom:16px; }
   .hero-btns { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:32px; }
   .hero-btns a:first-child { grid-column:1/-1; }
   .hero-btns a { font-size:16px; padding:10px 8px; justify-content:center; min-width:0; }
@@ -219,3 +268,36 @@ h1,h2,h3 { text-wrap:balance; letter-spacing:-.025em; }
   .hero-slide { transition:none; }
   .hero-slide.active { animation:none; }
 }
+
+/* ---------- Plan with Arjun ---------- */
+.jv-arjun{ padding:var(--section-padding); background:#FFF7F0; }
+.jv-arjun-inner{ max-width:740px; margin:0 auto; text-align:center; }
+.jv-arjun-copy h2{
+  font-family:var(--font-heading); color:var(--dark); font-weight:400;
+  font-size:clamp(25px,2.8vw,38px); line-height:1.25; margin:14px 0 20px;
+}
+.jv-arjun-copy p{ color:var(--gray); font-size:17px; line-height:1.7; margin:0 auto 16px; max-width:58ch; }
+.jv-arjun-note{ font-size:15.5px !important; opacity:.85; }
+.jv-arjun-points{
+  list-style:none; padding:0; margin:24px 0 30px;
+  display:flex; flex-wrap:wrap; justify-content:center; gap:12px 30px;
+}
+.jv-arjun-points li{
+  display:flex; align-items:center; gap:9px;
+  font:600 15px var(--font-ui); color:var(--dark);
+}
+.jv-arjun-points i{ color:#CE7A2E; font-size:14px; }
+.jv-arjun-cta{ display:inline-flex; align-items:center; gap:10px; }
+
+
+/* ---------- Rozha One is display only ---------- */
+.section-title, h1, h2 { font-family:var(--font-heading); font-weight:400; }
+/* a high-contrast face needs air around it, and none of the tight tracking
+   that suited Playfair */
+.section-title { font-size:clamp(27px,3vw,42px) !important; line-height:1.26; letter-spacing:.005em; }
+h3, h4, h5, h6 { font-family:var(--font-ui); }
+.jv-menu nav a { font-weight:400; letter-spacing:.004em; }
+
+.footer-legal{ margin-top:10px; font:500 14px var(--font-ui); opacity:.85 }
+.footer-legal a{ color:inherit; text-decoration:none }
+.footer-legal a:hover{ text-decoration:underline }

@@ -1,0 +1,62 @@
+/* ---------------------------------------------------------------
+   A flag-coloured pattern sitting behind the heading, uncovered only
+   in a soft circle that trails the cursor. The text is never covered:
+   it sits above the layer and the mask hides all the rest.
+   Spans the whole green "Find your next journey" section.
+   --------------------------------------------------------------- */
+
+/* registered so the radius can be driven per-frame without the browser
+   re-parsing the whole mask as a string each time */
+@property --jv-r{ syntax:'<length>'; inherits:false; initial-value:0px; }
+
+.jv-ripple-zone{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  /* The zone is the whole green section, which already carries its own
+     padding - so no padding or negative-margin correction here. */
+}
+.jv-ripple-zone > *{ position:relative; z-index:1; }
+
+.jv-reveal{
+  position:absolute; inset:-60px; z-index:0;
+  pointer-events:none;
+  --jv-r:0px;
+
+  /* the flag's three colours on a slow diagonal */
+  background:repeating-linear-gradient(118deg,
+    rgba(255,153,51,.88)  0px,  rgba(255,153,51,.88)  26px,
+    rgba(255,255,255,.82) 26px, rgba(255,255,255,.82) 52px,
+    rgba(31,169,113,.88)  52px, rgba(31,169,113,.88)  78px);
+  background-size:220px 220px;
+  filter:blur(8px) saturate(1.08);
+  opacity:.5;
+
+  /* only a feathered circle of it is ever visible */
+  -webkit-mask-image:radial-gradient(circle var(--jv-r) at var(--mx,50%) var(--my,50%),
+    #000 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.34) 68%, transparent 85%);
+          mask-image:radial-gradient(circle var(--jv-r) at var(--mx,50%) var(--my,50%),
+    #000 0%, rgba(0,0,0,.88) 40%, rgba(0,0,0,.34) 68%, transparent 85%);
+  -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+
+  animation:jvDrift 16s linear infinite;
+}
+
+/* the stripes creep, so a resting cursor still has something living under it */
+@keyframes jvDrift{
+  from{ background-position:0 0 }
+  to  { background-position:220px 0 }
+}
+
+/* a second, fainter wash that lags further behind - gives the patch depth
+   instead of looking like one flat disc */
+.jv-reveal--trail{
+  filter:blur(26px) saturate(1.1);
+  opacity:.34;
+  animation-duration:24s;
+  animation-direction:reverse;
+}
+
+@media (prefers-reduced-motion:reduce){
+  .jv-reveal{ animation:none }
+}

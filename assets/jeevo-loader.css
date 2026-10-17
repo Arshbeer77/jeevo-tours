@@ -9,26 +9,31 @@
    logo's width and centres its text inside it, so the block is symmetrical
    without dragging the logo off the margin */
 .nav-logo{
-  --jv-logo-h:100px;             /* one source of truth for the lockup size */
+  --jv-logo-h:78px;              /* one source of truth for the lockup size */
   --jv-logo-w:calc(var(--jv-logo-h) * 416 / 184);   /* the svg's own ratio */
   display:flex; flex-direction:column; align-items:flex-start;
-  gap:2px; text-decoration:none;
+  text-decoration:none;
+  position:relative; padding-bottom:16px;  /* reserves the tagline's row */
 }
 .nav-logo .jv-logo{ height:var(--jv-logo-h); width:auto; display:block; overflow:visible }
 .nav-logo__tag{
-  font:600 11px/1.25 'Martel','Mukta',Georgia,serif;
-  color:#CE7A2E; letter-spacing:.005em;
-  /* ONE line, boxed to exactly the logo's width and centred in it, so the
-     two line up edge to edge. If it ever exceeds that width a centred line
-     spills the same amount either side, never just to the right. */
-  width:var(--jv-logo-w); text-align:center;
-  white-space:nowrap;
+  font:700 10px/1.25 'Martel','Mukta',Georgia,serif;
+  /* dark brown, not a lighter shade of the wordmark: at this size the old
+     #CE7A2E reached only 3.2:1 on the cream, which is why it read faint.
+     #4A2410 is 13.3:1 - it reads at a glance. */
+  color:#4A2410; letter-spacing:.01em;
+  /* ONE line, pinned to the centre of the logo. It is taken out of flow so
+     it cannot widen the lockup and shove the logo off the page gutter, and
+     translateX(-50%) makes any overhang fall evenly either side - a centred
+     line in a too-narrow box spills to the RIGHT only, which looks lopsided. */
+  position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+  white-space:nowrap; text-align:center;
 }
 .navbar, .nav-container, .nav-logo{ overflow:visible }
 /* Phones: smaller, but still a single line. */
 @media (max-width:700px){
-  .nav-logo{ --jv-logo-h:86px }
-  .nav-logo__tag{ font-size:10.5px }
+  .nav-logo{ --jv-logo-h:76px }
+  .nav-logo__tag{ font-size:9.5px }
 }
 .jv-logo--foot{ height:86px; width:auto; display:block }
 
@@ -166,9 +171,13 @@
 /* the tagline comes last - only once the logo has settled in the corner.
    word ends at 1.02s, swoosh at 1.2s, so this starts just after. */
 .nav-logo__tag.jv-slide{ animation:jvTag .65s ease-out 1.2s both }
+/* NB: these must carry the translateX(-50%) that centres the tagline on the
+   logo. An animation with fill:both holds its final transform forever, so a
+   bare "transform:none" here silently cancels the centring once the intro
+   finishes - which only shows up after the animation has actually run. */
 @keyframes jvTag{
-  from{ opacity:0; transform:translateY(5px) }
-  to  { opacity:1; transform:none }
+  from{ opacity:0; transform:translateX(-50%) translateY(5px) }
+  to  { opacity:1; transform:translateX(-50%) }
 }
 
 /* ---------- inline busy dots (forms) ---------- */

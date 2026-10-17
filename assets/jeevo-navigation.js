@@ -13,19 +13,21 @@
     menu.id = 'jeevo-menu';
     menu.className = 'jv-menu';
     menu.setAttribute('aria-label', 'Explore Jeevo');
-    const links = [['Home','#home'],['Our story','#about'],['Destinations','#destinations'],['Journeys','#interactive-tours'],['Gallery','#gallery'],['Traveler stories','#testimonials'],['Let’s plan a trip','#contact']];
+    const links = [['Home','#home'],['Our story','#about'],['Destinations','#destinations'],['Journeys','#interactive-tours'],['Gallery','#gallery'],['Our travellers','#testimonials'],['Plan with Arjun','#plan-with-arjun'],['Let’s plan a trip','#contact']];
     const markup = links.map(([label, hash], index) => {
-      const chars = [...label].map((char, i) => '<span style="--char:'+i+'">'+(char === ' ' ? '&nbsp;' : char)+'</span>').join('');
+      /* Yatra One's no-break-space is all but zero-width, so a space span
+         needs a width of its own or "Our story" closes up to "Ourstory". */
+      const chars = [...label].map((char, i) => '<span class="'+(char === ' ' ? 'jv-menu-space' : '')+'" style="--char:'+i+'">'+(char === ' ' ? '&nbsp;' : char)+'</span>').join('');
       return '<li style="--row:'+index+'"><a href="'+route(hash)+'"><span class="jv-menu-number" aria-hidden="true">0'+(index+1)+'</span><span class="jv-sr-only">'+label+'</span><span class="jv-menu-letters" aria-hidden="true">'+chars+'</span><span class="jv-menu-arrow" aria-hidden="true">↗</span></a></li>';
     }).join('');
     const photo = (file, name, caption, href, alt) => '<a href="'+new URL('../tours/'+href,scriptURL).href+'"><img src="'+asset('img/'+file+'-640.webp')+'" alt="'+alt+'" loading="lazy" width="640" height="800"><span><small>'+caption+'</small>'+name+' <b aria-hidden="true">↗</b></span></a>';
-    menu.innerHTML = '<div class="jv-menu-header"><a class="jv-menu-brand" href="'+route('#home')+'"><img src="'+asset('jeevo-logo.svg')+'" alt="Jeevo Tours and Travels" width="150" height="66"></a><button class="jv-menu-close" type="button" aria-label="Close menu"><span>Close</span><i aria-hidden="true"></i></button></div>'+
+    menu.innerHTML = '<div class="jv-menu-header"><a class="jv-menu-brand" href="'+route('#home')+'"><img src="'+asset('jeevo-logo.svg')+'" alt="Jeevo" width="150" height="66"></a><button class="jv-menu-close" type="button" aria-label="Close menu"><span data-i18n="nav.close">Close</span><i aria-hidden="true"></i></button></div>'+
       '<div class="jv-menu-content"><div class="jv-menu-kicker"><span>India & beyond</span><span>Made for your kind of journey</span></div><div class="jv-menu-grid"><nav aria-label="Main navigation"><ol>'+markup+'</ol></nav><aside class="jv-menu-discover" aria-label="Featured journeys"><p>A few places to begin.</p><div class="jv-menu-photos">'+
       photo('taj-mahal','Golden Triangle','7 days · Heritage','golden-triangle.html','Taj Mahal in Agra')+
       photo('kerala-backwaters','Kerala Paradise','10 days · Slow travel','kerala-paradise.html','Palm-lined Kerala backwaters')+
       '</div></aside></div><div class="jv-menu-footer"><span>Local knowledge. Personal journeys.</span><a href="'+route('#contact')+'">Talk to our team <span aria-hidden="true">↗</span></a></div></div>';
     document.body.appendChild(menu);
-    trigger.innerHTML = '<span class="jv-menu-trigger-label">Menu</span><span class="jv-menu-trigger-lines" aria-hidden="true"><i></i><i></i></span>';
+    trigger.innerHTML = '<span class="jv-menu-trigger-label" data-i18n="nav.menu">Menu</span><span class="jv-menu-trigger-lines" aria-hidden="true"><i></i><i></i></span>';
     trigger.setAttribute('aria-controls', menu.id);
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-haspopup', 'dialog');

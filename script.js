@@ -317,4 +317,4 @@ window.addEventListener('load', () => {
     document.body.style.opacity = '1';
 });
 
-console.log('🕉 Jeevo Tours & Travels - Website Loaded Successfully!');
+console.log('🕉 Jeevo - Website Loaded Successfully!');
